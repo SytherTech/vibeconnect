@@ -96,7 +96,14 @@ class _EventRequestScreenState extends State<EventRequestScreen> {
                 ),
               ),
             ),
-            leading: Icon(null)),
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.white,
+                ))),
         body: TCard(
           controller: controller,
           onForward: (index, info) {

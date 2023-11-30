@@ -192,12 +192,12 @@ class EventDetailSceen extends StatelessWidget {
                           Text(
                             "Event Type",
                             style: GoogleFonts.roboto(
-                                fontSize: 14, fontWeight: FontWeight.w600),
+                                fontSize: 12, fontWeight: FontWeight.w600),
                           ),
                           const SizedBox(
                             height: 10,
                           ),
-                          Text("${eventModel.eventType}")
+                          Text("${eventModel.category}")
                         ],
                       )
                     ],

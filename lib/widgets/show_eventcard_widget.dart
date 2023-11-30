@@ -6,11 +6,16 @@ import 'package:vibeconnect/utils/userdata.dart';
 import 'package:vibeconnect/views/home/views/event_detail_view.dart';
 import 'package:vibeconnect/widgets/button_widget.dart';
 
-class EventCardWidget extends StatelessWidget {
+class EventCardWidget extends StatefulWidget {
   final EventModel eventModel;
 
   const EventCardWidget({super.key, required this.eventModel});
 
+  @override
+  State<EventCardWidget> createState() => _EventCardWidgetState();
+}
+
+class _EventCardWidgetState extends State<EventCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -26,7 +31,7 @@ class EventCardWidget extends StatelessWidget {
               child: Image.network(
                 UserData()
                     .users
-                    .where((element) => element.id == eventModel.ownerId)
+                    .where((element) => element.id == widget.eventModel.ownerId)
                     .first
                     .imgUrl
                     .toString(),
@@ -48,8 +53,8 @@ class EventCardWidget extends StatelessWidget {
                       Text(
                         UserData()
                             .users
-                            .where(
-                                (element) => element.id == eventModel.ownerId)
+                            .where((element) =>
+                                element.id == widget.eventModel.ownerId)
                             .first
                             .name
                             .toString(),
@@ -63,7 +68,7 @@ class EventCardWidget extends StatelessWidget {
                             width: 4,
                           ),
                           Text(
-                            "${eventModel.joinedUser!.length}/${eventModel.userLimit}",
+                            "${widget.eventModel.joinedUser!.length}/${widget.eventModel.userLimit}",
                             style: GoogleFonts.roboto(
                                 fontSize: 14, fontWeight: FontWeight.w700),
                           )
@@ -75,7 +80,7 @@ class EventCardWidget extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width / 1.6,
                   child: Text(
-                    eventModel.shortDes.toString(),
+                    widget.eventModel.shortDes.toString(),
                     style: GoogleFonts.roboto(fontSize: 13),
                     textAlign: TextAlign.start,
                   ),
@@ -85,10 +90,20 @@ class EventCardWidget extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Event-Type: ${eventModel.eventType}",
-                        style: GoogleFonts.roboto(
-                            fontSize: 14, fontWeight: FontWeight.w600),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Event-Cost:",
+                            style: GoogleFonts.roboto(
+                                fontSize: 14, fontWeight: FontWeight.w600),
+                          ),
+                          Text(
+                            "${widget.eventModel.eventType}",
+                            style: GoogleFonts.roboto(
+                                fontSize: 14, fontWeight: FontWeight.w600),
+                          )
+                        ],
                       ),
                       SizedBox(
                         height: 31,
@@ -99,7 +114,7 @@ class EventCardWidget extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => EventDetailSceen(
-                                        eventModel: eventModel),
+                                        eventModel: widget.eventModel),
                                   ));
                             },
                             text: "View",

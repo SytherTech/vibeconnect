@@ -9,6 +9,7 @@ class EventModel {
   final String? longDes;
   final String? startTime;
   final String? endTime;
+  final String? date;
   final String? category;
   final LatLng? eventLocation;
   final int? userLimit;
@@ -19,20 +20,22 @@ class EventModel {
   List<UserModel>? joinedUser = [];
   List<UserModel>? requestedUsers = [];
 
-  EventModel(
-      {this.id,
-      this.ownerId,
-      this.shortDes,
-      this.eventType,
-      this.longDes,
-      this.userLimit,
-      this.eventLocation,
-      this.category,
-      this.startTime,
-      this.requestedUsers,
-      this.joinedUser,
-      this.eventImages,
-      required this.globalKey,
-      required this.Marker,
-      this.endTime});
+  EventModel({
+    this.id,
+    this.ownerId,
+    this.shortDes,
+    this.eventType,
+    this.longDes,
+    this.userLimit,
+    this.eventLocation,
+    this.category,
+    this.startTime,
+    this.requestedUsers,
+    this.joinedUser,
+    this.eventImages,
+    required this.globalKey,
+    required this.Marker,
+    this.endTime,
+    this.date,
+  });
 }
