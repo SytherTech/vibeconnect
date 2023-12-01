@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:vibeconnect/views/auth/login_view.dart';
 import 'package:vibeconnect/views/auth/register_view.dart';
 import 'package:vibeconnect/widgets/button_widget.dart';
+=======
+import 'package:vibe_connect/views/auth/login_view.dart';
+import 'package:vibe_connect/views/auth/register_view.dart';
+import 'package:vibe_connect/widgets/button_widget.dart';
+>>>>>>> abidev
 
 import '../utils/styles.dart';
 
@@ -11,7 +17,11 @@ class StarterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+<<<<<<< HEAD
       decoration: BoxDecoration(
+=======
+      decoration: const BoxDecoration(
+>>>>>>> abidev
           gradient: LinearGradient(colors: [
         Color(Style.PRIMARY_COLOR),
         Color(Style.SECONDARY_COLOR),
@@ -44,7 +54,11 @@ class StarterScreen extends StatelessWidget {
                               ));
                         },
                         text: "Sign In",
+<<<<<<< HEAD
                         color: [Color(0xff24008B), Color(0xff24008B)],
+=======
+                        color: const [Color(0xff24008B), Color(0xff24008B)],
+>>>>>>> abidev
                         borderRadius: 15),
                     const SizedBox(
                       height: 10,

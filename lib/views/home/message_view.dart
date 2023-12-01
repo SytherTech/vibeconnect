@@ -204,7 +204,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+<<<<<<< HEAD
 import 'package:vibeconnect/model/user_model.dart';
+=======
+import 'package:vibe_connect/model/user_model.dart';
+>>>>>>> abidev
 
 import '../../controller/event_controller.dart';
 import '../../controller/user_controller.dart';

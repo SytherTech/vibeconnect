@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+<<<<<<< HEAD
 import 'package:vibeconnect/controller/event_controller.dart';
 import 'package:vibeconnect/controller/user_controller.dart';
 import 'package:vibeconnect/model/event_model.dart';
@@ -13,6 +14,15 @@ import 'package:vibeconnect/widgets/custom_market.dart';
 import 'package:vibeconnect/widgets/roundedSearchbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:vibeconnect/widgets/show_eventcard_widget.dart';
+=======
+import 'package:vibe_connect/controller/event_controller.dart';
+import 'package:vibe_connect/controller/user_controller.dart';
+import 'package:vibe_connect/model/event_model.dart';
+import 'package:vibe_connect/widgets/custom_market.dart';
+import 'package:vibe_connect/widgets/roundedSearchbar_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:vibe_connect/widgets/show_eventcard_widget.dart';
+>>>>>>> abidev
 
 import '../../event_request.dart';
 
@@ -60,6 +70,7 @@ class _LocationScreenState extends State<LocationScreen> {
 
     return Scaffold(
       appBar: AppBar(
+<<<<<<< HEAD
           title: RoundedSearchBar(),
           actions: [
             IconButton(
@@ -82,6 +93,32 @@ class _LocationScreenState extends State<LocationScreen> {
               fit: BoxFit.cover,
             ),
           )),
+=======
+        title: RoundedSearchBar(),
+        // actions: [
+        //   IconButton(
+        //       onPressed: () {
+        //         showDatePicker(
+        //             context: context,
+        //             initialDate: DateTime.now(),
+        //             firstDate: DateTime.now(),
+        //             lastDate: DateTime(2999));
+        //       },
+        //       icon: const Icon(
+        //         Icons.date_range,
+        //         color: Colors.purple,
+        //       ))
+        // ],
+        automaticallyImplyLeading: false,
+        // leading: IconButton(
+        //   onPressed: () {},
+        //   icon: SvgPicture.asset(
+        //     "assets/svg/drawer.svg",
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
+      ),
+>>>>>>> abidev
       body: _isloaded
           ? Stack(
               children: [
@@ -139,7 +176,11 @@ class _LocationScreenState extends State<LocationScreen> {
                                 "assets/svg/event.svg",
                                 color: Colors.purple,
                               ),
+<<<<<<< HEAD
                               Positioned(
+=======
+                              const Positioned(
+>>>>>>> abidev
                                 top: 17,
                                 left: 15,
                                 child: Text(

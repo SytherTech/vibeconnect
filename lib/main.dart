@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+<<<<<<< HEAD
 import 'package:vibeconnect/controller/chat_controller.dart';
 import 'package:vibeconnect/controller/event_controller.dart';
 import 'package:vibeconnect/controller/user_controller.dart';
 import 'package:vibeconnect/utils/styles.dart';
 import 'package:vibeconnect/views/splash.dart';
+=======
+import 'package:vibe_connect/controller/chat_controller.dart';
+import 'package:vibe_connect/controller/event_controller.dart';
+import 'package:vibe_connect/controller/user_controller.dart';
+import 'package:vibe_connect/utils/styles.dart';
+import 'package:vibe_connect/views/splash.dart';
+>>>>>>> abidev
 
 void main() {
   runApp(const MyApp());

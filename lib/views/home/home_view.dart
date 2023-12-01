@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+<<<<<<< HEAD
 import 'package:vibeconnect/controller/event_controller.dart';
 import 'package:vibeconnect/controller/user_controller.dart';
 
@@ -13,6 +14,18 @@ import 'package:vibeconnect/views/home/views/location.dart';
 import 'package:vibeconnect/views/user_profile.dart';
 import 'package:vibeconnect/widgets/custom_market.dart';
 import 'package:vibeconnect/widgets/show_eventcard_widget.dart';
+=======
+import 'package:vibe_connect/controller/event_controller.dart';
+import 'package:vibe_connect/controller/user_controller.dart';
+import 'package:vibe_connect/views/event_request.dart';
+import 'package:vibe_connect/views/home/event_creation/select_category.dart';
+import 'package:vibe_connect/views/home/message_view.dart';
+import 'package:vibe_connect/views/home/views/location.dart';
+
+import 'package:vibe_connect/views/user_profile.dart';
+import 'package:vibe_connect/widgets/custom_market.dart';
+import 'package:vibe_connect/widgets/show_eventcard_widget.dart';
+>>>>>>> abidev
 
 class HomePage extends StatefulWidget {
   @override
@@ -150,7 +163,11 @@ class ImageButton extends StatelessWidget {
                 width: 80, // Adjust the width as needed
                 height: 80, // Adjust the height as needed
               ),
+<<<<<<< HEAD
               Icon(
+=======
+              const Icon(
+>>>>>>> abidev
                 Icons.add, // You can change the icon as needed
                 color: Colors.white,
                 size: 30,

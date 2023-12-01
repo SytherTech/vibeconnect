@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "name": "vibeconnect",
     "short_name": "vibeconnect",
+=======
+    "name": "vibe_connect",
+    "short_name": "vibe_connect",
+>>>>>>> abidev
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

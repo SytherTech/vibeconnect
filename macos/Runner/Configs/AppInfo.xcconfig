@@ -5,10 +5,17 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
+<<<<<<< HEAD
 PRODUCT_NAME = vibeconnect
 
 // The application's bundle identifier
 PRODUCT_BUNDLE_IDENTIFIER = com.example.vibeconnect
+=======
+PRODUCT_NAME = vibe_connect
+
+// The application's bundle identifier
+PRODUCT_BUNDLE_IDENTIFIER = com.example.vibeConnect
+>>>>>>> abidev
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2023 com.example. All rights reserved.

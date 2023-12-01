@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+<<<<<<< HEAD
 import 'package:vibeconnect/views/home/home_view.dart';
 import 'package:vibeconnect/widgets/button_widget.dart';
 import 'package:vibeconnect/widgets/textfield_widget.dart';
+=======
+import 'package:vibe_connect/views/home/home_view.dart';
+import 'package:vibe_connect/widgets/button_widget.dart';
+import 'package:vibe_connect/widgets/textfield_widget.dart';
+>>>>>>> abidev
 
 import '../../utils/styles.dart';
 

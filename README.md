@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # vibeconnect
+=======
+# vibe_connect
+>>>>>>> abidev
 
 A new Flutter project.
 

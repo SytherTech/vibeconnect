@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+<<<<<<< HEAD
 import 'package:vibeconnect/model/user_model.dart';
+=======
+import 'package:vibe_connect/model/user_model.dart';
+>>>>>>> abidev
 
 class EventModel {
   final String? id;
