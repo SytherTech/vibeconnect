@@ -52,68 +52,103 @@ class MyProfileView extends StatelessWidget {
                   backgroundImage: NetworkImage(userModel.imgUrl![0]
                       .toString()), // Replace with your image asset
                 ),
-                SizedBox(width: deviceWidth * .05),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "10000",
-                      style: GoogleFonts.lato(
-                        fontSize: 14,
-                      ),
+                    Row(
+                      children: [
+                        RatingBar.builder(
+                          initialRating: 3,
+                          minRating: 1,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemCount: 5,
+                          itemSize: 12,
+                          itemPadding:
+                              const EdgeInsets.symmetric(horizontal: 1.0),
+                          itemBuilder: (context, _) => const Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          ),
+                          onRatingUpdate: (rating) {
+                            print(rating);
+                          },
+                        ),
+                        const SizedBox(width: 4),
+                        const Text(
+                          '(4.5 Reviews)',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(
-                      height: 1,
+                      height: 4,
                     ),
-                    Text(
-                      'Followers',
-                      style: GoogleFonts.lato(
-                          fontSize: 16, fontWeight: FontWeight.w700),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              "10000",
+                              style: GoogleFonts.lato(
+                                fontSize: 14,
+                              ),
+                            ),
+                            Text(
+                              'Followers',
+                              style: GoogleFonts.lato(
+                                  fontSize: 16, fontWeight: FontWeight.w700),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: deviceHeight * .02,
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              userModel.age.toString(),
+                              style: GoogleFonts.lato(fontSize: 14),
+                            ),
+                            const SizedBox(
+                              height: 1,
+                            ),
+                            Text(
+                              'Age',
+                              style: GoogleFonts.lato(
+                                  fontSize: 16, fontWeight: FontWeight.w700),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: deviceWidth * .02,
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              userModel.likes.toString(),
+                              style: GoogleFonts.lato(
+                                fontSize: 14,
+                              ),
+                            ),
+                            Text(
+                              'Likes',
+                              style: GoogleFonts.lato(
+                                  fontSize: 16, fontWeight: FontWeight.w700),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ],
-                ),
-                SizedBox(
-                  width: deviceWidth * .02,
-                ),
-                Column(
-                  children: [
-                    Text(
-                      userModel.age.toString(),
-                      style: GoogleFonts.lato(fontSize: 14),
-                    ),
-                    const SizedBox(
-                      height: 1,
-                    ),
-                    Text(
-                      'Age',
-                      style: GoogleFonts.lato(
-                          fontSize: 16, fontWeight: FontWeight.w700),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: deviceWidth * .02,
-                ),
-                Column(
-                  children: [
-                    Text(
-                      userModel.likes.toString(),
-                      style: GoogleFonts.lato(
-                        fontSize: 14,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      'Likes',
-                      style: GoogleFonts.lato(
-                          fontSize: 16, fontWeight: FontWeight.w700),
-                    ),
-                  ],
-                ),
+                )
               ],
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Row(
               children: [
                 Text(
@@ -125,25 +160,6 @@ class MyProfileView extends StatelessWidget {
                 ),
                 SizedBox(
                   width: deviceWidth * .05,
-                ),
-                SizedBox(
-                  width: deviceWidth * .6,
-                  child: RatingBar.builder(
-                    initialRating: 3,
-                    minRating: 1,
-                    direction: Axis.horizontal,
-                    allowHalfRating: true,
-                    itemCount: 5,
-                    itemSize: 12,
-                    itemPadding: const EdgeInsets.symmetric(horizontal: 1.0),
-                    itemBuilder: (context, _) => const Icon(
-                      Icons.star,
-                      color: Colors.amber,
-                    ),
-                    onRatingUpdate: (rating) {
-                      print(rating);
-                    },
-                  ),
                 ),
               ],
             ),
@@ -224,7 +240,7 @@ class MyProfileView extends StatelessWidget {
                     crossAxisCount: 3,
                     crossAxisSpacing: 10.0,
                     mainAxisSpacing: 8.0,
-                    mainAxisExtent: 230),
+                    mainAxisExtent: 110),
                 itemCount: userModel.imgUrl!
                     .length, // Replace with the number of images you have
                 itemBuilder: (context, index) {

@@ -25,20 +25,32 @@ class _EventCardWidgetState extends State<EventCardWidget> {
         padding: const EdgeInsets.all(7),
         child: Row(
           children: [
-            SizedBox(
-              height: 80,
-              width: 90,
-              child: Image.network(
+            CircleAvatar(
+              radius: 40,
+              backgroundImage: NetworkImage(
                 UserData()
                     .users
                     .where(
                         (element) => element!.id == widget.eventModel.ownerId)
                     .first
-                    .imgUrl
+                    .imgUrl![0]
                     .toString(),
-                fit: BoxFit.fill,
-              ),
+              ), // Replace with your image asset
             ),
+            // SizedBox(
+            //   height: 80,
+            //   width: 90,
+            //   child: Image.network(
+            //     UserData()
+            //         .users
+            //         .where(
+            //             (element) => element!.id == widget.eventModel.ownerId)
+            //         .first
+            //         .imgUrl![0]
+            //         .toString(),
+            //     fit: BoxFit.fill,
+            //   ),
+            // ),
             const SizedBox(
               width: 5,
             ),

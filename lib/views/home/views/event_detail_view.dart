@@ -59,7 +59,7 @@ class EventDetailSceen extends StatelessWidget {
                       viewportFraction: deviceSize.width > 800.0 ? 0.8 : 1.0,
                       height: deviceSize.height * 0.45,
                       enableInfiniteScroll: true,
-                      slideIndicator: CircularSlideIndicator(
+                      slideIndicator: const CircularSlideIndicator(
                           indicatorBackgroundColor: Colors.white,
                           currentIndicatorColor: Colors.black),
                     ),
@@ -98,7 +98,7 @@ class EventDetailSceen extends StatelessWidget {
                               .where(
                                   (element) => element.id == eventModel.ownerId)
                               .first
-                              .imgUrl
+                              .imgUrl![0]
                               .toString(),
                           fit: BoxFit.fill,
                         ),

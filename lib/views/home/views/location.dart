@@ -60,28 +60,30 @@ class _LocationScreenState extends State<LocationScreen> {
 
     return Scaffold(
       appBar: AppBar(
-          title: RoundedSearchBar(),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime.now(),
-                      lastDate: DateTime(2999));
-                },
-                icon: const Icon(
-                  Icons.date_range,
-                  color: Colors.purple,
-                ))
-          ],
-          leading: IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              "assets/svg/drawer.svg",
-              fit: BoxFit.cover,
-            ),
-          )),
+        title: RoundedSearchBar(),
+        // actions: [
+        //   IconButton(
+        //       onPressed: () {
+        //         showDatePicker(
+        //             context: context,
+        //             initialDate: DateTime.now(),
+        //             firstDate: DateTime.now(),
+        //             lastDate: DateTime(2999));
+        //       },
+        //       icon: const Icon(
+        //         Icons.date_range,
+        //         color: Colors.purple,
+        //       ))
+        // ],
+        automaticallyImplyLeading: false,
+        // leading: IconButton(
+        //   onPressed: () {},
+        //   icon: SvgPicture.asset(
+        //     "assets/svg/drawer.svg",
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
+      ),
       body: _isloaded
           ? Stack(
               children: [

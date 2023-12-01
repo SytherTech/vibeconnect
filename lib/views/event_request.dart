@@ -78,65 +78,66 @@ class _EventRequestScreenState extends State<EventRequestScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            centerTitle: true,
-            title: Text(
-              "Requests For Joining",
-              style: GoogleFonts.roboto(color: Colors.white, fontSize: 18),
-            ),
-            flexibleSpace: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Color(Style.PRIMARY_COLOR),
-                    Color(Style.SECONDARY_COLOR)
-                  ], // Set your gradient colors
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
+      appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            "Requests For Joining",
+            style: GoogleFonts.roboto(color: Colors.white, fontSize: 18),
+          ),
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(Style.PRIMARY_COLOR),
+                  Color(Style.SECONDARY_COLOR)
+                ], // Set your gradient colors
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
               ),
             ),
-            leading: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.white,
-                ))),
-        body: TCard(
-          controller: controller,
-          onForward: (index, info) {
-            if (info.direction == SwipDirection.Right) {
-              Fluttertoast.showToast(
-                msg: "Accepted",
-                toastLength: Toast
-                    .LENGTH_SHORT, // You can use Toast.LENGTH_LONG for a longer duration
-                gravity:
-                    ToastGravity.TOP, // Set the gravity (TOP, CENTER, BOTTOM)
-                timeInSecForIosWeb: 1, // Time in seconds for iOS and web
-                backgroundColor: Colors.green, // Background color
-                textColor: Colors.white, // Text color
-                fontSize: 16.0, // Text size
-              );
-            } else {
-              Fluttertoast.showToast(
-                msg: "Rejected",
-                toastLength: Toast
-                    .LENGTH_SHORT, // You can use Toast.LENGTH_LONG for a longer duration
-                gravity:
-                    ToastGravity.TOP, // Set the gravity (TOP, CENTER, BOTTOM)
-                timeInSecForIosWeb: 1, // Time in seconds for iOS and web
-                backgroundColor: Colors.red, // Background color
-                textColor: Colors.white, // Text color
-                fontSize: 16.0, // Text size
-              );
-            }
-          },
-          lockYAxis: true,
-          size: Size(MediaQuery.of(context).size.width,
-              MediaQuery.of(context).size.height),
-          cards: cards,
-        ));
+          ),
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+              ))),
+      body: TCard(
+        controller: controller,
+        onForward: (index, info) {
+          if (info.direction == SwipDirection.Right) {
+            Fluttertoast.showToast(
+              msg: "Accepted",
+              toastLength: Toast
+                  .LENGTH_SHORT, // You can use Toast.LENGTH_LONG for a longer duration
+              gravity:
+                  ToastGravity.TOP, // Set the gravity (TOP, CENTER, BOTTOM)
+              timeInSecForIosWeb: 1, // Time in seconds for iOS and web
+              backgroundColor: Colors.green, // Background color
+              textColor: Colors.white, // Text color
+              fontSize: 16.0, // Text size
+            );
+          } else if (info.direction == SwipDirection.Left) {
+            Fluttertoast.showToast(
+              msg: "Rejected",
+              toastLength: Toast
+                  .LENGTH_SHORT, // You can use Toast.LENGTH_LONG for a longer duration
+              gravity:
+                  ToastGravity.TOP, // Set the gravity (TOP, CENTER, BOTTOM)
+              timeInSecForIosWeb: 1, // Time in seconds for iOS and web
+              backgroundColor: Colors.red, // Background color
+              textColor: Colors.white, // Text color
+              fontSize: 16.0, // Text size
+            );
+          }
+        },
+        lockYAxis: true,
+        size: Size(MediaQuery.of(context).size.width,
+            MediaQuery.of(context).size.height),
+        cards: cards,
+      ),
+    );
   }
 }
