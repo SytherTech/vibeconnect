@@ -4,7 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:vibeconnect/controller/event_controller.dart';
 import 'package:vibeconnect/controller/user_controller.dart';
-import 'package:vibeconnect/views/create_event_view.dart';
+
 import 'package:vibeconnect/views/event_request.dart';
 import 'package:vibeconnect/views/home/event_creation/select_category.dart';
 import 'package:vibeconnect/views/home/message_view.dart';
