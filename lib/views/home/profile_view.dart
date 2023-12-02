@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:vibeconnect/model/user_model.dart';
-import 'package:vibeconnect/widgets/button_widget.dart';
-=======
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vibe_connect/model/user_model.dart';
-import 'package:vibe_connect/widgets/button_widget.dart';
->>>>>>> abidev
+import '../../model/user_model.dart';
 
 import '../../utils/styles.dart';
+import '../../widgets/button_widget.dart';
 
 class ProfileViewScreen extends StatelessWidget {
   final UserModel userModel;
@@ -20,106 +13,14 @@ class ProfileViewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-=======
     var deviceWidth = MediaQuery.of(context).size.width;
     var deviceHeight = MediaQuery.of(context).size.width;
->>>>>>> abidev
     return Scaffold(
       appBar: AppBar(
         title: TextButton(
             onPressed: () {},
             child: Text(
               "Viewing ${userModel.name}'s Profile",
-<<<<<<< HEAD
-              style: GoogleFonts.roboto(color: Colors.white),
-            )),
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color(Style.PRIMARY_COLOR),
-                Color(Style.SECONDARY_COLOR)
-              ], // Set your gradient colors
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-        ),
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: SvgPicture.asset("assets/svg/arrow_left.svg")),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              radius: 60,
-              backgroundImage: NetworkImage(
-                  userModel.imgUrl.toString()), // Replace with your image asset
-            ),
-            SizedBox(height: 20),
-            Text(
-              '@${userModel.name}',
-              style:
-                  GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.w600),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                    Text(
-                      'Age',
-                      style: GoogleFonts.lato(
-                          fontSize: 18, fontWeight: FontWeight.w700),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      userModel.age.toString(),
-                      style: GoogleFonts.lato(fontSize: 18),
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 60),
-                Column(
-                  children: [
-                    Text(
-                      'Likes',
-                      style: GoogleFonts.lato(
-                          fontSize: 18, fontWeight: FontWeight.w700),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      userModel.likes.toString(),
-                      style: GoogleFonts.lato(
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 80),
-              child: ButtonWidget(
-                  onpressed: () {},
-                  text: "Like",
-                  color: [Colors.purple, Colors.pink],
-                  borderRadius: 8),
-=======
               style: GoogleFonts.roboto(color: Colors.black),
             )),
         // flexibleSpace: Container(
@@ -197,13 +98,13 @@ class ProfileViewScreen extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              "10000",
+                              "10k",
                               style: GoogleFonts.lato(
                                 fontSize: 14,
                               ),
                             ),
                             Text(
-                              'Followers',
+                              'Connection',
                               style: GoogleFonts.lato(
                                   fontSize: 16, fontWeight: FontWeight.w700),
                             ),
@@ -338,7 +239,6 @@ class ProfileViewScreen extends StatelessWidget {
               style: GoogleFonts.lato(
                 fontSize: 12,
               ),
->>>>>>> abidev
             ),
             const SizedBox(height: 10),
             Row(
@@ -352,23 +252,11 @@ class ProfileViewScreen extends StatelessWidget {
                 ),
               ],
             ),
-<<<<<<< HEAD
-            SizedBox(
-=======
             const SizedBox(
->>>>>>> abidev
               height: 20,
             ),
             Expanded(
               child: GridView.builder(
-<<<<<<< HEAD
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 10.0,
-                    mainAxisSpacing: 8.0,
-                    mainAxisExtent: 230),
-                itemCount: 6, // Replace with the number of images you have
-=======
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     crossAxisSpacing: 10.0,
@@ -376,7 +264,6 @@ class ProfileViewScreen extends StatelessWidget {
                     mainAxisExtent: 110),
                 itemCount: userModel.imgUrl!
                     .length, // Replace with the number of images you have
->>>>>>> abidev
                 itemBuilder: (context, index) {
                   return Container(
                     decoration: BoxDecoration(
@@ -386,22 +273,14 @@ class ProfileViewScreen extends StatelessWidget {
                           color: Colors.grey.withOpacity(0.5),
                           spreadRadius: 2,
                           blurRadius: 7,
-<<<<<<< HEAD
-                          offset: Offset(0, 3),
-=======
                           offset: const Offset(0, 3),
->>>>>>> abidev
                         ),
                       ],
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
                       child: Image.network(
-<<<<<<< HEAD
-                        userModel.imgUrl
-=======
                         userModel.imgUrl![index]
->>>>>>> abidev
                             .toString(), // Replace with your image assets
                         fit: BoxFit.cover,
                       ),

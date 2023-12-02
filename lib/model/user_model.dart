@@ -5,11 +5,7 @@ class UserModel {
   final String? email;
   final String? about;
   final int? likes;
-<<<<<<< HEAD
-  final String? imgUrl;
-=======
   final List<String>? imgUrl;
->>>>>>> abidev
 
   UserModel(
       {this.id,

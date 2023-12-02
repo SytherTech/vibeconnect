@@ -6,25 +6,20 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-<<<<<<< HEAD
-import 'package:vibeconnect/controller/event_controller.dart';
-import 'package:vibeconnect/controller/user_controller.dart';
-import 'package:vibeconnect/model/event_model.dart';
-import 'package:vibeconnect/widgets/custom_market.dart';
-import 'package:vibeconnect/widgets/roundedSearchbar_widget.dart';
+import 'package:vibeconnect/utils/styles.dart';
+import 'package:vibeconnect/views/home/message_view.dart';
+import '../../../widgets/show_eventcard_widget.dart';
+import '../../../controller/event_controller.dart';
+import '../../../controller/user_controller.dart';
+import '../../../model/event_model.dart';
+import '../../../widgets/custom_market.dart';
+import '../../../widgets/roundedSearchbar_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:vibeconnect/widgets/show_eventcard_widget.dart';
-=======
-import 'package:vibe_connect/controller/event_controller.dart';
-import 'package:vibe_connect/controller/user_controller.dart';
-import 'package:vibe_connect/model/event_model.dart';
-import 'package:vibe_connect/widgets/custom_market.dart';
-import 'package:vibe_connect/widgets/roundedSearchbar_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:vibe_connect/widgets/show_eventcard_widget.dart';
->>>>>>> abidev
+import '../../../widgets/show_eventcard_widget.dart';
 
 import '../../event_request.dart';
+import '../../user_profile.dart';
+import '../event_creation/select_category.dart';
 
 class LocationScreen extends StatefulWidget {
   const LocationScreen({super.key});
@@ -69,56 +64,36 @@ class _LocationScreenState extends State<LocationScreen> {
     eventProvider = Provider.of<EventController>(context).events;
 
     return Scaffold(
-      appBar: AppBar(
-<<<<<<< HEAD
-          title: RoundedSearchBar(),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime.now(),
-                      lastDate: DateTime(2999));
-                },
-                icon: Icon(
-                  Icons.date_range,
-                  color: Colors.purple,
-                ))
-          ],
-          leading: IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              "assets/svg/drawer.svg",
-              fit: BoxFit.cover,
-            ),
-          )),
-=======
-        title: RoundedSearchBar(),
-        // actions: [
-        //   IconButton(
-        //       onPressed: () {
-        //         showDatePicker(
-        //             context: context,
-        //             initialDate: DateTime.now(),
-        //             firstDate: DateTime.now(),
-        //             lastDate: DateTime(2999));
-        //       },
-        //       icon: const Icon(
-        //         Icons.date_range,
-        //         color: Colors.purple,
-        //       ))
-        // ],
-        automaticallyImplyLeading: false,
-        // leading: IconButton(
-        //   onPressed: () {},
-        //   icon: SvgPicture.asset(
-        //     "assets/svg/drawer.svg",
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
-      ),
->>>>>>> abidev
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: ImageButton(),
+      // appBar: AppBar(
+      //   title: RoundedSearchBar(),
+      //   // actions: [
+      //   //   IconButton(
+      //   //       onPressed: () {
+      //   //         showDatePicker(
+      //   //             context: context,
+      //   //             initialDate: DateTime.now(),
+      //   //             firstDate: DateTime.now(),
+      //   //             lastDate: DateTime(2999));
+      //   //       },
+      //   //       icon: const Icon(
+      //   //         Icons.date_range,
+      //   //         color: Colors.purple,
+      //   //       ))
+      //   // ],
+      //   automaticallyImplyLeading: false,
+      //   leading: IconButton(
+      //     onPressed: () {},
+      //     icon: SvgPicture.asset(
+      //       "assets/svg/drawer.svg",
+      //       color: Colors.purple,
+      //       height: 30,
+      //       fit: BoxFit.cover,
+      //     ),
+      //   ),
+      // ),
       body: _isloaded
           ? Stack(
               children: [
@@ -155,49 +130,155 @@ class _LocationScreenState extends State<LocationScreen> {
                           child: EventCardWidget(
                             eventModel: eventModel!,
                           ))),
+                // Align(
+                //   alignment: Alignment.topRight,
+                //   child: InkWell(
+                //     onTap: () => Navigator.push(
+                //         context,
+                //         MaterialPageRoute(
+                //           builder: (context) => EventRequestScreen(),
+                //         )),
+                //     child: Card(
+                //       child: SizedBox(
+                //         height: 50,
+                //         width: 50,
+                //         child: Center(
+                //           child: Stack(
+                //             fit: StackFit.passthrough,
+                //             clipBehavior: Clip.none,
+                //             children: [
+                //               SvgPicture.asset(
+                //                 "assets/svg/event.svg",
+                //                 color: Colors.purple,
+                //               ),
+                //               const Positioned(
+                //                 top: 17,
+                //                 left: 15,
+                //                 child: Text(
+                //                   "5",
+                //                   style: TextStyle(
+                //                       color: Colors.black,
+                //                       fontSize: 13,
+                //                       fontWeight: FontWeight.w600),
+                //                 ),
+                //               )
+                //             ],
+                //           ),
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // )
+
                 Align(
-                  alignment: Alignment.topRight,
-                  child: InkWell(
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => EventRequestScreen(),
-                        )),
-                    child: Card(
-                      child: SizedBox(
-                        height: 50,
-                        width: 50,
-                        child: Center(
-                          child: Stack(
-                            fit: StackFit.passthrough,
-                            clipBehavior: Clip.none,
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 40, right: 5),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Row(
                             children: [
-                              SvgPicture.asset(
-                                "assets/svg/event.svg",
-                                color: Colors.purple,
-                              ),
-<<<<<<< HEAD
-                              Positioned(
-=======
-                              const Positioned(
->>>>>>> abidev
-                                top: 17,
-                                left: 15,
-                                child: Text(
-                                  "5",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w600),
+                              IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              MyProfileView()));
+                                },
+                                icon: SvgPicture.asset(
+                                  "assets/svg/profile.svg",
+                                  color: Color(Style.MAIN_COLOR),
+                                  height: 30,
+                                  fit: BoxFit.cover,
                                 ),
-                              )
+                              ),
+                              Expanded(child: RoundedSearchBar())
                             ],
                           ),
-                        ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20, right: 10),
+                            child: Container(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Color(0xff3370f5)),
+                                    padding: const EdgeInsets.all(5),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      EventRequestScreen()));
+                                        },
+                                        icon: Icon(
+                                          Icons.checklist_sharp,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Color(0xffd6587f)),
+                                    padding: const EdgeInsets.all(5),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      GroupChatScreen()));
+                                        },
+                                        icon: SvgPicture.asset(
+                                          "assets/svg/msg.svg",
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Color(0xfffcb75e)),
+                                    padding: const EdgeInsets.all(5),
+                                    child: IconButton(
+                                        onPressed: () {},
+                                        icon: Icon(
+                                          Icons.wallet_giftcard,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  // Container(
+                                  //   decoration: BoxDecoration(
+                                  //       shape: BoxShape.circle,
+                                  //       color: Colors.purple[900]),
+                                  //   padding: const EdgeInsets.all(5),
+                                  //   child: IconButton(
+                                  //       onPressed: () {},
+                                  //       icon: Icon(
+                                  //         Icons.card_giftcard,
+                                  //         color: Colors.white,
+                                  //       )),
+                                  // ),
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
                       ),
-                    ),
-                  ),
-                )
+                    ))
               ],
             )
           : ListView.builder(
@@ -291,5 +372,39 @@ class InvertedConeShapePainter extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
     return false;
+  }
+}
+
+class ImageButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SelectEventCategory(),
+            ));
+      },
+      child: Padding(
+          padding: const EdgeInsets.only(bottom: 20),
+          child: Stack(
+            alignment: Alignment.center,
+            clipBehavior: Clip.none,
+            fit: StackFit.passthrough,
+            children: [
+              Image.asset(
+                'assets/png/float.png', // Replace with the path to your image
+                width: 95, // Adjust the width as needed
+                height: 95, // Adjust the height as needed
+              ),
+              const Icon(
+                Icons.add, // You can change the icon as needed
+                color: Colors.white,
+                size: 30,
+              ),
+            ],
+          )),
+    );
   }
 }

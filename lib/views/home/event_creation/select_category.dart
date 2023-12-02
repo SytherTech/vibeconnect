@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-<<<<<<< HEAD
-import 'package:vibeconnect/views/home/event_creation/event_details.dart';
-=======
-import 'package:vibe_connect/views/home/event_creation/event_details.dart';
->>>>>>> abidev
+import '../../../views/home/event_creation/event_details.dart';
 
 import '../../../model/event_category_model.dart';
 

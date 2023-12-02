@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:vibeconnect/views/auth/login_view.dart';
-import 'package:vibeconnect/views/auth/register_view.dart';
-import 'package:vibeconnect/widgets/button_widget.dart';
-=======
-import 'package:vibe_connect/views/auth/login_view.dart';
-import 'package:vibe_connect/views/auth/register_view.dart';
-import 'package:vibe_connect/widgets/button_widget.dart';
->>>>>>> abidev
+import '../views/auth/login_view.dart';
+import '../views/auth/register_view.dart';
+import '../widgets/button_widget.dart';
 
 import '../utils/styles.dart';
 
@@ -17,17 +11,12 @@ class StarterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-<<<<<<< HEAD
-      decoration: BoxDecoration(
-=======
-      decoration: const BoxDecoration(
->>>>>>> abidev
-          gradient: LinearGradient(colors: [
-        Color(Style.PRIMARY_COLOR),
-        Color(Style.SECONDARY_COLOR),
-      ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
+      // decoration: const BoxDecoration(
+      //     gradient: LinearGradient(colors: [
+      //   Color(Style.PRIMARY_COLOR),
+      //   Color(Style.SECONDARY_COLOR),
+      // ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -54,11 +43,7 @@ class StarterScreen extends StatelessWidget {
                               ));
                         },
                         text: "Sign In",
-<<<<<<< HEAD
-                        color: [Color(0xff24008B), Color(0xff24008B)],
-=======
-                        color: const [Color(0xff24008B), Color(0xff24008B)],
->>>>>>> abidev
+                        color: const [Color(0xff8767DA), Color(0xff943CBD)],
                         borderRadius: 15),
                     const SizedBox(
                       height: 10,
@@ -72,7 +57,10 @@ class StarterScreen extends StatelessWidget {
                               ));
                         },
                         text: "Create An Account",
-                        color: [Color(0xff1B1A1A), Color(0xff1B1A1A)],
+                        color: [
+                          Color.fromARGB(172, 14, 84, 235),
+                          Color(0xff592acd),
+                        ],
                         borderRadius: 15),
                   ],
                 ))

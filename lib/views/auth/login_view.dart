@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-<<<<<<< HEAD
-import 'package:vibeconnect/views/home/home_view.dart';
-import 'package:vibeconnect/widgets/button_widget.dart';
-import 'package:vibeconnect/widgets/textfield_widget.dart';
-=======
-import 'package:vibe_connect/views/home/home_view.dart';
-import 'package:vibe_connect/widgets/button_widget.dart';
-import 'package:vibe_connect/widgets/textfield_widget.dart';
->>>>>>> abidev
+import 'package:vibeconnect/views/home/views/location.dart';
+import '../../../views/home/home_view.dart';
+import '../../../widgets/button_widget.dart';
+import '../../../widgets/textfield_widget.dart';
 
 import '../../utils/styles.dart';
 
@@ -30,15 +25,15 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Scaffold(
         body: Stack(
           children: [
-            Container(
-              decoration: const BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                Color(Style.PRIMARY_COLOR),
-                Color(Style.SECONDARY_COLOR),
-              ], begin: Alignment.topLeft, end: Alignment.centerRight)),
-              height: size.height,
-              width: size.width,
-            ),
+            // Container(
+            //   decoration: const BoxDecoration(
+            //       gradient: LinearGradient(colors: [
+            //     Color(Style.PRIMARY_COLOR),
+            //     Color(Style.SECONDARY_COLOR),
+            //   ], begin: Alignment.topLeft, end: Alignment.centerRight)),
+            //   height: size.height,
+            //   width: size.width,
+            // ),
             Container(
               margin: const EdgeInsets.only(top: 50),
               decoration: const BoxDecoration(
@@ -111,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => HomePage(),
+                                      builder: (context) => LocationScreen(),
                                     ));
                               },
                               text: "Login",

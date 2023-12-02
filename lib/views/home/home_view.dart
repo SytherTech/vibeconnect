@@ -2,30 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-<<<<<<< HEAD
-import 'package:vibeconnect/controller/event_controller.dart';
-import 'package:vibeconnect/controller/user_controller.dart';
+import '../../controller/event_controller.dart';
+import '../../controller/user_controller.dart';
+import '../../views/event_request.dart';
+import '../../views/home/event_creation/select_category.dart';
+import '../../views/home/message_view.dart';
+import '../../views/home/views/location.dart';
 
-import 'package:vibeconnect/views/event_request.dart';
-import 'package:vibeconnect/views/home/event_creation/select_category.dart';
-import 'package:vibeconnect/views/home/message_view.dart';
-import 'package:vibeconnect/views/home/views/location.dart';
-
-import 'package:vibeconnect/views/user_profile.dart';
-import 'package:vibeconnect/widgets/custom_market.dart';
-import 'package:vibeconnect/widgets/show_eventcard_widget.dart';
-=======
-import 'package:vibe_connect/controller/event_controller.dart';
-import 'package:vibe_connect/controller/user_controller.dart';
-import 'package:vibe_connect/views/event_request.dart';
-import 'package:vibe_connect/views/home/event_creation/select_category.dart';
-import 'package:vibe_connect/views/home/message_view.dart';
-import 'package:vibe_connect/views/home/views/location.dart';
-
-import 'package:vibe_connect/views/user_profile.dart';
-import 'package:vibe_connect/widgets/custom_market.dart';
-import 'package:vibe_connect/widgets/show_eventcard_widget.dart';
->>>>>>> abidev
+import '../../views/user_profile.dart';
+import '../../widgets/custom_market.dart';
+import '../../widgets/show_eventcard_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -72,7 +58,7 @@ class _HomePageState extends State<HomePage> {
             LocationScreen(),
             GroupChatScreen(),
             EventRequestScreen(),
-            MyProfileView(),
+            Container()
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -107,7 +93,15 @@ class _HomePageState extends State<HomePage> {
           ],
           onTap: (index) {
             tabIndex = index;
-            pageController.jumpToPage(tabIndex);
+            if (tabIndex == 3) {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyProfileView(),
+                  ));
+            } else {
+              pageController.jumpToPage(tabIndex);
+            }
           },
         ),
         floatingActionButtonLocation:
@@ -163,11 +157,7 @@ class ImageButton extends StatelessWidget {
                 width: 80, // Adjust the width as needed
                 height: 80, // Adjust the height as needed
               ),
-<<<<<<< HEAD
-              Icon(
-=======
               const Icon(
->>>>>>> abidev
                 Icons.add, // You can change the icon as needed
                 color: Colors.white,
                 size: 30,

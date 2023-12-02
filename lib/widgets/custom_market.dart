@@ -2,15 +2,9 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-<<<<<<< HEAD
 import 'package:vibeconnect/model/event_model.dart';
 import 'package:vibeconnect/model/user_model.dart';
 import 'package:vibeconnect/utils/styles.dart';
-=======
-import 'package:vibe_connect/model/event_model.dart';
-import 'package:vibe_connect/model/user_model.dart';
-import 'package:vibe_connect/utils/styles.dart';
->>>>>>> abidev
 
 import 'dart:ui' as ui;
 

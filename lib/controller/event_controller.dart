@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-<<<<<<< HEAD
-import 'package:vibeconnect/model/event_model.dart';
-import 'package:vibeconnect/utils/userdata.dart';
-import 'package:vibeconnect/widgets/custom_market.dart';
-=======
-import 'package:vibe_connect/model/event_model.dart';
-import 'package:vibe_connect/utils/userdata.dart';
-import 'package:vibe_connect/widgets/custom_market.dart';
->>>>>>> abidev
+import '../../../model/event_model.dart';
+import '../../../utils/userdata.dart';
+import '../../../widgets/custom_market.dart';
 
 class EventController with ChangeNotifier {
   List<EventModel> _events = [

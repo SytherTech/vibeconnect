@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-<<<<<<< HEAD
-import 'package:vibeconnect/model/event_model.dart';
-import 'package:vibeconnect/utils/userdata.dart';
-import 'package:vibeconnect/views/home/views/event_detail_view.dart';
-import 'package:vibeconnect/widgets/button_widget.dart';
-=======
-import 'package:vibe_connect/model/event_model.dart';
-import 'package:vibe_connect/utils/userdata.dart';
-import 'package:vibe_connect/views/home/views/event_detail_view.dart';
-import 'package:vibe_connect/widgets/button_widget.dart';
->>>>>>> abidev
+import '../model/event_model.dart';
+import '../utils/userdata.dart';
+import '../views/home/views/event_detail_view.dart';
+import '../widgets/button_widget.dart';
 
 class EventCardWidget extends StatefulWidget {
   final EventModel eventModel;
@@ -32,21 +25,6 @@ class _EventCardWidgetState extends State<EventCardWidget> {
         padding: const EdgeInsets.all(7),
         child: Row(
           children: [
-<<<<<<< HEAD
-            SizedBox(
-              height: 80,
-              width: 90,
-              child: Image.network(
-                UserData()
-                    .users
-                    .where((element) => element.id == widget.eventModel.ownerId)
-                    .first
-                    .imgUrl
-                    .toString(),
-                fit: BoxFit.fill,
-              ),
-            ),
-=======
             CircleAvatar(
               radius: 40,
               backgroundImage: NetworkImage(
@@ -73,7 +51,6 @@ class _EventCardWidgetState extends State<EventCardWidget> {
             //     fit: BoxFit.fill,
             //   ),
             // ),
->>>>>>> abidev
             const SizedBox(
               width: 5,
             ),

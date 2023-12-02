@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:vibeconnect/model/user_model.dart';
-import 'package:vibeconnect/utils/userdata.dart';
-=======
-import 'package:vibe_connect/model/user_model.dart';
-import 'package:vibe_connect/utils/userdata.dart';
->>>>>>> abidev
+import '../../../model/user_model.dart';
+import '../../../utils/userdata.dart';
 
 class UserController with ChangeNotifier {
   UserModel _userModel = UserModel();

@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:vibeconnect/model/event_model.dart';
-import 'package:vibeconnect/utils/userdata.dart';
-import 'package:vibeconnect/widgets/custom_market.dart';
-=======
-import 'package:vibe_connect/model/event_model.dart';
-import 'package:vibe_connect/utils/userdata.dart';
-import 'package:vibe_connect/widgets/custom_market.dart';
->>>>>>> abidev
+import '../../../model/event_model.dart';
+import '../../../utils/userdata.dart';
+import '../../../widgets/custom_market.dart';
 
 import '../../../widgets/button_widget.dart';
 import '../../../widgets/location_picker.dart';

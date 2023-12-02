@@ -2,19 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-<<<<<<< HEAD
 import 'package:vibeconnect/controller/event_controller.dart';
 import 'package:vibeconnect/model/event_model.dart';
 import 'package:vibeconnect/utils/userdata.dart';
 import 'package:vibeconnect/widgets/button_widget.dart';
 import 'package:vibeconnect/widgets/custom_market.dart';
-=======
-import 'package:vibe_connect/controller/event_controller.dart';
-import 'package:vibe_connect/model/event_model.dart';
-import 'package:vibe_connect/utils/userdata.dart';
-import 'package:vibe_connect/widgets/button_widget.dart';
-import 'package:vibe_connect/widgets/custom_market.dart';
->>>>>>> abidev
 
 class LocationPicker extends StatefulWidget {
   final String date;

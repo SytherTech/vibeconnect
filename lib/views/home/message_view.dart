@@ -204,11 +204,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-<<<<<<< HEAD
-import 'package:vibeconnect/model/user_model.dart';
-=======
-import 'package:vibe_connect/model/user_model.dart';
->>>>>>> abidev
+import 'package:vibeconnect/utils/userdata.dart';
+import '../../model/user_model.dart';
 
 import '../../controller/event_controller.dart';
 import '../../controller/user_controller.dart';
@@ -225,55 +222,83 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var user = context.watch<UserController>().userModel;
+    // var user = context.watch<UserController>().userModel;
     var eventModel = context
         .watch<EventController>()
         .events
-        .where((element) => element.ownerId == user.id)
+        .where((element) => element.ownerId == "owner_1")
         .first;
-    return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color(Style.PRIMARY_COLOR),
-                Color(Style.SECONDARY_COLOR)
-              ], // Set your gradient colors
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-        ),
-        leading: const Icon(null),
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "${user.name}'s Event Chat",
-              style: GoogleFonts.lato(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white),
-            ),
-          ],
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color(Style.PRIMARY_COLOR),
+            Color(Style.SECONDARY_COLOR)
+          ], // Set your gradient colors
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Container(
-              color: Colors.grey.shade100,
-              child: ListView.builder(
-                itemCount: chatMessages.length,
-                itemBuilder: (context, index) {
-                  return ChatContainer(chatMessage: chatMessages[index]);
-                },
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        // appBar: AppBar(
+        //   // flexibleSpace: Container(
+        //   //   decoration: const BoxDecoration(
+        //   //     gradient: LinearGradient(
+        //   //       colors: [
+        //   //         Color(Style.PRIMARY_COLOR),
+        //   //         Color(Style.SECONDARY_COLOR)
+        //   //       ], // Set your gradient colors
+        //   //       begin: Alignment.topLeft,
+        //   //       end: Alignment.bottomRight,
+        //   //     ),
+        //   //   ),
+        //   // ),
+        //   leading: IconButton(
+        //       onPressed: () {
+        //         Navigator.pop(context);
+        //       },
+        //       icon: const Icon(
+        //         Icons.arrow_back_ios,
+        //         color: Colors.white,
+        //       )),
+        //   // title: Column(
+        //   //   crossAxisAlignment: CrossAxisAlignment.start,
+        //   //   children: [
+        //   //     Text(
+        //   //       "${user.name}'s Event Chat",
+        //   //       style: GoogleFonts.lato(
+        //   //           fontSize: 18,
+        //   //           fontWeight: FontWeight.w600,
+        //   //           color: Colors.white),
+        //   //     ),
+        //   //   ],
+        //   // ),
+        // ),
+        body: Column(
+          children: [
+            const SizedBox(
+              height: 40,
+            ),
+            CircleAvatar(
+              radius: 50,
+              backgroundImage:
+                  NetworkImage(UserData().users[0].imgUrl![0].toString()),
+            ),
+            Expanded(
+              child: Container(
+                color: Colors.transparent,
+                child: ListView.builder(
+                  itemCount: chatMessages.length,
+                  itemBuilder: (context, index) {
+                    return ChatContainer(chatMessage: chatMessages[index]);
+                  },
+                ),
               ),
             ),
-          ),
-          _buildMessageInput(eventModel.joinedUser![0]),
-        ],
+            _buildMessageInput(eventModel.joinedUser![0]),
+          ],
+        ),
       ),
     );
   }
@@ -283,14 +308,14 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
     return Container(
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Color.fromARGB(0, 255, 255, 255),
         boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 7,
-            offset: Offset(0, -3),
-          ),
+          // BoxShadow(
+          //   color: const Color.fromARGB(0, 158, 158, 158).withOpacity(0.5),
+          //   spreadRadius: 2,
+          //   blurRadius: 7,
+          //   offset: Offset(0, -3),
+          // ),
         ],
       ),
       child: Row(
@@ -298,23 +323,31 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
           IconButton(
             icon: Icon(
               Icons.camera_alt,
-              color: Colors.purple,
+              color: Colors.white,
             ),
             onPressed: () {},
           ),
           Expanded(
-            child: TextField(
-              controller: _messageController,
-              decoration: const InputDecoration(
-                hintText: 'Type a message...',
-                border: InputBorder.none,
+            child: Container(
+              padding: const EdgeInsets.only(left: 10),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  color: const Color.fromARGB(52, 255, 255, 255)),
+              child: TextField(
+                style: const TextStyle(color: Colors.white),
+                controller: _messageController,
+                decoration: const InputDecoration(
+                  hintText: 'Type a message...',
+                  hintStyle: TextStyle(color: Colors.white),
+                  border: InputBorder.none,
+                ),
               ),
             ),
           ),
           IconButton(
             icon: const Icon(
               Icons.send,
-              color: Colors.purple,
+              color: Colors.white,
             ),
             onPressed: () {
               _sendMessage(userModel);
@@ -412,8 +445,8 @@ class ChatContainer extends StatelessWidget {
               padding: EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: chatMessage.isSender == true
-                    ? Color.fromARGB(255, 243, 33, 243)
-                    : Colors.grey.shade200,
+                    ? Color.fromARGB(255, 252, 90, 252)
+                    : Color(0xff592acd),
                 borderRadius: BorderRadius.only(
                   topLeft:
                       Radius.circular(chatMessage.isSender == true ? 20 : 0),
@@ -428,7 +461,7 @@ class ChatContainer extends StatelessWidget {
                 style: TextStyle(
                   color: chatMessage.isSender == true
                       ? Colors.white
-                      : Colors.black,
+                      : Colors.white,
                 ),
               ),
             ),

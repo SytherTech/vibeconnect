@@ -2,13 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
-<<<<<<< HEAD
-import 'package:vibeconnect/model/event_model.dart';
-import 'package:vibeconnect/views/home/profile_view.dart';
-=======
-import 'package:vibe_connect/model/event_model.dart';
-import 'package:vibe_connect/views/home/profile_view.dart';
->>>>>>> abidev
+import '../../../model/event_model.dart';
+import '../../../views/home/profile_view.dart';
 import '../../../utils/styles.dart';
 import '../../../utils/userdata.dart';
 import '../../../widgets/button_widget.dart';
@@ -64,11 +59,7 @@ class EventDetailSceen extends StatelessWidget {
                       viewportFraction: deviceSize.width > 800.0 ? 0.8 : 1.0,
                       height: deviceSize.height * 0.45,
                       enableInfiniteScroll: true,
-<<<<<<< HEAD
-                      slideIndicator: CircularSlideIndicator(
-=======
                       slideIndicator: const CircularSlideIndicator(
->>>>>>> abidev
                           indicatorBackgroundColor: Colors.white,
                           currentIndicatorColor: Colors.black),
                     ),
@@ -107,11 +98,7 @@ class EventDetailSceen extends StatelessWidget {
                               .where(
                                   (element) => element.id == eventModel.ownerId)
                               .first
-<<<<<<< HEAD
-                              .imgUrl
-=======
                               .imgUrl![0]
->>>>>>> abidev
                               .toString(),
                           fit: BoxFit.fill,
                         ),

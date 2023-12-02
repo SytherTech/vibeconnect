@@ -4,15 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-<<<<<<< HEAD
-import 'package:vibeconnect/utils/styles.dart';
-import 'package:vibeconnect/widgets/button_widget.dart';
-import 'package:vibeconnect/widgets/textfield_widget.dart';
-=======
-import 'package:vibe_connect/utils/styles.dart';
-import 'package:vibe_connect/widgets/button_widget.dart';
-import 'package:vibe_connect/widgets/textfield_widget.dart';
->>>>>>> abidev
+import '../../../utils/styles.dart';
+import '../../../widgets/button_widget.dart';
+import '../../../widgets/textfield_widget.dart';
 import 'package:image_picker/image_picker.dart';
 
 class RegisterScreen extends StatefulWidget {

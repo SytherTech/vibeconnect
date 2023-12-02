@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-<<<<<<< HEAD
-import 'package:vibeconnect/utils/styles.dart';
-import 'package:vibeconnect/views/starter_view.dart';
-=======
-import 'package:vibe_connect/utils/styles.dart';
-import 'package:vibe_connect/views/starter_view.dart';
->>>>>>> abidev
+import '../utils/styles.dart';
+import '../views/starter_view.dart';
 
 import '../controller/event_controller.dart';
 import '../controller/user_controller.dart';
