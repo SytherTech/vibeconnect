@@ -38,9 +38,9 @@ class MyProfileView extends StatelessWidget {
               ),
             ),
           ),
-          leading: Icon(null)),
+          leading: const Icon(null)),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -163,14 +163,14 @@ class MyProfileView extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text(
               userModel.about.toString(),
               style: GoogleFonts.lato(
                 fontSize: 12,
               ),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             // Text(
             //   '@${userModel.name}',
             //   style:
@@ -264,7 +264,7 @@ class MyProfileView extends StatelessWidget {
                             color: Colors.grey.withOpacity(0.5),
                             spreadRadius: 2,
                             blurRadius: 7,
-                            offset: Offset(0, 3),
+                            offset: const Offset(0, 3),
                           ),
                         ],
                       ),
