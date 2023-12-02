@@ -52,8 +52,8 @@ class CustomMarker extends StatelessWidget {
                     child: CircleAvatar(
                       backgroundColor: Colors.white,
                       radius: 70, // Set the radius of the image circle
-                      backgroundImage: NetworkImage(
-                          user.imgUrl.toString()), // Replace with your image
+                      backgroundImage: NetworkImage(user.imgUrl![0]
+                          .toString()), // Replace with your image
                     ),
                   ),
                 ),

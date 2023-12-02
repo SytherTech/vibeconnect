@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../views/home/event_creation/event_details.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import '../../../model/event_category_model.dart';
 
 class SelectEventCategory extends StatelessWidget {
@@ -42,6 +42,7 @@ class SelectEventCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -62,11 +63,11 @@ class SelectEventCategory extends StatelessWidget {
             ),
             Expanded(
                 child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // Adjust the number of columns as needed
-                crossAxisSpacing: 8.0,
-                mainAxisSpacing: 8.0,
-              ),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, // Adjust the number of columns as needed
+                  crossAxisSpacing: 8.0,
+                  mainAxisSpacing: 8.0,
+                  mainAxisExtent: 200),
               itemCount: eventCategories
                   .length, // Adjust the number of grid tiles as needed
               itemBuilder: (BuildContext context, int index) {
@@ -79,33 +80,38 @@ class SelectEventCategory extends StatelessWidget {
                               category: eventCategories[index].name),
                         ));
                   },
-                  child: GridTile(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.network(
+                  child: Card(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        // CachedNetworkImage(
+                        //   imageUrl: eventCategories[index]
+                        //       .imageUrl, // Replace with your image URL
+                        //   placeholder: (context, url) =>
+                        //       CircularProgressIndicator(), // Placeholder widget while loading
+                        //   errorWidget: (context, url, error) => Icon(Icons
+                        //       .error), // Widget to display if image fails to load
+                        // ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.network(
                             eventCategories[index]
                                 .imageUrl, // Replace with your image path
                             fit: BoxFit.cover,
                             height:
                                 150.0, // Adjust the height of the image as needed
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              eventCategories[index]
-                                  .name, // Replace with your text
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.lato(fontSize: 16),
-                            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            eventCategories[index]
+                                .name, // Replace with your text
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.lato(fontSize: 16),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 );

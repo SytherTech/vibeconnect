@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:vibeconnect/utils/styles.dart';
@@ -45,12 +47,18 @@ class _LocationScreenState extends State<LocationScreen> {
   //     'widget': CustomMarker()
   //   }
   // ];
+
+  //load event
+  //get
+
   bool _isloaded = false;
   bool showInfoContainer = false;
   late GoogleMapController mapController;
+  bool isRefreshing = false;
 
   @override
   void initState() {
+    isRefreshing = false;
     WidgetsBinding.instance.addPostFrameCallback((_) => _onBuildCompleted());
 
     // TODO: implement initState
@@ -61,6 +69,7 @@ class _LocationScreenState extends State<LocationScreen> {
   EventModel? eventModel;
   @override
   Widget build(BuildContext context) {
+    var deviceHeight = MediaQuery.of(context).size.height;
     eventProvider = Provider.of<EventController>(context).events;
 
     return Scaffold(
@@ -101,7 +110,7 @@ class _LocationScreenState extends State<LocationScreen> {
                     onMapCreated: _onMapCreated,
                     onTap: (latlng) {
                       setState(() {
-                        showInfoContainer = false;
+                        showInfoContainer = true;
                       });
                     },
                     mapType: MapType.normal,
@@ -117,7 +126,7 @@ class _LocationScreenState extends State<LocationScreen> {
                     indoorViewEnabled: false,
                     trafficEnabled: false,
                     mapToolbarEnabled: true,
-                    initialCameraPosition: CameraPosition(
+                    initialCameraPosition: const CameraPosition(
                       target: LatLng(37.7749, -122.4194),
                       zoom: 13.0,
                     ),
@@ -126,7 +135,7 @@ class _LocationScreenState extends State<LocationScreen> {
                   Align(
                       alignment: Alignment.bottomCenter,
                       child: Padding(
-                          padding: const EdgeInsets.only(bottom: 30),
+                          padding: const EdgeInsets.only(bottom: 110),
                           child: EventCardWidget(
                             eventModel: eventModel!,
                           ))),
@@ -189,7 +198,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                 },
                                 icon: SvgPicture.asset(
                                   "assets/svg/profile.svg",
-                                  color: Color(Style.MAIN_COLOR),
+                                  color: const Color(Style.MAIN_COLOR),
                                   height: 30,
                                   fit: BoxFit.cover,
                                 ),
@@ -204,7 +213,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Container(
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Color(0xff3370f5)),
                                     padding: const EdgeInsets.all(5),
@@ -216,7 +225,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                                   builder: (context) =>
                                                       EventRequestScreen()));
                                         },
-                                        icon: Icon(
+                                        icon: const Icon(
                                           Icons.checklist_sharp,
                                           color: Colors.white,
                                         )),
@@ -225,7 +234,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                     height: 15,
                                   ),
                                   Container(
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Color(0xffd6587f)),
                                     padding: const EdgeInsets.all(5),
@@ -246,19 +255,34 @@ class _LocationScreenState extends State<LocationScreen> {
                                     height: 15,
                                   ),
                                   Container(
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Color(0xfffcb75e)),
                                     padding: const EdgeInsets.all(5),
                                     child: IconButton(
                                         onPressed: () {},
-                                        icon: Icon(
+                                        icon: const Icon(
                                           Icons.wallet_giftcard,
                                           color: Colors.white,
                                         )),
                                   ),
                                   const SizedBox(
                                     height: 15,
+                                  ),
+                                  Container(
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(Style.MAIN_COLOR),
+                                    ),
+                                    padding: const EdgeInsets.all(5),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          refreshScreen(); // Call the function when the button is pressed
+                                        },
+                                        icon: const Icon(
+                                          Icons.refresh,
+                                          color: Colors.white,
+                                        )),
                                   ),
                                   // Container(
                                   //   decoration: BoxDecoration(
@@ -281,18 +305,46 @@ class _LocationScreenState extends State<LocationScreen> {
                     ))
               ],
             )
-          : ListView.builder(
-              itemCount: eventProvider.length,
-              itemBuilder: (context, index) {
-                return Transform.translate(
-                  offset: Offset(-MediaQuery.of(context).size.width * 2,
-                      -MediaQuery.of(context).size.height),
-                  child: RepaintBoundary(
-                    key: eventProvider[index].globalKey,
-                    child: eventProvider[index].Marker,
+          : Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: deviceHeight * .5,
+                ),
+                Center(
+                  child: Hero(
+                    tag: 'loading_tag',
+                    child: Column(
+                      children: [
+                        const CircularProgressIndicator(),
+                        SizedBox(
+                          height: deviceHeight * .02,
+                        ),
+                        Text(
+                          isRefreshing ? "Refreshing Events" : "Loading Events",
+                          style: GoogleFonts.lexend(
+                              fontSize: 16, fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
                   ),
-                );
-              }),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                      itemCount: eventProvider.length,
+                      itemBuilder: (context, index) {
+                        return Transform.translate(
+                          offset: Offset(-MediaQuery.of(context).size.width * 2,
+                              -MediaQuery.of(context).size.height),
+                          child: RepaintBoundary(
+                            key: eventProvider[index].globalKey,
+                            child: eventProvider[index].Marker,
+                          ),
+                        );
+                      }),
+                ),
+              ],
+            ),
     );
   }
 
@@ -301,6 +353,13 @@ class _LocationScreenState extends State<LocationScreen> {
       mapController = controller;
       _setMapStyle();
     });
+  }
+
+  void refreshScreen() {
+    isRefreshing = true;
+    _isloaded = false;
+    _onBuildCompleted();
+    setState(() {}); // Refresh the LocationScreen
   }
 
   void _setMapStyle() async {
@@ -314,6 +373,7 @@ class _LocationScreenState extends State<LocationScreen> {
       Marker marker = await _generateMarkersFromWidgets(value);
       _markers[marker.markerId.value] = marker;
     }));
+
     setState(() {
       _isloaded = true;
     });
@@ -321,37 +381,71 @@ class _LocationScreenState extends State<LocationScreen> {
 
   Future<Marker> _generateMarkersFromWidgets(EventModel data) async {
     try {
-      RenderRepaintBoundary boundary = data.globalKey.currentContext
-          ?.findRenderObject() as RenderRepaintBoundary;
+      await Future.delayed(const Duration(milliseconds: 1600));
+      if (data.globalKey.currentContext != null) {
+        RenderRepaintBoundary boundary = data.globalKey.currentContext!
+            .findRenderObject() as RenderRepaintBoundary;
 
-      ui.Image image = await boundary.toImage(pixelRatio: 2.7);
+        ui.Image image = await boundary.toImage(pixelRatio: 2.7);
 
-      ByteData? bytedata =
-          await image.toByteData(format: ui.ImageByteFormat.png);
-      return Marker(
-          onTap: () {
-            print(data.id);
-            setState(() {
-              eventModel = data;
-              showInfoContainer = true;
-            });
-          },
-          markerId: MarkerId(data.id.toString()),
-          position: data.eventLocation as LatLng,
-          icon: BitmapDescriptor.fromBytes(bytedata!.buffer.asUint8List()));
+        ByteData? bytedata =
+            await image.toByteData(format: ui.ImageByteFormat.png);
+        if (bytedata != null) {
+          return Marker(
+            onTap: () {
+              print(data.id);
+              setState(() {
+                eventModel = data;
+                showInfoContainer = true;
+              });
+            },
+            markerId: MarkerId(data.id.toString()),
+            position: data.eventLocation as LatLng,
+            icon: BitmapDescriptor.fromBytes(bytedata.buffer.asUint8List()),
+          );
+        }
+      }
     } catch (e) {
       print(e.toString());
     }
-    return Marker(markerId: MarkerId(""));
+    // Handle cases where marker creation fails
+    return Marker(markerId: MarkerId(data.id.toString()));
   }
+
+  // Future<Marker> _generateMarkersFromWidgets(EventModel data) async {
+  //   try {
+  //     RenderRepaintBoundary boundary = data.globalKey.currentContext
+  //         ?.findRenderObject() as RenderRepaintBoundary;
+
+  //     ui.Image image = await boundary.toImage(pixelRatio: 2.7);
+
+  //     ByteData? bytedata =
+  //         await image.toByteData(format: ui.ImageByteFormat.png);
+  //     return Marker(
+  //         onTap: () {
+  //           print(data.id);
+  //           setState(() {
+  //             eventModel = data;
+  //             showInfoContainer = true;
+  //           });
+  //         },
+  //         markerId: MarkerId(data.id.toString()),
+  //         position: data.eventLocation as LatLng,
+  //         icon: BitmapDescriptor.fromBytes(bytedata!.buffer.asUint8List()));
+  //   } catch (e) {
+  //     print(e.toString());
+  //   }
+  //   return const Marker(markerId: MarkerId(""));
+  // }
 }
 
 class InvertedConeShapePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final rect = Rect.fromPoints(Offset(0, 0), Offset(size.width, size.height));
+    final rect =
+        Rect.fromPoints(const Offset(0, 0), Offset(size.width, size.height));
     Paint paint = Paint()
-      ..shader = LinearGradient(
+      ..shader = const LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [

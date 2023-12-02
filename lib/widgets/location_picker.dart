@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:vibeconnect/controller/event_controller.dart';
 import 'package:vibeconnect/model/event_model.dart';
 import 'package:vibeconnect/utils/userdata.dart';
+import 'package:vibeconnect/views/home/views/location.dart';
 import 'package:vibeconnect/widgets/button_widget.dart';
 import 'package:vibeconnect/widgets/custom_market.dart';
 
@@ -33,7 +34,7 @@ class LocationPicker extends StatefulWidget {
 class _LocationPickerState extends State<LocationPicker> {
   late GoogleMapController _mapController;
   LatLng _selectedLocation = LatLng(37.7749, -122.4194); // Initial location
-  Marker _marker = Marker(
+  Marker _marker = const Marker(
       markerId: MarkerId("selectedLocation"),
       position: LatLng(37.7749, -122.4194),
       draggable: true);
@@ -42,7 +43,7 @@ class _LocationPickerState extends State<LocationPicker> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pick A Location'),
+        title: const Text('Pick A Location'),
       ),
       body: Stack(
         children: [
@@ -90,7 +91,7 @@ class _LocationPickerState extends State<LocationPicker> {
                       _showEventCreatedDialog();
                     },
                     text: 'Pick & Create Event',
-                    color: [Color(0xff8767DA), Color(0xff943CBD)],
+                    color: const [Color(0xff8767DA), Color(0xff943CBD)],
                     borderRadius: 15),
               )),
         ],
@@ -103,15 +104,19 @@ class _LocationPickerState extends State<LocationPicker> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Event Created'),
-          content: Text('Your event has been successfully created!'),
+          title: const Text('Event Created'),
+          content: const Text('Your event has been successfully created!'),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 context.read<EventController>().getEvent();
-                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LocationScreen(),
+                    ));
               },
-              child: Text('OK'),
+              child: const Text('OK'),
             ),
           ],
         );
@@ -131,7 +136,7 @@ class _LocationPickerState extends State<LocationPicker> {
     setState(() {
       _selectedLocation = location;
       _marker = Marker(
-        markerId: MarkerId("selectedLocation"),
+        markerId: const MarkerId("selectedLocation"),
         position: location,
         draggable: true,
         onDragEnd: (LatLng newPosition) {
