@@ -9,7 +9,7 @@ class RoundedSearchBar extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(
             30.0), // Adjust the border radius for roundness
-        color: Color(0xff592acd), // Set the background color
+        color: Color.fromARGB(204, 255, 255, 255), // Set the background color
       ),
       child: Row(
         children: <Widget>[
@@ -17,8 +17,8 @@ class RoundedSearchBar extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Search (Party , Walking , Fun)',
-                hintStyle: GoogleFonts.roboto(
-                    color: Color.fromARGB(255, 255, 255, 255), fontSize: 14),
+                hintStyle:
+                    GoogleFonts.roboto(color: Color(0xff592acd), fontSize: 14),
                 border: InputBorder.none, // Remove the default input border
                 contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
               ),
@@ -29,7 +29,7 @@ class RoundedSearchBar extends StatelessWidget {
             child: Icon(
               Icons.search,
               size: 25,
-              color: Colors.white,
+              color: Color(0xff592acd),
             ),
           ), // Add your search icon here
         ],

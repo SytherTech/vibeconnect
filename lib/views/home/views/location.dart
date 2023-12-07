@@ -196,11 +196,17 @@ class _LocationScreenState extends State<LocationScreen> {
                                           builder: (context) =>
                                               MyProfileView()));
                                 },
-                                icon: SvgPicture.asset(
-                                  "assets/svg/profile.svg",
-                                  color: const Color(Style.MAIN_COLOR),
-                                  height: 30,
-                                  fit: BoxFit.cover,
+                                icon: Container(
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: const Color(Style.MAIN_COLOR)),
+                                  child: SvgPicture.asset(
+                                    "assets/svg/profile.svg",
+                                    color: const ui.Color.fromARGB(
+                                        218, 255, 255, 255),
+                                    height: 30,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                               Expanded(child: RoundedSearchBar())
@@ -215,7 +221,8 @@ class _LocationScreenState extends State<LocationScreen> {
                                   Container(
                                     decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
-                                        color: Color(0xff3370f5)),
+                                        color: ui.Color.fromARGB(
+                                            204, 255, 255, 255)),
                                     padding: const EdgeInsets.all(5),
                                     child: IconButton(
                                         onPressed: () {
@@ -227,7 +234,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                         },
                                         icon: const Icon(
                                           Icons.checklist_sharp,
-                                          color: Colors.white,
+                                          color: Colors.blue,
                                         )),
                                   ),
                                   const SizedBox(
@@ -236,7 +243,8 @@ class _LocationScreenState extends State<LocationScreen> {
                                   Container(
                                     decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
-                                        color: Color(0xffd6587f)),
+                                        color: ui.Color.fromARGB(
+                                            204, 255, 255, 255)),
                                     padding: const EdgeInsets.all(5),
                                     child: IconButton(
                                         onPressed: () {
@@ -248,7 +256,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                         },
                                         icon: SvgPicture.asset(
                                           "assets/svg/msg.svg",
-                                          color: Colors.white,
+                                          color: Color(0xffd6587f),
                                         )),
                                   ),
                                   const SizedBox(
@@ -257,13 +265,14 @@ class _LocationScreenState extends State<LocationScreen> {
                                   Container(
                                     decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
-                                        color: Color(0xfffcb75e)),
+                                        color: ui.Color.fromARGB(
+                                            204, 255, 255, 255)),
                                     padding: const EdgeInsets.all(5),
                                     child: IconButton(
                                         onPressed: () {},
                                         icon: const Icon(
                                           Icons.wallet_giftcard,
-                                          color: Colors.white,
+                                          color: Color(0xfffcb75e),
                                         )),
                                   ),
                                   const SizedBox(
@@ -272,7 +281,8 @@ class _LocationScreenState extends State<LocationScreen> {
                                   Container(
                                     decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: Color(Style.MAIN_COLOR),
+                                      color:
+                                          ui.Color.fromARGB(204, 255, 255, 255),
                                     ),
                                     padding: const EdgeInsets.all(5),
                                     child: IconButton(
@@ -281,7 +291,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                         },
                                         icon: const Icon(
                                           Icons.refresh,
-                                          color: Colors.white,
+                                          color: Color(Style.MAIN_COLOR),
                                         )),
                                   ),
                                   // Container(
