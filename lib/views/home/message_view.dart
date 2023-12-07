@@ -201,10 +201,12 @@
 //     );
 //   }
 // }
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:vibeconnect/utils/userdata.dart';
+import 'package:vibeconnect/views/home/message_experience.dart';
 import '../../model/user_model.dart';
 
 import '../../controller/event_controller.dart';
@@ -222,11 +224,12 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var deviceSize = MediaQuery.of(context).size;
     // var user = context.watch<UserController>().userModel;
     var eventModel = context
         .watch<EventController>()
         .events
-        .where((element) => element.ownerId == "owner_1")
+        .where((element) => element.ownerId == "owner_2")
         .first;
     return Container(
       decoration: const BoxDecoration(
@@ -277,13 +280,194 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
         // ),
         body: Column(
           children: [
-            const SizedBox(
-              height: 40,
-            ),
-            CircleAvatar(
-              radius: 50,
-              backgroundImage:
-                  NetworkImage(UserData().users[0].imgUrl![0].toString()),
+            SizedBox(
+              child: Stack(
+                fit: StackFit.passthrough,
+                clipBehavior: Clip.none,
+                children: [
+                  SizedBox(
+                    height: 200,
+                    width: double.infinity,
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                          bottomRight: Radius.circular(180),
+                          bottomLeft: Radius.circular(180)),
+                      child: Image.network(
+                        eventModel.eventImages![0],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 120,
+                    child: SizedBox(
+                      width: deviceSize.width,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 0, vertical: 5),
+                            child: Column(
+                              children: [
+                                Text(
+                                  eventModel.startTime.toString(),
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                                const Text(
+                                  "11 Dec",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Column(
+                            children: [
+                              CircleAvatar(
+                                radius: 45,
+                                backgroundImage: NetworkImage(UserData()
+                                    .users
+                                    .where((element) =>
+                                        element.id == eventModel.ownerId)
+                                    .first
+                                    .imgUrl![0]
+                                    .toString()),
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Text(
+                                "@ Marlin Arian",
+                                style: GoogleFonts.lexend(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white),
+                              ),
+                            ],
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MessageExperience(
+                                      joinedUser: eventModel.joinedUser),
+                                ),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Text(
+                                  "${eventModel.joinedUser!.length}/${eventModel.userLimit}",
+                                  style: GoogleFonts.roboto(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white),
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                // if (eventModel.joinedUser != null &&
+                                //     eventModel.joinedUser!.isNotEmpty)
+                                //   for (int i = 0;
+                                //       i < eventModel.joinedUser!.length;
+                                //       i++)
+                                //     GestureDetector(
+                                //       onTap: () {
+                                //         try {
+                                //           Navigator.push(
+                                //             context,
+                                //             MaterialPageRoute(
+                                //               builder: (context) =>
+                                //                   MessageExperience(
+                                //                       joinedUser:
+                                //                           eventModel.joinedUser),
+                                //             ),
+                                //           );
+                                //         } catch (e) {
+                                //           print('Navigation error: $e');
+                                //         }
+                                //       },
+                                //       child: Padding(
+                                //         padding: i == 0
+                                //             ? const EdgeInsets.only()
+                                //             : EdgeInsets.only(
+                                //                 left: 5 * (i + 1),
+                                //                 top: 2 * (i + .5),
+                                //               ),
+                                //         child: CircleAvatar(
+                                //           backgroundImage: NetworkImage(UserData()
+                                //               .users
+                                //               .where((element) =>
+                                //                   element.id ==
+                                //                   eventModel.joinedUser![i].id)
+                                //               .first
+                                //               .imgUrl![0]
+                                //               .toString()),
+                                //           radius: 20,
+                                //         ),
+                                //       ),
+                                //     ),
+                                Stack(
+                                  clipBehavior: Clip.none,
+                                  children: [
+                                    CircleAvatar(
+                                      backgroundImage: NetworkImage(UserData()
+                                          .users
+                                          .where((element) =>
+                                              element.id == eventModel.ownerId)
+                                          .first
+                                          .imgUrl![0]
+                                          .toString()),
+                                      radius: 20,
+                                    ),
+                                    if (eventModel.joinedUser != null &&
+                                        eventModel.joinedUser!.isNotEmpty)
+                                      for (int i = 0;
+                                          i < eventModel.joinedUser!.length - 1;
+                                          i++)
+                                        Positioned(
+                                          left: 5 * (i + 1),
+                                          top: 5 * (i + 1),
+                                          child: CircleAvatar(
+                                            backgroundImage: NetworkImage(
+                                                UserData()
+                                                    .users
+                                                    .where((element) =>
+                                                        element.id ==
+                                                        eventModel
+                                                            .joinedUser![i].id)
+                                                    .first
+                                                    .imgUrl![0]
+                                                    .toString()),
+                                            radius: 20,
+                                          ),
+                                        ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          // Container(
+                          //   decoration: BoxDecoration(
+                          //       color: Colors.white,
+                          //       borderRadius: BorderRadius.circular(15),
+                          //       boxShadow: const [
+                          //         BoxShadow(
+                          //             blurRadius: 3,
+                          //             blurStyle: BlurStyle.solid,
+                          //             offset: Offset(-2, 2))
+                          //       ]),
+                          //   padding: const EdgeInsets.symmetric(
+                          //       horizontal: 30, vertical: 5),
+                          //   child: Text("Free"),
+                          // ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             Expanded(
               child: Container(

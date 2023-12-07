@@ -6,6 +6,7 @@ import '../../model/user_model.dart';
 
 import '../../utils/styles.dart';
 import '../../widgets/button_widget.dart';
+import '../../widgets/fullscreen_photo_view.dart';
 
 class ProfileViewScreen extends StatelessWidget {
   final UserModel userModel;
@@ -20,8 +21,11 @@ class ProfileViewScreen extends StatelessWidget {
         title: TextButton(
             onPressed: () {},
             child: Text(
-              "Viewing ${userModel.name}'s Profile",
-              style: GoogleFonts.roboto(color: Colors.black),
+              "@ ${userModel.name}",
+              style: GoogleFonts.lexend(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black),
             )),
         // flexibleSpace: Container(
         //   decoration: const BoxDecoration(
@@ -47,48 +51,67 @@ class ProfileViewScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Stack(
+              children: [
+                Image.asset(
+                  "assets/png/float.png",
+                  height: 150,
+                ),
+                Positioned(
+                  child: CircleAvatar(
+                    radius: 60,
+
+                    backgroundImage: NetworkImage(userModel.imgUrl![0]
+                        .toString()), // Replace with your image asset
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              width: deviceWidth * .05,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                CircleAvatar(
-                  radius: 50,
-                  backgroundImage: NetworkImage(userModel.imgUrl![0]
-                      .toString()), // Replace with your image asset
-                ),
+                // CircleAvatar(
+                //   radius: 50,
+                //   backgroundImage: NetworkImage(userModel.imgUrl![0]
+                //       .toString()), // Replace with your image asset
+                // ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        RatingBar.builder(
-                          initialRating: 3,
-                          minRating: 1,
-                          direction: Axis.horizontal,
-                          allowHalfRating: true,
-                          itemCount: 5,
-                          itemSize: 12,
-                          itemPadding:
-                              const EdgeInsets.symmetric(horizontal: 1.0),
-                          itemBuilder: (context, _) => const Icon(
-                            Icons.star,
-                            color: Colors.amber,
-                          ),
-                          onRatingUpdate: (rating) {
-                            print(rating);
-                          },
-                        ),
-                        const SizedBox(width: 4),
-                        const Text(
-                          '(4.5 Reviews)',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                    ),
+                    // Row(
+                    //   children: [
+                    //     RatingBar.builder(
+                    //       initialRating: 3,
+                    //       minRating: 1,
+                    //       direction: Axis.horizontal,
+                    //       allowHalfRating: true,
+                    //       itemCount: 5,
+                    //       itemSize: 12,
+                    //       itemPadding:
+                    //           const EdgeInsets.symmetric(horizontal: 1.0),
+                    //       itemBuilder: (context, _) => const Icon(
+                    //         Icons.star,
+                    //         color: Colors.amber,
+                    //       ),
+                    //       onRatingUpdate: (rating) {
+                    //         print(rating);
+                    //       },
+                    //     ),
+                    //     const SizedBox(width: 4),
+                    //     const Text(
+                    //       '(4.5 Reviews)',
+                    //       style: TextStyle(
+                    //         fontSize: 14,
+                    //         color: Colors.grey,
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
                     const SizedBox(
                       height: 4,
                     ),
@@ -98,13 +121,13 @@ class ProfileViewScreen extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              "10k",
+                              "26",
                               style: GoogleFonts.lato(
                                 fontSize: 14,
                               ),
                             ),
                             Text(
-                              'Connection',
+                              'Meet',
                               style: GoogleFonts.lato(
                                   fontSize: 16, fontWeight: FontWeight.w700),
                             ),
@@ -116,14 +139,14 @@ class ProfileViewScreen extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              userModel.age.toString(),
+                              "10k",
                               style: GoogleFonts.lato(fontSize: 14),
                             ),
                             const SizedBox(
                               height: 1,
                             ),
                             Text(
-                              'Age',
+                              'Connections',
                               style: GoogleFonts.lato(
                                   fontSize: 16, fontWeight: FontWeight.w700),
                             ),
@@ -135,13 +158,13 @@ class ProfileViewScreen extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              userModel.likes.toString(),
+                              "1123",
                               style: GoogleFonts.lato(
                                 fontSize: 14,
                               ),
                             ),
                             Text(
-                              'Likes',
+                              'Vibe',
                               style: GoogleFonts.lato(
                                   fontSize: 16, fontWeight: FontWeight.w700),
                             ),
@@ -212,28 +235,21 @@ class ProfileViewScreen extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  '@${userModel.name}',
+                  'Age  ',
+                  style: GoogleFonts.lato(
+                      fontSize: 18, fontWeight: FontWeight.w600),
+                ),
+                Text(
+                  '${userModel.age}',
                   style: GoogleFonts.lato(
                       fontSize: 18, fontWeight: FontWeight.w600),
                 ),
                 SizedBox(
                   width: deviceWidth * .1,
                 ),
-                SizedBox(
-                  width: deviceWidth * .3,
-                  height: 25,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2),
-                    child: ButtonWidget(
-                        onpressed: () {},
-                        text: "Like",
-                        color: const [Colors.purple, Colors.pink],
-                        borderRadius: 8),
-                  ),
-                ),
               ],
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text(
               userModel.about.toString(),
               style: GoogleFonts.lato(
@@ -265,24 +281,36 @@ class ProfileViewScreen extends StatelessWidget {
                 itemCount: userModel.imgUrl!
                     .length, // Replace with the number of images you have
                 itemBuilder: (context, index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 7,
-                          offset: const Offset(0, 3),
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullScreenPhotoView(
+                            photoUrl: userModel.imgUrl![index].toString(),
+                          ),
                         ),
-                      ],
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10.0),
-                      child: Image.network(
-                        userModel.imgUrl![index]
-                            .toString(), // Replace with your image assets
-                        fit: BoxFit.cover,
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: Image.network(
+                          userModel.imgUrl![index]
+                              .toString(), // Replace with your image assets
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   );

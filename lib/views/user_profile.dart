@@ -19,6 +19,14 @@ class MyProfileView extends StatelessWidget {
     var deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
+          title: Text(
+            '@ ${userModel.name}',
+            style: GoogleFonts.lexend(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          centerTitle: true,
           actions: [
             IconButton(
               onPressed: () {},
@@ -123,89 +131,143 @@ class MyProfileView extends StatelessWidget {
                           ],
                         ),
 
-                        Text(
-                          '${userModel.name}',
-                          style: GoogleFonts.lexend(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
                         SizedBox(
                           width: deviceWidth * .05,
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Column(
                               children: [
                                 Text(
-                                  "10k",
-                                  style: GoogleFonts.lexend(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600),
+                                  "26",
+                                  style: GoogleFonts.lato(
+                                    fontSize: 14,
+                                  ),
                                 ),
-                                SvgPicture.asset(
-                                  "assets/svg/connect.svg",
-                                  color: Colors.purple,
-                                )
-                                // Text(
-                                //   'Connetion',
-                                //   style: GoogleFonts.lato(
-                                //       fontSize: 16, fontWeight: FontWeight.w700),
-                                // ),
+                                Text(
+                                  'Meet',
+                                  style: GoogleFonts.lato(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700),
+                                ),
                               ],
                             ),
                             SizedBox(
-                              width: deviceHeight * .04,
-                            ),
-
-                            SizedBox(
                               width: deviceHeight * .02,
-                            ),
-                            // Column(
-                            //   children: [
-                            //     Text(
-                            //       userModel.age.toString(),
-                            //       style: GoogleFonts.lato(fontSize: 14),
-                            //     ),
-                            //     const SizedBox(
-                            //       height: 1,
-                            //     ),
-                            //     Text(
-                            //       'Age',
-                            //       style: GoogleFonts.lato(
-                            //           fontSize: 16, fontWeight: FontWeight.w700),
-                            //     ),
-                            //   ],
-                            // ),
-                            SizedBox(
-                              width: deviceWidth * .05,
                             ),
                             Column(
                               children: [
                                 Text(
-                                  "${userModel.likes.toString()}",
-                                  style: GoogleFonts.lexend(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600),
+                                  "10k",
+                                  style: GoogleFonts.lato(fontSize: 14),
                                 ),
-
-                                SvgPicture.asset(
-                                  "assets/svg/bubble.svg",
-                                  color: Colors.purple,
-                                  fit: BoxFit.cover,
-                                  height: 35,
-                                  width: 35,
-                                )
-                                // Text(
-                                //   'Vibe',
-                                //   style: GoogleFonts.lato(
-                                //       fontSize: 16, fontWeight: FontWeight.w700),
-                                // ),
+                                const SizedBox(
+                                  height: 1,
+                                ),
+                                Text(
+                                  'Connections',
+                                  style: GoogleFonts.lato(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: deviceWidth * .02,
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  "1123",
+                                  style: GoogleFonts.lato(
+                                    fontSize: 14,
+                                  ),
+                                ),
+                                Text(
+                                  'Vibe',
+                                  style: GoogleFonts.lato(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700),
+                                ),
                               ],
                             ),
                           ],
                         ),
+
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        //   children: [
+                        //     Column(
+                        //       children: [
+                        //         Text(
+                        //           "10k",
+                        //           style: GoogleFonts.lexend(
+                        //               fontSize: 16,
+                        //               fontWeight: FontWeight.w600),
+                        //         ),
+                        //         SvgPicture.asset(
+                        //           "assets/svg/connect.svg",
+                        //           color: Colors.purple,
+                        //         )
+                        //         // Text(
+                        //         //   'Connetion',
+                        //         //   style: GoogleFonts.lato(
+                        //         //       fontSize: 16, fontWeight: FontWeight.w700),
+                        //         // ),
+                        //       ],
+                        //     ),
+                        //     SizedBox(
+                        //       width: deviceHeight * .04,
+                        //     ),
+
+                        //     SizedBox(
+                        //       width: deviceHeight * .02,
+                        //     ),
+                        //     // Column(
+                        //     //   children: [
+                        //     //     Text(
+                        //     //       userModel.age.toString(),
+                        //     //       style: GoogleFonts.lato(fontSize: 14),
+                        //     //     ),
+                        //     //     const SizedBox(
+                        //     //       height: 1,
+                        //     //     ),
+                        //     //     Text(
+                        //     //       'Age',
+                        //     //       style: GoogleFonts.lato(
+                        //     //           fontSize: 16, fontWeight: FontWeight.w700),
+                        //     //     ),
+                        //     //   ],
+                        //     // ),
+                        //     SizedBox(
+                        //       width: deviceWidth * .05,
+                        //     ),
+                        //     Column(
+                        //       children: [
+                        //         Text(
+                        //           "${userModel.likes.toString()}",
+                        //           style: GoogleFonts.lexend(
+                        //               fontSize: 16,
+                        //               fontWeight: FontWeight.w600),
+                        //         ),
+
+                        //         SvgPicture.asset(
+                        //           "assets/svg/bubble.svg",
+                        //           color: Colors.purple,
+                        //           fit: BoxFit.cover,
+                        //           height: 35,
+                        //           width: 35,
+                        //         )
+                        //         // Text(
+                        //         //   'Vibe',
+                        //         //   style: GoogleFonts.lato(
+                        //         //       fontSize: 16, fontWeight: FontWeight.w700),
+                        //         // ),
+                        //       ],
+                        //     ),
+                        //   ],
+                        // ),
                       ],
                     )
                   ],
@@ -225,6 +287,24 @@ class MyProfileView extends StatelessWidget {
                 //     ),
                 //   ],
                 // ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Age  ',
+                      style: GoogleFonts.lato(
+                          fontSize: 18, fontWeight: FontWeight.w600),
+                    ),
+                    Text(
+                      '${userModel.age}',
+                      style: GoogleFonts.lato(
+                          fontSize: 18, fontWeight: FontWeight.w600),
+                    ),
+                    SizedBox(
+                      width: deviceWidth * .1,
+                    ),
+                  ],
+                ),
                 SizedBox(height: 5),
                 Text(
                   userModel.about.toString(),
