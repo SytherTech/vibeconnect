@@ -115,279 +115,309 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
     }
   }
 
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool isFree = true;
   @override
   Widget build(BuildContext context) {
     var deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Select A Category",
-              style: GoogleFonts.lato(
-                  fontSize: 18,
-                  color: Colors.grey[700],
-                  fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              height: 150,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                // gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                //     crossAxisCount: 2, // Adjust the number of columns as needed
-                //     crossAxisSpacing: 8.0,
-                //     mainAxisSpacing: 8.0,
-                //     mainAxisExtent: 200),
-                itemCount: eventCategories
-                    .length, // Adjust the number of grid tiles as needed
-                itemBuilder: (BuildContext context, int index) {
-                  return InkWell(
-                    onTap: () {
-                      setState(() {
-                        selectedCategory = eventCategories[index].name;
-                      });
-                    },
-                    child: SizedBox(
-                      child: Card(
-                        color: eventCategories[index].name == selectedCategory
-                            ? Colors.purple
-                            : Colors.white,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            // CachedNetworkImage(
-                            //   imageUrl: eventCategories[index]
-                            //       .imageUrl, // Replace with your image URL
-                            //   placeholder: (context, url) =>
-                            //       CircularProgressIndicator(), // Placeholder widget while loading
-                            //   errorWidget: (context, url, error) => Icon(Icons
-                            //       .error), // Widget to display if image fails to load
-                            // ),
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.network(
-                                eventCategories[index]
-                                    .imageUrl, // Replace with your image path
-                                fit: BoxFit.cover,
-                                height:
-                                    100.0, // Adjust the height of the image as needed
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Select A Category",
+                style: GoogleFonts.lato(
+                    fontSize: 18,
+                    color: Colors.grey[700],
+                    fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height: 150,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  // gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  //     crossAxisCount: 2, // Adjust the number of columns as needed
+                  //     crossAxisSpacing: 8.0,
+                  //     mainAxisSpacing: 8.0,
+                  //     mainAxisExtent: 200),
+                  itemCount: eventCategories
+                      .length, // Adjust the number of grid tiles as needed
+                  itemBuilder: (BuildContext context, int index) {
+                    return InkWell(
+                      onTap: () {
+                        setState(() {
+                          selectedCategory = eventCategories[index].name;
+                        });
+                      },
+                      child: SizedBox(
+                        child: Card(
+                          color: eventCategories[index].name == selectedCategory
+                              ? Colors.purple
+                              : Colors.white,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              // CachedNetworkImage(
+                              //   imageUrl: eventCategories[index]
+                              //       .imageUrl, // Replace with your image URL
+                              //   placeholder: (context, url) =>
+                              //       CircularProgressIndicator(), // Placeholder widget while loading
+                              //   errorWidget: (context, url, error) => Icon(Icons
+                              //       .error), // Widget to display if image fails to load
+                              // ),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.network(
+                                  eventCategories[index]
+                                      .imageUrl, // Replace with your image path
+                                  fit: BoxFit.cover,
+                                  height:
+                                      100.0, // Adjust the height of the image as needed
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  eventCategories[index]
+                                      .name, // Replace with your text
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.lato(
+                                      fontSize: 16,
+                                      color: eventCategories[index].name ==
+                                              selectedCategory
+                                          ? Colors.white
+                                          : Colors.black),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: InkWell(
+                              onTap: () => _selectDate(context, true),
+                              child: TextFormField(
+                                enabled: false,
+                                decoration: InputDecoration(
+                                  hintText: startDate != null
+                                      ? "${startDate!.day}/${startDate!.month}/${startDate!.year}"
+                                      : 'Select Date',
+                                ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                eventCategories[index]
-                                    .name, // Replace with your text
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.lato(
-                                    fontSize: 16,
-                                    color: eventCategories[index].name ==
-                                            selectedCategory
-                                        ? Colors.white
-                                        : Colors.black),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16.0),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: InkWell(
+                              onTap: () => _selectTime(context, true),
+                              child: TextFormField(
+                                enabled: false,
+                                decoration: InputDecoration(
+                                  hintText: startTime != null
+                                      ? "${startTime!.hour}:${startTime!.minute}"
+                                      : 'Start Time',
+                                ),
                               ),
+                            ),
+                          ),
+                          const SizedBox(width: 16.0),
+                          Expanded(
+                            child: InkWell(
+                              onTap: () => _selectTime(context, false),
+                              child: TextFormField(
+                                enabled: false,
+                                decoration: InputDecoration(
+                                  hintText: endTime != null
+                                      ? "${endTime!.hour}:${endTime!.minute}"
+                                      : 'End Time',
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16.0),
+
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              controller: detailsController,
+                              decoration: const InputDecoration(
+                                  labelText: 'Event Details'),
+                              maxLines: null, // Allow multiple lines
+                              onChanged: (value) {
+                                setState(() {
+                                  eventDetails = value;
+                                });
+                              },
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter event details';
+                                }
+                                return null;
+                              },
+                            ),
+                            TextFormField(
+                              decoration:
+                                  InputDecoration(labelText: 'Users Limit'),
+                              keyboardType: TextInputType.number,
+                              onChanged: (value) {
+                                setState(() {
+                                  userLimit = int.parse(value);
+                                });
+                              },
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter user limit';
+                                }
+                                return null;
+                              },
                             ),
                           ],
                         ),
                       ),
-                    ),
-                  );
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: InkWell(
-                            onTap: () => _selectDate(context, true),
-                            child: TextFormField(
-                              enabled: false,
-                              decoration: InputDecoration(
-                                hintText: startDate != null
-                                    ? "${startDate!.day}/${startDate!.month}/${startDate!.year}"
-                                    : 'Select Date',
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 16.0),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: InkWell(
-                            onTap: () => _selectTime(context, true),
-                            child: TextFormField(
-                              enabled: false,
-                              decoration: InputDecoration(
-                                hintText: startTime != null
-                                    ? "${startTime!.hour}:${startTime!.minute}"
-                                    : 'Start Time',
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 16.0),
-                        Expanded(
-                          child: InkWell(
-                            onTap: () => _selectTime(context, false),
-                            child: TextFormField(
-                              enabled: false,
-                              decoration: InputDecoration(
-                                hintText: endTime != null
-                                    ? "${endTime!.hour}:${endTime!.minute}"
-                                    : 'End Time',
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 16.0),
-                    TextField(
-                      controller: detailsController,
-                      decoration: InputDecoration(labelText: 'Event Details'),
-                      maxLines: null, // Allow multiple lines
-                      onChanged: (value) {
-                        setState(() {
-                          eventDetails = value;
-                        });
-                      },
-                    ),
-                    TextField(
-                      decoration: InputDecoration(labelText: 'Users Limit'),
-                      keyboardType: TextInputType.number,
-                      onChanged: (value) {
-                        setState(() {
-                          userLimit = int.parse(value);
-                        });
-                      },
-                    ),
-                    SizedBox(height: 16.0),
-                    // DropdownButtonFormField<String>(
-                    //   value: eventCost,
-                    //   decoration: InputDecoration(labelText: 'Event Cost'),
-                    //   items: ['Free', 'Paid'].map((String cost) {
-                    //     return DropdownMenuItem<String>(
-                    //       value: cost,
-                    //       child: Text(cost),
-                    //     );
-                    //   }).toList(),
-                    //   onChanged: (String? value) {
-                    //     setState(() {
-                    //       eventCost = value!;
-                    //       if (value == 'Paid') {
-                    //         showCostPerPersonTextField = true;
-                    //       } else {
-                    //         showCostPerPersonTextField = false;
-                    //       }
-                    //     });
-                    //   },
-                    // ),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        InkWell(
-                          onTap: () => setState(() {
-                            isFree = true;
-                          }),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: isFree
-                                    ? const Color(0xff8A5ED4)
-                                    : Colors.white,
-                                borderRadius: BorderRadius.circular(16),
-                                border: isFree
-                                    ? null
-                                    : Border.all(color: Color(0xff8A5ED4))),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 5),
-                            child: Text(
-                              "Free",
-                              style: GoogleFonts.lexend(
-                                  fontSize: 16,
-                                  color: isFree ? Colors.white : Colors.black),
+                      SizedBox(height: 16.0),
+                      // DropdownButtonFormField<String>(
+                      //   value: eventCost,
+                      //   decoration: InputDecoration(labelText: 'Event Cost'),
+                      //   items: ['Free', 'Paid'].map((String cost) {
+                      //     return DropdownMenuItem<String>(
+                      //       value: cost,
+                      //       child: Text(cost),
+                      //     );
+                      //   }).toList(),
+                      //   onChanged: (String? value) {
+                      //     setState(() {
+                      //       eventCost = value!;
+                      //       if (value == 'Paid') {
+                      //         showCostPerPersonTextField = true;
+                      //       } else {
+                      //         showCostPerPersonTextField = false;
+                      //       }
+                      //     });
+                      //   },
+                      // ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          InkWell(
+                            onTap: () => setState(() {
+                              isFree = true;
+                            }),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: isFree
+                                      ? const Color(0xff8A5ED4)
+                                      : Colors.white,
+                                  borderRadius: BorderRadius.circular(16),
+                                  border: isFree
+                                      ? null
+                                      : Border.all(color: Color(0xff8A5ED4))),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 15, vertical: 5),
+                              child: Text(
+                                "Free",
+                                style: GoogleFonts.lexend(
+                                    fontSize: 16,
+                                    color:
+                                        isFree ? Colors.white : Colors.black),
+                              ),
                             ),
                           ),
-                        ),
-                        InkWell(
-                          onTap: () => setState(() {
-                            isFree = false;
-                          }),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: isFree
-                                    ? Colors.white
-                                    : const Color(0xff8A5ED4),
-                                borderRadius: BorderRadius.circular(16),
-                                border: isFree
-                                    ? Border.all(color: Color(0xff8A5ED4))
-                                    : null),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 5),
-                            child: Text(
-                              "Paid",
-                              style: GoogleFonts.lexend(
-                                  fontSize: 16,
-                                  color: isFree ? Colors.black : Colors.white),
+                          InkWell(
+                            onTap: () => setState(() {
+                              isFree = false;
+                            }),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: isFree
+                                      ? Colors.white
+                                      : const Color(0xff8A5ED4),
+                                  borderRadius: BorderRadius.circular(16),
+                                  border: isFree
+                                      ? Border.all(color: Color(0xff8A5ED4))
+                                      : null),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 15, vertical: 5),
+                              child: Text(
+                                "Paid",
+                                style: GoogleFonts.lexend(
+                                    fontSize: 16,
+                                    color:
+                                        isFree ? Colors.black : Colors.white),
+                              ),
                             ),
-                          ),
-                        )
-                      ],
-                    ),
-                    // if (showCostPerPersonTextField)
-                    //   TextField(
-                    //     controller: costPerPersonController,
-                    //     decoration:
-                    //         InputDecoration(labelText: 'Cost Per Person'),
-                    //     onChanged: (value) {
-                    //       setState(() {
-                    //         costPerPerson = value;
-                    //       });
-                    //     },
-                    //   ),
-                    // SizedBox(height: 32.0),
-                  ],
+                          )
+                        ],
+                      ),
+                      // if (showCostPerPersonTextField)
+                      //   TextField(
+                      //     controller: costPerPersonController,
+                      //     decoration:
+                      //         InputDecoration(labelText: 'Cost Per Person'),
+                      //     onChanged: (value) {
+                      //       setState(() {
+                      //         costPerPerson = value;
+                      //       });
+                      //     },
+                      //   ),
+                      // SizedBox(height: 32.0),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
         extendedPadding: const EdgeInsets.symmetric(horizontal: 100),
-        backgroundColor: Color(0xff8A5ED4),
+        backgroundColor: const Color(0xff8A5ED4),
         onPressed: () {
-          Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => LocationPicker(
-                    Category: selectedCategory,
-                    EventCost: isFree == true ? "Free" : "Paid",
-                    date: startDate!.toIso8601String(),
-                    startTime: formatTimeOfDay(startTime!),
-                    endTime: formatTimeOfDay(endTime!),
-                    eventDetails: eventDetails,
-                    userLimit: userLimit),
-              ));
+          if (_formKey.currentState!.validate()) {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LocationPicker(
+                      Category: selectedCategory,
+                      EventCost: isFree == true ? "Free" : "Paid",
+                      date: startDate!.toIso8601String(),
+                      startTime: formatTimeOfDay(startTime!),
+                      endTime: formatTimeOfDay(endTime!),
+                      eventDetails: eventDetails,
+                      userLimit: userLimit),
+                ));
+          }
         },
-        label: Text(
+        label: const Text(
           "Continue",
           style: TextStyle(color: Colors.white, fontSize: 23),
         ),

@@ -10,6 +10,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:vibeconnect/utils/styles.dart';
 import 'package:vibeconnect/views/home/message_view.dart';
+import 'package:vibeconnect/views/home/views/all_messages.dart';
 import '../../../widgets/show_eventcard_widget.dart';
 import '../../../controller/event_controller.dart';
 import '../../../controller/user_controller.dart';
@@ -133,12 +134,14 @@ class _LocationScreenState extends State<LocationScreen> {
                     markers: _markers.values.toSet()),
                 if (showInfoContainer)
                   Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Padding(
-                          padding: const EdgeInsets.only(bottom: 110),
-                          child: EventCardWidget(
-                            eventModel: eventModel!,
-                          ))),
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 110),
+                      child: EventCardWidget(
+                        eventModel: eventModel!,
+                      ),
+                    ),
+                  ),
                 // Align(
                 //   alignment: Alignment.topRight,
                 //   child: InkWell(
@@ -191,15 +194,16 @@ class _LocationScreenState extends State<LocationScreen> {
                               IconButton(
                                 onPressed: () {
                                   Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              MyProfileView()));
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MyProfileView(),
+                                    ),
+                                  );
                                 },
                                 icon: Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: const Color(Style.MAIN_COLOR)),
+                                      color: Color(Style.MAIN_COLOR)),
                                   child: SvgPicture.asset(
                                     "assets/svg/profile.svg",
                                     color: const ui.Color.fromARGB(
@@ -209,105 +213,105 @@ class _LocationScreenState extends State<LocationScreen> {
                                   ),
                                 ),
                               ),
-                              Expanded(child: RoundedSearchBar())
+                              Expanded(
+                                child: RoundedSearchBar(),
+                              ),
                             ],
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 20, right: 10),
-                            child: Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Container(
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: ui.Color.fromARGB(
-                                            204, 255, 255, 255)),
-                                    padding: const EdgeInsets.all(5),
-                                    child: IconButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      EventRequestScreen()));
-                                        },
-                                        icon: const Icon(
-                                          Icons.checklist_sharp,
-                                          color: Colors.blue,
-                                        )),
-                                  ),
-                                  const SizedBox(
-                                    height: 15,
-                                  ),
-                                  Container(
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: ui.Color.fromARGB(
-                                            204, 255, 255, 255)),
-                                    padding: const EdgeInsets.all(5),
-                                    child: IconButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      GroupChatScreen()));
-                                        },
-                                        icon: SvgPicture.asset(
-                                          "assets/svg/msg.svg",
-                                          color: Color(0xffd6587f),
-                                        )),
-                                  ),
-                                  const SizedBox(
-                                    height: 15,
-                                  ),
-                                  Container(
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: ui.Color.fromARGB(
-                                            204, 255, 255, 255)),
-                                    padding: const EdgeInsets.all(5),
-                                    child: IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(
-                                          Icons.wallet_giftcard,
-                                          color: Color(0xfffcb75e),
-                                        )),
-                                  ),
-                                  const SizedBox(
-                                    height: 15,
-                                  ),
-                                  Container(
-                                    decoration: const BoxDecoration(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Container(
+                                  decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color:
-                                          ui.Color.fromARGB(204, 255, 255, 255),
-                                    ),
-                                    padding: const EdgeInsets.all(5),
-                                    child: IconButton(
-                                        onPressed: () {
-                                          refreshScreen(); // Call the function when the button is pressed
-                                        },
-                                        icon: const Icon(
-                                          Icons.refresh,
-                                          color: Color(Style.MAIN_COLOR),
-                                        )),
+                                      color: ui.Color.fromARGB(
+                                          204, 255, 255, 255)),
+                                  padding: const EdgeInsets.all(5),
+                                  child: IconButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    EventRequestScreen()));
+                                      },
+                                      icon: const Icon(
+                                        Icons.checklist_sharp,
+                                        color: Colors.blue,
+                                      )),
+                                ),
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                Container(
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: ui.Color.fromARGB(
+                                          204, 255, 255, 255)),
+                                  padding: const EdgeInsets.all(5),
+                                  child: IconButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AllMessages()));
+                                      },
+                                      icon: SvgPicture.asset(
+                                        "assets/svg/msg.svg",
+                                        color: const Color(0xffd6587f),
+                                      )),
+                                ),
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                Container(
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: ui.Color.fromARGB(
+                                          204, 255, 255, 255)),
+                                  padding: const EdgeInsets.all(5),
+                                  child: IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.wallet_giftcard,
+                                        color: Color(0xfffcb75e),
+                                      )),
+                                ),
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                Container(
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color:
+                                        ui.Color.fromARGB(204, 255, 255, 255),
                                   ),
-                                  // Container(
-                                  //   decoration: BoxDecoration(
-                                  //       shape: BoxShape.circle,
-                                  //       color: Colors.purple[900]),
-                                  //   padding: const EdgeInsets.all(5),
-                                  //   child: IconButton(
-                                  //       onPressed: () {},
-                                  //       icon: Icon(
-                                  //         Icons.card_giftcard,
-                                  //         color: Colors.white,
-                                  //       )),
-                                  // ),
-                                ],
-                              ),
+                                  padding: const EdgeInsets.all(5),
+                                  child: IconButton(
+                                      onPressed: () {
+                                        refreshScreen(); // Call the function when the button is pressed
+                                      },
+                                      icon: const Icon(
+                                        Icons.refresh,
+                                        color: Color(Style.MAIN_COLOR),
+                                      )),
+                                ),
+                                // Container(
+                                //   decoration: BoxDecoration(
+                                //       shape: BoxShape.circle,
+                                //       color: Colors.purple[900]),
+                                //   padding: const EdgeInsets.all(5),
+                                //   child: IconButton(
+                                //       onPressed: () {},
+                                //       icon: Icon(
+                                //         Icons.card_giftcard,
+                                //         color: Colors.white,
+                                //       )),
+                                // ),
+                              ],
                             ),
                           )
                         ],
@@ -369,7 +373,7 @@ class _LocationScreenState extends State<LocationScreen> {
     isRefreshing = true;
     _isloaded = false;
     _onBuildCompleted();
-    setState(() {}); // Refresh the LocationScreen
+    setState(() {});
   }
 
   void _setMapStyle() async {

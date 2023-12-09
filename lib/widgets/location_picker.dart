@@ -33,11 +33,30 @@ class LocationPicker extends StatefulWidget {
 
 class _LocationPickerState extends State<LocationPicker> {
   late GoogleMapController _mapController;
-  LatLng _selectedLocation = LatLng(37.7749, -122.4194); // Initial location
-  Marker _marker = const Marker(
-      markerId: MarkerId("selectedLocation"),
-      position: LatLng(37.7749, -122.4194),
-      draggable: true);
+  LatLng _selectedLocation =
+      const LatLng(37.7749, -122.4194); // Initial location
+  late Marker _marker;
+  late BitmapDescriptor customIcon;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    BitmapDescriptor.fromAssetImage(
+            const ImageConfiguration(size: Size(24, 24)),
+            "assets/png/float.png")
+        .then((value) {
+      setState(() {
+        customIcon = value;
+        _marker = Marker(
+          markerId: const MarkerId("selectedLocation"),
+          position: const LatLng(37.7749, -122.4194),
+          draggable: true,
+          icon: customIcon,
+        );
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +71,7 @@ class _LocationPickerState extends State<LocationPicker> {
               target: _selectedLocation,
               zoom: 15.0,
             ),
-            onMapCreated: (GoogleMapController controller) {
-              _mapController = controller;
-            },
+            onMapCreated: _onMapCreated,
             onTap: (LatLng location) {
               updateMarker(location);
             },
@@ -99,6 +116,19 @@ class _LocationPickerState extends State<LocationPicker> {
     );
   }
 
+  void _onMapCreated(GoogleMapController controller) {
+    setState(() {
+      _mapController = controller;
+      _setMapStyle();
+    });
+  }
+
+  void _setMapStyle() async {
+    String style =
+        await DefaultAssetBundle.of(context).loadString('assets/mapstyle.json');
+    _mapController.setMapStyle(style);
+  }
+
   void _showEventCreatedDialog() {
     showDialog(
       context: context,
@@ -139,6 +169,7 @@ class _LocationPickerState extends State<LocationPicker> {
         markerId: const MarkerId("selectedLocation"),
         position: location,
         draggable: true,
+        icon: customIcon,
         onDragEnd: (LatLng newPosition) {
           setState(() {
             _selectedLocation = newPosition;
