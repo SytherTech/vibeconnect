@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../utils/styles.dart';
 import '../../../views/home/event_creation/event_details.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../../model/event_category_model.dart';
@@ -87,6 +88,17 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
       initialDate: DateTime.now(),
       firstDate: DateTime.now(),
       lastDate: DateTime(2101),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: Colors.teal, // Set your primary color
+
+            colorScheme: ColorScheme.light(primary: Color(Style.MAIN_COLOR)),
+            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+          ),
+          child: child!,
+        );
+      },
     );
     if (picked != null && picked != (isStartDate ? startDate : endDate)) {
       setState(() {
@@ -103,6 +115,17 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
     final TimeOfDay? picked = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: Colors.teal, // Set your primary color
+
+            colorScheme: ColorScheme.light(primary: Color(Style.MAIN_COLOR)),
+            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+          ),
+          child: child!,
+        );
+      },
     );
     if (picked != null && picked != (isStartTime ? startTime : endTime)) {
       setState(() {
@@ -344,7 +367,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                                   horizontal: 15, vertical: 5),
                               child: Text(
                                 "Free",
-                                style: GoogleFonts.lexend(
+                                style: GoogleFonts.varelaRound(
                                     fontSize: 16,
                                     color:
                                         isFree ? Colors.white : Colors.black),
@@ -368,7 +391,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                                   horizontal: 15, vertical: 5),
                               child: Text(
                                 "Paid",
-                                style: GoogleFonts.lexend(
+                                style: GoogleFonts.varelaRound(
                                     fontSize: 16,
                                     color:
                                         isFree ? Colors.black : Colors.white),
@@ -377,18 +400,19 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                           )
                         ],
                       ),
-                      // if (showCostPerPersonTextField)
-                      //   TextField(
-                      //     controller: costPerPersonController,
-                      //     decoration:
-                      //         InputDecoration(labelText: 'Cost Per Person'),
-                      //     onChanged: (value) {
-                      //       setState(() {
-                      //         costPerPerson = value;
-                      //       });
-                      //     },
-                      //   ),
-                      // SizedBox(height: 32.0),
+                      SizedBox(height: 5.0),
+                      if (!isFree)
+                        TextField(
+                          controller: costPerPersonController,
+                          decoration: InputDecoration(
+                              labelText: 'Cost Per Person (EURO)'),
+                          onChanged: (value) {
+                            setState(() {
+                              costPerPerson = value;
+                            });
+                          },
+                        ),
+                      SizedBox(height: 32.0),
                     ],
                   ),
                 ),
@@ -408,7 +432,9 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                 MaterialPageRoute(
                   builder: (context) => LocationPicker(
                       Category: selectedCategory,
-                      EventCost: isFree == true ? "Free" : "Paid",
+                      EventCost: isFree == true
+                          ? "Free"
+                          : "Paid ${costPerPersonController.text} Euro",
                       date: startDate!.toIso8601String(),
                       startTime: formatTimeOfDay(startTime!),
                       endTime: formatTimeOfDay(endTime!),

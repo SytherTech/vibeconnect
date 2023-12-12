@@ -57,7 +57,7 @@ class ProfileViewScreen extends StatelessWidget {
               children: [
                 Image.asset(
                   "assets/png/float.png",
-                  height: 150,
+                  height: 130,
                 ),
                 Positioned(
                   child: CircleAvatar(
@@ -122,13 +122,13 @@ class ProfileViewScreen extends StatelessWidget {
                           children: [
                             Text(
                               "26",
-                              style: GoogleFonts.lato(
+                              style: GoogleFonts.varelaRound(
                                 fontSize: 14,
                               ),
                             ),
                             Text(
                               'Meet',
-                              style: GoogleFonts.lato(
+                              style: GoogleFonts.varelaRound(
                                   fontSize: 16, fontWeight: FontWeight.w700),
                             ),
                           ],
@@ -140,14 +140,14 @@ class ProfileViewScreen extends StatelessWidget {
                           children: [
                             Text(
                               "10k",
-                              style: GoogleFonts.lato(fontSize: 14),
+                              style: GoogleFonts.varelaRound(fontSize: 14),
                             ),
                             const SizedBox(
                               height: 1,
                             ),
                             Text(
                               'Connections',
-                              style: GoogleFonts.lato(
+                              style: GoogleFonts.varelaRound(
                                   fontSize: 16, fontWeight: FontWeight.w700),
                             ),
                           ],
@@ -159,13 +159,13 @@ class ProfileViewScreen extends StatelessWidget {
                           children: [
                             Text(
                               "1123",
-                              style: GoogleFonts.lato(
+                              style: GoogleFonts.varelaRound(
                                 fontSize: 14,
                               ),
                             ),
                             Text(
                               'Vibe',
-                              style: GoogleFonts.lato(
+                              style: GoogleFonts.varelaRound(
                                   fontSize: 16, fontWeight: FontWeight.w700),
                             ),
                           ],
@@ -187,13 +187,13 @@ class ProfileViewScreen extends StatelessWidget {
             //       children: [
             //         Text(
             //           'Age',
-            //           style: GoogleFonts.lato(
+            //           style: GoogleFonts.varelaRound(
             //               fontSize: 18, fontWeight: FontWeight.w700),
             //         ),
             //         const SizedBox(height: 10),
             //         Text(
             //           userModel.age.toString(),
-            //           style: GoogleFonts.lato(fontSize: 18),
+            //           style: GoogleFonts.varelaRound(fontSize: 18),
             //         ),
             //       ],
             //     ),
@@ -201,13 +201,13 @@ class ProfileViewScreen extends StatelessWidget {
             //       children: [
             //         Text(
             //           'Likes',
-            //           style: GoogleFonts.lato(
+            //           style: GoogleFonts.varelaRound(
             //               fontSize: 18, fontWeight: FontWeight.w700),
             //         ),
             //         const SizedBox(height: 10),
             //         Text(
             //           userModel.likes.toString(),
-            //           style: GoogleFonts.lato(fontSize: 18),
+            //           style: GoogleFonts.varelaRound(fontSize: 18),
             //         ),
             //       ],
             //     ),
@@ -236,12 +236,12 @@ class ProfileViewScreen extends StatelessWidget {
               children: [
                 Text(
                   'Age  ',
-                  style: GoogleFonts.lato(
+                  style: GoogleFonts.varelaRound(
                       fontSize: 18, fontWeight: FontWeight.w600),
                 ),
                 Text(
                   '${userModel.age}',
-                  style: GoogleFonts.lato(
+                  style: GoogleFonts.varelaRound(
                       fontSize: 18, fontWeight: FontWeight.w600),
                 ),
                 SizedBox(
@@ -252,7 +252,7 @@ class ProfileViewScreen extends StatelessWidget {
             const SizedBox(height: 5),
             Text(
               userModel.about.toString(),
-              style: GoogleFonts.lato(
+              style: GoogleFonts.varelaRound(
                 fontSize: 12,
               ),
             ),
@@ -262,7 +262,7 @@ class ProfileViewScreen extends StatelessWidget {
               children: [
                 Text(
                   'More Photos',
-                  style: GoogleFonts.lato(
+                  style: GoogleFonts.varelaRound(
                     fontSize: 18,
                   ),
                 ),
@@ -337,7 +337,7 @@ class ProfileViewScreen extends StatelessWidget {
       //     Text(
       //       "Likes : ${userModel.likes}",
       //       style:
-      //           GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w600),
+      //           GoogleFonts.varelaRound(fontSize: 16, fontWeight: FontWeight.w600),
       //     ),
       //     const SizedBox(
       //       height: 15,
@@ -353,7 +353,7 @@ class ProfileViewScreen extends StatelessWidget {
       //               children: [
       //                 Text(
       //                   "Name",
-      //                   style: GoogleFonts.roboto(
+      //                   style: GoogleFonts.varelaRound(
       //                       fontWeight: FontWeight.w600, fontSize: 15),
       //                 ),
       //                 const SizedBox(
@@ -361,7 +361,7 @@ class ProfileViewScreen extends StatelessWidget {
       //                 ),
       //                 Text(
       //                   userModel.name.toString(),
-      //                   style: GoogleFonts.roboto(fontSize: 15),
+      //                   style: GoogleFonts.varelaRound(fontSize: 15),
       //                 )
       //               ],
       //             ),
@@ -370,7 +370,7 @@ class ProfileViewScreen extends StatelessWidget {
       //               children: [
       //                 Text(
       //                   "Age",
-      //                   style: GoogleFonts.roboto(
+      //                   style: GoogleFonts.varelaRound(
       //                       fontWeight: FontWeight.w600, fontSize: 15),
       //                 ),
       //                 const SizedBox(
@@ -378,7 +378,7 @@ class ProfileViewScreen extends StatelessWidget {
       //                 ),
       //                 Text(
       //                   "${userModel.age.toString()} Years Old",
-      //                   style: GoogleFonts.roboto(fontSize: 15),
+      //                   style: GoogleFonts.varelaRound(fontSize: 15),
       //                 )
       //               ],
       //             ),
@@ -389,7 +389,7 @@ class ProfileViewScreen extends StatelessWidget {
       //         ),
       //         Text(
       //           "About",
-      //           style: GoogleFonts.roboto(
+      //           style: GoogleFonts.varelaRound(
       //               fontWeight: FontWeight.w600, fontSize: 15),
       //         ),
       //         const SizedBox(
@@ -397,7 +397,7 @@ class ProfileViewScreen extends StatelessWidget {
       //         ),
       //         Text(
       //           userModel.about.toString(),
-      //           style: GoogleFonts.roboto(),
+      //           style: GoogleFonts.varelaRound(),
       //           textAlign: TextAlign.start,
       //         ),
       //         const SizedBox(

@@ -63,7 +63,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       appBar: AppBar(
         title: Text(
           "Create An Account",
-          style: GoogleFonts.roboto(color: Colors.white),
+          style: GoogleFonts.varelaRound(color: Colors.white),
         ),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -149,8 +149,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
-                    child:
-                        Text('Gender', style: GoogleFonts.roboto(fontSize: 16)),
+                    child: Text('Gender',
+                        style: GoogleFonts.varelaRound(fontSize: 16)),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,

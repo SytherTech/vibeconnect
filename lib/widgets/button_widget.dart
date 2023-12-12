@@ -36,8 +36,10 @@ class ButtonWidget extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: GoogleFonts.roboto(
-                  fontSize: buttonTextSize, color: Colors.white),
+              style: GoogleFonts.varelaRound(
+                fontSize: buttonTextSize,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
