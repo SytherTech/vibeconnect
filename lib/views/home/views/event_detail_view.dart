@@ -24,7 +24,8 @@ class EventDetailSceen extends StatelessWidget {
         onPressed: () {},
         label: Text(
           "Join",
-          style: TextStyle(color: Colors.white, fontSize: 23),
+          style: GoogleFonts.varelaRound(
+              fontSize: 23, fontWeight: FontWeight.w700, color: Colors.white),
         ),
       ),
       // appBar: AppBar(
@@ -33,7 +34,7 @@ class EventDetailSceen extends StatelessWidget {
       //         onPressed: () {},
       //         child: Text(
       //           "Join Request",
-      //           style: GoogleFonts.roboto(color: Colors.white),
+      //           style: GoogleFonts.varelaRound(color: Colors.white),
       //         ))
       //   ],
       //   flexibleSpace: Container(
@@ -161,7 +162,18 @@ class EventDetailSceen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 120),
                     child: ButtonWidget(
-                        onpressed: () {},
+                        onpressed: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProfileViewScreen(
+                                    userModel: UserData()
+                                        .users
+                                        .where((element) =>
+                                            element.id == eventModel.ownerId)
+                                        .first),
+                              ));
+                        },
                         text: "View Profile",
                         color: [Color(0xff8A5ED4), Color(0xff9245C4)],
                         borderRadius: 25),
@@ -169,7 +181,7 @@ class EventDetailSceen extends StatelessWidget {
 
                   // Text(
                   //   "Event Owner",
-                  //   style: GoogleFonts.roboto(
+                  //   style: GoogleFonts.varelaRound(
                   //       fontSize: 14, fontWeight: FontWeight.w600),
                   // ),
                   // const SizedBox(
@@ -205,7 +217,7 @@ class EventDetailSceen extends StatelessWidget {
                   //               .first
                   //               .name
                   //               .toString(),
-                  //           style: GoogleFonts.roboto(
+                  //           style: GoogleFonts.varelaRound(
                   //               fontSize: 16, fontWeight: FontWeight.w700),
                   //         ),
                   //         const SizedBox(
@@ -242,7 +254,7 @@ class EventDetailSceen extends StatelessWidget {
                   ),
                   Text(
                     "Event Details",
-                    style: GoogleFonts.roboto(
+                    style: GoogleFonts.varelaRound(
                         fontSize: 14, fontWeight: FontWeight.w600),
                   ),
                   const SizedBox(
@@ -250,7 +262,7 @@ class EventDetailSceen extends StatelessWidget {
                   ),
                   Text(
                     eventModel.longDes.toString(),
-                    style: GoogleFonts.roboto(),
+                    style: GoogleFonts.varelaRound(),
                     textAlign: TextAlign.start,
                   ),
                   const SizedBox(
@@ -264,7 +276,7 @@ class EventDetailSceen extends StatelessWidget {
                         children: [
                           Text(
                             "Timings",
-                            style: GoogleFonts.roboto(
+                            style: GoogleFonts.varelaRound(
                                 fontSize: 14, fontWeight: FontWeight.w600),
                           ),
                           const SizedBox(
@@ -279,7 +291,7 @@ class EventDetailSceen extends StatelessWidget {
                         children: [
                           Text(
                             "Event Type",
-                            style: GoogleFonts.roboto(
+                            style: GoogleFonts.varelaRound(
                                 fontSize: 12, fontWeight: FontWeight.w600),
                           ),
                           const SizedBox(
@@ -298,7 +310,7 @@ class EventDetailSceen extends StatelessWidget {
                     children: [
                       Text(
                         "People Who Joined",
-                        style: GoogleFonts.roboto(
+                        style: GoogleFonts.varelaRound(
                             fontSize: 14, fontWeight: FontWeight.w600),
                       ),
                       Row(
@@ -309,7 +321,7 @@ class EventDetailSceen extends StatelessWidget {
                           ),
                           Text(
                             "${eventModel.joinedUser!.length}/${eventModel.userLimit}",
-                            style: GoogleFonts.roboto(
+                            style: GoogleFonts.varelaRound(
                                 fontSize: 14, fontWeight: FontWeight.w700),
                           )
                         ],
@@ -328,8 +340,8 @@ class EventDetailSceen extends StatelessWidget {
                               Center(
                                 child: Text(
                                   "No User Joined Yet",
-                                  style: GoogleFonts.roboto(
-                                      color: Colors.grey[600]),
+                                  style: GoogleFonts.varelaRound(
+                                      fontSize: 18, color: Colors.grey[600]),
                                 ),
                               )
                             ]
@@ -358,14 +370,8 @@ class EventDetailSceen extends StatelessWidget {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              UserData()
-                                                  .users
-                                                  .where((element) =>
-                                                      element.id == e.id)
-                                                  .first
-                                                  .name
-                                                  .toString(),
-                                              style: GoogleFonts.roboto(
+                                              "${UserData().users.where((element) => element.id == e.id).first.name.toString()} (${UserData().users.where((element) => element.id == e.id).first.age.toString()})",
+                                              style: GoogleFonts.varelaRound(
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.w600),
                                             ),
@@ -376,8 +382,14 @@ class EventDetailSceen extends StatelessWidget {
                                               width: deviceSize.width / 1.5,
                                               child: Row(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.end,
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
+                                                  Text(
+                                                    "Vibes : 300",
+                                                    style: GoogleFonts
+                                                        .varelaRound(),
+                                                  ),
                                                   SizedBox(
                                                     height: 31,
                                                     width: 120,
@@ -400,7 +412,7 @@ class EventDetailSceen extends StatelessWidget {
                                                           Color(0xff8A5ED4),
                                                           Color(0xff9245C4)
                                                         ],
-                                                        borderRadius: 0,
+                                                        borderRadius: 15,
                                                         buttonTextSize: 12),
                                                   )
                                                 ],

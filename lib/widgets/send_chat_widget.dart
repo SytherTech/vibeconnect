@@ -106,7 +106,7 @@ class _SendChatWidgetState extends State<SendChatWidget> {
               controller: _messageController,
               decoration: InputDecoration(
                 hintText: 'Type your message...',
-                hintStyle: GoogleFonts.roboto(),
+                hintStyle: GoogleFonts.varelaRound(),
                 border: InputBorder.none,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
               ),

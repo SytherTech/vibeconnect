@@ -36,6 +36,7 @@ class TextFieldWidget extends StatelessWidget {
                 const BoxConstraints(minWidth: 60, minHeight: 20),
             contentPadding: const EdgeInsets.only(left: 10),
             hintText: hintText,
+            
             prefixIcon: SvgPicture.asset(
               svgPath,
             ),

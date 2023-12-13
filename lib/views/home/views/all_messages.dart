@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:vibeconnect/utils/styles.dart';
 
 import '../../../controller/event_controller.dart';
 import '../message_view.dart';
@@ -32,7 +34,7 @@ class _AllMessagesState extends State<AllMessages> {
           children: [
             Expanded(
               child: ListView.builder(
-                itemCount: eventModel.joinedUser!.length,
+                itemCount: 3,
                 itemBuilder: (BuildContext context, int index) {
                   return GestureDetector(
                     onTap: () {
@@ -41,30 +43,45 @@ class _AllMessagesState extends State<AllMessages> {
                           MaterialPageRoute(
                               builder: (context) => GroupChatScreen()));
                     },
-                    child: Card(
-                      elevation: 4,
-                      margin: const EdgeInsets.all(8.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(Style.PRIMARY_COLOR),
+                            Color(Style.SECONDARY_COLOR)
+                          ], // Set your gradient colors
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
                       ),
                       child: ListTile(
                         leading: CircleAvatar(
+                          radius: 35,
                           backgroundImage:
                               NetworkImage(eventModel.eventImages![0]),
                         ),
-                        title: const Text('Johson Math Event'),
-                        subtitle: const Text('Subtitle for Event '),
+                        title: Text(
+                          'Johson Math Event (22)',
+                          style: GoogleFonts.varelaRound(color: Colors.white),
+                        ),
+                        subtitle: Text(
+                          'Sports',
+                          style: GoogleFonts.varelaRound(color: Colors.white),
+                        ),
                         trailing: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               eventModel.endTime!,
                               style: const TextStyle(
-                                  fontSize: 12.0, color: Colors.grey),
+                                  fontSize: 14.0, color: Colors.grey),
                             ),
-                            const Text(
+                            Text(
                               'My Event',
-                              style: TextStyle(fontSize: 12.0),
+                              style:
+                                  GoogleFonts.varelaRound(color: Colors.white),
                             ),
                           ],
                         ),

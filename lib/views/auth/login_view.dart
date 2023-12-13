@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           Text(
                             "Login To Join The Amazing Adventures !",
-                            style: GoogleFonts.roboto(
+                            style: GoogleFonts.varelaRound(
                                 fontSize: 24, fontWeight: FontWeight.w700),
                             textAlign: TextAlign.start,
                           ),
@@ -120,11 +120,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             children: [
                               Text(
                                 "Do Have An Account?",
-                                style: GoogleFonts.roboto(fontSize: 14),
+                                style: GoogleFonts.varelaRound(fontSize: 14),
                               ),
                               Text(
                                 "Register Here",
-                                style: GoogleFonts.roboto(
+                                style: GoogleFonts.varelaRound(
                                     fontSize: 14, fontWeight: FontWeight.w700),
                               ),
                             ],

@@ -55,12 +55,18 @@ class _EventRequestScreenState extends State<EventRequestScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(UserData().users[index].name.toString(),
-                            style: GoogleFonts.roboto(
+                            style: GoogleFonts.varelaRound(
                                 color: Colors.white,
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold)),
                         Text(
                           'Age: ${UserData().users[index].age} Years Old',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          'Vibes: 230',
                           style: TextStyle(
                             color: Colors.white,
                           ),
@@ -82,7 +88,7 @@ class _EventRequestScreenState extends State<EventRequestScreen> {
           // centerTitle: true,
           // title: Text(
           //   "Requests For Joining",
-          //   style: GoogleFonts.roboto(color: Colors.white, fontSize: 18),
+          //   style: GoogleFonts.varelaRound(color: Colors.white, fontSize: 18),
           // ),
           // flexibleSpace: Container(
           //   decoration: const BoxDecoration(

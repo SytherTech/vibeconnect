@@ -42,7 +42,7 @@
 //                 ),
 //                 Text(
 //                   "${eventModel.joinedUser!.length}/${eventModel.userLimit}",
-//                   style: GoogleFonts.roboto(
+//                   style: GoogleFonts.varelaRound(
 //                       fontSize: 14, fontWeight: FontWeight.w700),
 //                 )
 //               ],
@@ -71,7 +71,7 @@
 //             Text(
 //               "${user.name.toString()}'s Event Chat",
 //               style:
-//                   GoogleFonts.roboto(fontSize: 15, fontWeight: FontWeight.w600),
+//                   GoogleFonts.varelaRound(fontSize: 15, fontWeight: FontWeight.w600),
 //             )
 //           ],
 //         ),
@@ -207,6 +207,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:vibeconnect/utils/userdata.dart';
 import 'package:vibeconnect/views/home/message_experience.dart';
+import 'package:vibeconnect/widgets/button_widget.dart';
 import '../../model/user_model.dart';
 
 import '../../controller/event_controller.dart';
@@ -286,19 +287,50 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                 clipBehavior: Clip.none,
                 children: [
                   SizedBox(
-                    height: 200,
-                    width: double.infinity,
+                    height: deviceSize.height * 0.26,
+                    width: deviceSize.width,
                     child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                          bottomRight: Radius.circular(180),
-                          bottomLeft: Radius.circular(180)),
-                      child: Image.network(
-                        eventModel.eventImages![0],
+                      borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(150),
+                          bottomLeft: Radius.circular(150)),
+                      child: CachedNetworkImage(
+                        imageUrl: eventModel.eventImages![0],
+                        fit: BoxFit.fill,
                       ),
                     ),
                   ),
                   Positioned(
-                    top: 120,
+                      top: 30,
+                      left: deviceSize.width * 0.85,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color.fromARGB(173, 241, 216, 214)),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.close,
+                            color: Colors.black,
+                          ),
+                        ),
+                      )),
+                  Positioned(
+                      top: 30,
+                      left: 20,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color.fromARGB(173, 241, 216, 214)),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.exit_to_app,
+                            color: Colors.black,
+                          ),
+                        ),
+                      )),
+                  Positioned(
+                    top: 150,
                     child: SizedBox(
                       width: deviceSize.width,
                       child: Row(
@@ -358,7 +390,7 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                               children: [
                                 Text(
                                   "${eventModel.joinedUser!.length}/${eventModel.userLimit}",
-                                  style: GoogleFonts.roboto(
+                                  style: GoogleFonts.varelaRound(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w700,
                                       color: Colors.white),

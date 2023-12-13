@@ -191,30 +191,82 @@ class _LocationScreenState extends State<LocationScreen> {
                         children: [
                           Row(
                             children: [
-                              IconButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => MyProfileView(),
-                                    ),
-                                  );
-                                },
-                                icon: Container(
-                                  decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Color(Style.MAIN_COLOR)),
-                                  child: SvgPicture.asset(
-                                    "assets/svg/profile.svg",
-                                    color: const ui.Color.fromARGB(
-                                        218, 255, 255, 255),
-                                    height: 30,
+                              Container(
+                                margin: const EdgeInsets.all(5),
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color:
+                                        ui.Color.fromARGB(204, 255, 255, 255)),
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: SvgPicture.asset(
+                                    "assets/svg/drawer.svg",
+                                    color: Color(Style.MAIN_COLOR),
+                                    height: 25,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
+                              // IconButton(
+                              //   onPressed: () {
+                              //     Navigator.push(
+                              //       context,
+                              //       MaterialPageRoute(
+                              //         builder: (context) => MyProfileView(),
+                              //       ),
+                              //     );
+                              //   },
+                              //   icon: Container(
+                              //     decoration: const BoxDecoration(
+                              //         shape: BoxShape.circle,
+                              //         color: Color(Style.MAIN_COLOR)),
+                              //     child: SvgPicture.asset(
+                              //       "assets/svg/profile.svg",
+                              //       color: const ui.Color.fromARGB(
+                              //           218, 255, 255, 255),
+                              //       height: 30,
+                              //       fit: BoxFit.cover,
+                              //     ),
+                              //   ),
+                              // ),
                               Expanded(
                                 child: RoundedSearchBar(),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime.now(),
+                                    lastDate: DateTime(2999),
+                                    builder:
+                                        (BuildContext context, Widget? child) {
+                                      return Theme(
+                                        data: ThemeData.light().copyWith(
+                                          primaryColor: Colors
+                                              .teal, // Set your primary color
+
+                                          colorScheme: ColorScheme.light(
+                                              primary: Color(Style.MAIN_COLOR)),
+                                          buttonTheme: ButtonThemeData(
+                                              textTheme:
+                                                  ButtonTextTheme.primary),
+                                        ),
+                                        child: child!,
+                                      );
+                                    },
+                                  );
+                                },
+                                icon: Container(
+                                    padding: const EdgeInsets.all(6),
+                                    decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: ui.Color.fromARGB(
+                                            204, 255, 255, 255)),
+                                    child: const Icon(
+                                      Icons.calendar_month,
+                                      color: Color(Style.MAIN_COLOR),
+                                    )),
                               ),
                             ],
                           ),
@@ -267,19 +319,19 @@ class _LocationScreenState extends State<LocationScreen> {
                                 const SizedBox(
                                   height: 15,
                                 ),
-                                Container(
-                                  decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: ui.Color.fromARGB(
-                                          204, 255, 255, 255)),
-                                  padding: const EdgeInsets.all(5),
-                                  child: IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.wallet_giftcard,
-                                        color: Color(0xfffcb75e),
-                                      )),
-                                ),
+                                // Container(
+                                //   decoration: const BoxDecoration(
+                                //       shape: BoxShape.circle,
+                                //       color: ui.Color.fromARGB(
+                                //           204, 255, 255, 255)),
+                                //   padding: const EdgeInsets.all(5),
+                                //   child: IconButton(
+                                //       onPressed: () {},
+                                //       icon: const Icon(
+                                //         Icons.wallet_giftcard,
+                                //         color: Color(0xfffcb75e),
+                                //       )),
+                                // ),
                                 const SizedBox(
                                   height: 15,
                                 ),
@@ -291,13 +343,22 @@ class _LocationScreenState extends State<LocationScreen> {
                                   ),
                                   padding: const EdgeInsets.all(5),
                                   child: IconButton(
-                                      onPressed: () {
-                                        refreshScreen(); // Call the function when the button is pressed
-                                      },
-                                      icon: const Icon(
-                                        Icons.refresh,
-                                        color: Color(Style.MAIN_COLOR),
-                                      )),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => MyProfileView(),
+                                        ),
+                                      );
+                                    },
+                                    icon: SvgPicture.asset(
+                                      "assets/svg/profile.svg",
+                                      color:
+                                          ui.Color.fromARGB(255, 247, 195, 40),
+                                      height: 25,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
                                 // Container(
                                 //   decoration: BoxDecoration(
@@ -336,7 +397,7 @@ class _LocationScreenState extends State<LocationScreen> {
                         ),
                         Text(
                           isRefreshing ? "Refreshing Events" : "Loading Events",
-                          style: GoogleFonts.lexend(
+                          style: GoogleFonts.varelaRound(
                               fontSize: 16, fontWeight: FontWeight.w600),
                         ),
                       ],
@@ -506,11 +567,21 @@ class ImageButton extends StatelessWidget {
                 width: 95, // Adjust the width as needed
                 height: 95, // Adjust the height as needed
               ),
-              const Icon(
-                Icons.add, // You can change the icon as needed
-                color: Colors.white,
-                size: 30,
-              ),
+              SizedBox(
+                height: 50,
+                width: 50,
+                child: ImageIcon(
+                  AssetImage(
+                    "assets/png/add.png",
+                  ),
+                  color: Colors.white,
+                ),
+              )
+              // const Icon(
+              //   Icons.add, // You can change the icon as needed
+              //   color: Colors.white,
+              //   size: 40,
+              // ),
             ],
           )),
     );

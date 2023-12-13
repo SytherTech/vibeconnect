@@ -43,7 +43,7 @@ class _MyWidgetState extends State<MessageExperience> {
                   const Spacer(),
                   Text(
                     "User who joined",
-                    style: GoogleFonts.lexend(
+                    style: GoogleFonts.varelaRound(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
                         color: Colors.white),
@@ -61,10 +61,11 @@ class _MyWidgetState extends State<MessageExperience> {
                             widget.joinedUser![index].imgUrl![0].toString()),
                         radius: 30,
                       ),
-                      title: Text(widget.joinedUser![index].name.toString(),
-                          style: GoogleFonts.lexend(color: Colors.white)),
+                      title: Text(
+                          "${widget.joinedUser![index].name.toString()} (${widget.joinedUser![index].age.toString()})",
+                          style: GoogleFonts.varelaRound(color: Colors.white)),
                       subtitle: Text('View Profile',
-                          style: GoogleFonts.lexend(color: Colors.white)),
+                          style: GoogleFonts.varelaRound(color: Colors.white)),
                       trailing: const Icon(
                         Icons.arrow_forward,
                         color: Colors.white,

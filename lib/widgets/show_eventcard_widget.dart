@@ -69,15 +69,9 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          UserData()
-                              .users
-                              .where((element) =>
-                                  element.id == widget.eventModel.ownerId)
-                              .first
-                              .name
-                              .toString(),
-                          style: GoogleFonts.roboto(
-                              fontSize: 16, fontWeight: FontWeight.w700),
+                          "${UserData().users.where((element) => element.id == widget.eventModel.ownerId).first.name.toString()} (${UserData().users.where((element) => element.id == widget.eventModel.ownerId).first.age.toString()})",
+                          style: GoogleFonts.varelaRound(
+                              fontSize: 18, fontWeight: FontWeight.w700),
                         ),
                         Row(
                           children: [
@@ -87,7 +81,7 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                             ),
                             Text(
                               "${widget.eventModel.joinedUser!.length}/${widget.eventModel.userLimit}",
-                              style: GoogleFonts.roboto(
+                              style: GoogleFonts.varelaRound(
                                   fontSize: 14, fontWeight: FontWeight.w700),
                             )
                           ],
@@ -99,7 +93,7 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                     width: MediaQuery.of(context).size.width / 1.6,
                     child: Text(
                       widget.eventModel.shortDes.toString(),
-                      style: GoogleFonts.roboto(fontSize: 13),
+                      style: GoogleFonts.varelaRound(fontSize: 14),
                       textAlign: TextAlign.start,
                     ),
                   ),
@@ -113,12 +107,12 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                           children: [
                             Text(
                               "Event-Cost:",
-                              style: GoogleFonts.roboto(
+                              style: GoogleFonts.varelaRound(
                                   fontSize: 14, fontWeight: FontWeight.w600),
                             ),
                             Text(
                               "${widget.eventModel.eventType}",
-                              style: GoogleFonts.roboto(
+                              style: GoogleFonts.varelaRound(
                                   fontSize: 14, fontWeight: FontWeight.w600),
                             )
                           ],

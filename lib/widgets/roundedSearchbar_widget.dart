@@ -17,8 +17,8 @@ class RoundedSearchBar extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Search (Party , Walking , Fun)',
-                hintStyle:
-                    GoogleFonts.roboto(color: Color(0xff592acd), fontSize: 14),
+                hintStyle: GoogleFonts.varelaRound(
+                    color: Color(0xff592acd), fontSize: 14),
                 border: InputBorder.none, // Remove the default input border
                 contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
               ),
