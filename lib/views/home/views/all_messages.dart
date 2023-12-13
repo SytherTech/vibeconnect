@@ -60,7 +60,7 @@ class _AllMessagesState extends State<AllMessages> {
                             Text(
                               eventModel.endTime!,
                               style: const TextStyle(
-                                  fontSize: 14.0, color: Colors.grey),
+                                  fontSize: 12.0, color: Colors.grey),
                             ),
                             const Text(
                               'My Event',
