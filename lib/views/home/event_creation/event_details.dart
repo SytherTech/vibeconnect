@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vibeconnect/lang/app_text.dart';
 import '../../../model/event_model.dart';
 import '../../../utils/userdata.dart';
 import '../../../widgets/custom_market.dart';
@@ -69,7 +71,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Event Details'),
+        title: Text(AppText.eventDetails.tr),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -87,14 +89,14 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                         decoration: InputDecoration(
                           hintText: startDate != null
                               ? "${startDate!.day}/${startDate!.month}/${startDate!.year}"
-                              : 'Select Date',
+                              : AppText.selectDate.tr,
                         ),
                       ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Row(
                 children: [
                   Expanded(
@@ -105,12 +107,12 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                         decoration: InputDecoration(
                           hintText: startTime != null
                               ? "${startTime!.hour}:${startTime!.minute}"
-                              : 'Start Time',
+                              : AppText.startTime.tr,
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(width: 16.0),
+                  const SizedBox(width: 16.0),
                   Expanded(
                     child: InkWell(
                       onTap: () => _selectTime(context, false),
@@ -119,17 +121,17 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                         decoration: InputDecoration(
                           hintText: endTime != null
                               ? "${endTime!.hour}:${endTime!.minute}"
-                              : 'End Time',
+                              : AppText.endTime.tr,
                         ),
                       ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               TextField(
                 controller: detailsController,
-                decoration: InputDecoration(labelText: 'Event Details'),
+                decoration: InputDecoration(labelText: AppText.eventDetails.tr),
                 maxLines: null, // Allow multiple lines
                 onChanged: (value) {
                   setState(() {
@@ -138,7 +140,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                 },
               ),
               TextField(
-                decoration: InputDecoration(labelText: 'Users Limit'),
+                decoration: InputDecoration(labelText: AppText.usersLimit.tr),
                 keyboardType: TextInputType.number,
                 onChanged: (value) {
                   setState(() {
@@ -146,10 +148,10 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                   });
                 },
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               DropdownButtonFormField<String>(
                 value: eventCost,
-                decoration: InputDecoration(labelText: 'Event Cost'),
+                decoration: InputDecoration(labelText: AppText.eventCost.tr),
                 items: ['Free', 'Paid'].map((String cost) {
                   return DropdownMenuItem<String>(
                     value: cost,
@@ -167,18 +169,19 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                   });
                 },
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               if (showCostPerPersonTextField)
                 TextField(
                   controller: costPerPersonController,
-                  decoration: InputDecoration(labelText: 'Cost Per Person'),
+                  decoration:
+                      InputDecoration(labelText: AppText.costPerPerson.tr),
                   onChanged: (value) {
                     setState(() {
                       costPerPerson = value;
                     });
                   },
                 ),
-              SizedBox(height: 32.0),
+              const SizedBox(height: 32.0),
               ButtonWidget(
                   onpressed: () {
                     Navigator.pushReplacement(
@@ -187,7 +190,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                           builder: (context) => LocationPicker(
                               Category: widget.category,
                               EventCost: showCostPerPersonTextField == true
-                                  ? "${eventCost}(${costPerPerson})"
+                                  ? "$eventCost($costPerPerson)"
                                   : eventCost,
                               date: startDate!.toIso8601String(),
                               startTime: formatTimeOfDay(startTime!),
@@ -196,8 +199,8 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                               userLimit: userLimit),
                         ));
                   },
-                  text: "Continue",
-                  color: [Color(0xff8767DA), Color(0xff943CBD)],
+                  text: AppText.continuE.tr,
+                  color: const [Color(0xff8767DA), Color(0xff943CBD)],
                   borderRadius: 15)
             ],
           ),

@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
+import 'package:vibeconnect/lang/app_text.dart';
 import '../../../model/event_model.dart';
 import '../../../views/home/profile_view.dart';
 import '../../../utils/styles.dart';
@@ -20,10 +22,10 @@ class EventDetailSceen extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
         extendedPadding: const EdgeInsets.symmetric(horizontal: 100),
-        backgroundColor: Color(0xff8A5ED4),
+        backgroundColor: const Color(0xff8A5ED4),
         onPressed: () {},
         label: Text(
-          "Join",
+          AppText.join.tr,
           style: GoogleFonts.varelaRound(
               fontSize: 23, fontWeight: FontWeight.w700, color: Colors.white),
         ),
@@ -92,7 +94,7 @@ class EventDetailSceen extends StatelessWidget {
                   height: deviceSize.height * 0.26,
                   width: deviceSize.width,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                         bottomRight: Radius.circular(150),
                         bottomLeft: Radius.circular(150)),
                     child: CachedNetworkImage(
@@ -112,7 +114,7 @@ class EventDetailSceen extends StatelessWidget {
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15),
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                       blurRadius: 3,
                                       blurStyle: BlurStyle.solid,
@@ -120,7 +122,7 @@ class EventDetailSceen extends StatelessWidget {
                                 ]),
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 30, vertical: 5),
-                            child: Text("1 Jan"),
+                            child: Text(AppText.firstJan.tr),
                           ),
                           CircleAvatar(
                             radius: 45,
@@ -136,7 +138,7 @@ class EventDetailSceen extends StatelessWidget {
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15),
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                       blurRadius: 3,
                                       blurStyle: BlurStyle.solid,
@@ -144,7 +146,7 @@ class EventDetailSceen extends StatelessWidget {
                                 ]),
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 30, vertical: 5),
-                            child: Text("Free"),
+                            child: Text(AppText.free.tr),
                           ),
                         ],
                       ),
@@ -174,8 +176,8 @@ class EventDetailSceen extends StatelessWidget {
                                         .first),
                               ));
                         },
-                        text: "View Profile",
-                        color: [Color(0xff8A5ED4), Color(0xff9245C4)],
+                        text: AppText.viewProfile.tr,
+                        color: const [Color(0xff8A5ED4), Color(0xff9245C4)],
                         borderRadius: 25),
                   ),
 
@@ -253,7 +255,7 @@ class EventDetailSceen extends StatelessWidget {
                     height: 12,
                   ),
                   Text(
-                    "Event Details",
+                    AppText.eventDetails.tr,
                     style: GoogleFonts.varelaRound(
                         fontSize: 14, fontWeight: FontWeight.w600),
                   ),
@@ -275,7 +277,7 @@ class EventDetailSceen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Timings",
+                            AppText.timings.tr,
                             style: GoogleFonts.varelaRound(
                                 fontSize: 14, fontWeight: FontWeight.w600),
                           ),
@@ -290,7 +292,7 @@ class EventDetailSceen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Event Type",
+                            AppText.eventType.tr,
                             style: GoogleFonts.varelaRound(
                                 fontSize: 12, fontWeight: FontWeight.w600),
                           ),
@@ -309,7 +311,7 @@ class EventDetailSceen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "People Who Joined",
+                        AppText.peopleWhoJoined.tr,
                         style: GoogleFonts.varelaRound(
                             fontSize: 14, fontWeight: FontWeight.w600),
                       ),
@@ -339,7 +341,7 @@ class EventDetailSceen extends StatelessWidget {
                               ),
                               Center(
                                 child: Text(
-                                  "No User Joined Yet",
+                                  AppText.noUserJoinedYet.tr,
                                   style: GoogleFonts.varelaRound(
                                       fontSize: 18, color: Colors.grey[600]),
                                 ),
@@ -386,7 +388,7 @@ class EventDetailSceen extends StatelessWidget {
                                                         .spaceBetween,
                                                 children: [
                                                   Text(
-                                                    "Vibes : 300",
+                                                    AppText.vibeThreeThous.tr,
                                                     style: GoogleFonts
                                                         .varelaRound(),
                                                   ),
@@ -407,8 +409,9 @@ class EventDetailSceen extends StatelessWidget {
                                                                         .first),
                                                               ));
                                                         },
-                                                        text: "View Profile",
-                                                        color: [
+                                                        text: AppText
+                                                            .viewProfile.tr,
+                                                        color: const [
                                                           Color(0xff8A5ED4),
                                                           Color(0xff9245C4)
                                                         ],

@@ -5,12 +5,15 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:vibeconnect/lang/app_text.dart';
 import 'package:vibeconnect/utils/styles.dart';
 import 'package:vibeconnect/views/home/message_view.dart';
 import 'package:vibeconnect/views/home/views/all_messages.dart';
+import 'package:vibeconnect/views/switch_language.dart';
 import '../../../widgets/show_eventcard_widget.dart';
 import '../../../controller/event_controller.dart';
 import '../../../controller/user_controller.dart';
@@ -198,7 +201,14 @@ class _LocationScreenState extends State<LocationScreen> {
                                     color:
                                         ui.Color.fromARGB(204, 255, 255, 255)),
                                 child: IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const SwitchLanguage()),
+                                    );
+                                  },
                                   icon: SvgPicture.asset(
                                     "assets/svg/drawer.svg",
                                     color: Color(Style.MAIN_COLOR),
@@ -246,9 +256,9 @@ class _LocationScreenState extends State<LocationScreen> {
                                           primaryColor: Colors
                                               .teal, // Set your primary color
 
-                                          colorScheme: ColorScheme.light(
+                                          colorScheme: const ColorScheme.light(
                                               primary: Color(Style.MAIN_COLOR)),
-                                          buttonTheme: ButtonThemeData(
+                                          buttonTheme: const ButtonThemeData(
                                               textTheme:
                                                   ButtonTextTheme.primary),
                                         ),
@@ -353,8 +363,8 @@ class _LocationScreenState extends State<LocationScreen> {
                                     },
                                     icon: SvgPicture.asset(
                                       "assets/svg/profile.svg",
-                                      color:
-                                          ui.Color.fromARGB(255, 247, 195, 40),
+                                      color: const ui.Color.fromARGB(
+                                          255, 247, 195, 40),
                                       height: 25,
                                       fit: BoxFit.cover,
                                     ),
@@ -396,7 +406,9 @@ class _LocationScreenState extends State<LocationScreen> {
                           height: deviceHeight * .02,
                         ),
                         Text(
-                          isRefreshing ? "Refreshing Events" : "Loading Events",
+                          isRefreshing
+                              ? AppText.refreshingEvents.tr
+                              : AppText.loadingEvents.tr,
                           style: GoogleFonts.varelaRound(
                               fontSize: 16, fontWeight: FontWeight.w600),
                         ),
@@ -567,7 +579,7 @@ class ImageButton extends StatelessWidget {
                 width: 95, // Adjust the width as needed
                 height: 95, // Adjust the height as needed
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
                 width: 50,
                 child: ImageIcon(

@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:vibeconnect/lang/app_text.dart';
 import '../../../utils/styles.dart';
 import '../../../widgets/button_widget.dart';
 import '../../../widgets/textfield_widget.dart';
@@ -62,7 +64,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Create An Account",
+          AppText.createAnAccount.tr,
           style: GoogleFonts.varelaRound(color: Colors.white),
         ),
         flexibleSpace: Container(
@@ -99,7 +101,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ? null
                             : DecorationImage(
                                 image: FileImage(File(_image!.path))),
-                        color: Color(0xffE4E4E4),
+                        color: const Color(0xffE4E4E4),
                         shape: BoxShape.circle),
                     child: Center(
                       child: IconButton(
@@ -113,7 +115,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   TextFieldWidget(
                       controller: nameController,
-                      hintText: "Full Name",
+                      hintText: AppText.fullName.tr,
                       svgPath: "assets/svg/person.svg",
                       isPassword: false),
                   const SizedBox(
@@ -121,7 +123,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   TextFieldWidget(
                       controller: emailController,
-                      hintText: "Email",
+                      hintText: AppText.email.tr,
                       svgPath: "assets/svg/email.svg",
                       isPassword: false),
                   const SizedBox(
@@ -129,7 +131,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   TextFieldWidget(
                       controller: passwordController,
-                      hintText: "Password",
+                      hintText: AppText.password.tr,
                       svgPath: "assets/svg/password.svg",
                       isPassword: true),
                   const SizedBox(
@@ -140,7 +142,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: TextFieldWidget(
                         canEdit: false,
                         controller: ageController,
-                        hintText: "Age",
+                        hintText: AppText.age.tr,
                         svgPath: "assets/svg/age.svg",
                         isPassword: false),
                   ),
@@ -149,7 +151,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Text('Gender',
+                    child: Text(AppText.gender.tr,
                         style: GoogleFonts.varelaRound(fontSize: 16)),
                   ),
                   Row(
@@ -158,8 +160,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Expanded(
                         child: RadioListTile<Gender>(
                           title: Text(
-                            'Male',
-                            style: TextStyle(fontSize: 14),
+                            AppText.male.tr,
+                            style: const TextStyle(fontSize: 14),
                           ),
                           value: Gender.Male,
                           groupValue: selectedGender,
@@ -177,8 +179,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: RadioListTile<Gender>(
                           contentPadding: EdgeInsets.zero,
                           title: Text(
-                            'Female',
-                            style: TextStyle(fontSize: 14),
+                            AppText.female.tr,
+                            style: const TextStyle(fontSize: 14),
                           ),
                           value: Gender.Female,
                           groupValue: selectedGender,
@@ -195,8 +197,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: RadioListTile<Gender>(
                           contentPadding: EdgeInsets.zero,
                           title: Text(
-                            'Others',
-                            style: TextStyle(fontSize: 14),
+                            AppText.others.tr,
+                            style: const TextStyle(fontSize: 14),
                           ),
                           value: Gender.Others,
                           groupValue: selectedGender,
@@ -218,8 +220,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: ButtonWidget(
                         onpressed: () {},
-                        text: "Register",
-                        color: [Color(0xff8767DA), Color(0xff943CBD)],
+                        text: AppText.register.tr,
+                        color: const [Color(0xff8767DA), Color(0xff943CBD)],
                         borderRadius: 15),
                   ),
                 ],
@@ -239,16 +241,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Wrap(
             children: <Widget>[
               ListTile(
-                leading: Icon(Icons.photo_library),
-                title: Text('Gallery'),
+                leading: const Icon(Icons.photo_library),
+                title: Text(AppText.gallery.tr),
                 onTap: () {
                   _pickImage(ImageSource.gallery);
                   Navigator.of(context).pop();
                 },
               ),
               ListTile(
-                leading: Icon(Icons.photo_camera),
-                title: Text('Camera'),
+                leading: const Icon(Icons.photo_camera),
+                title: Text(AppText.camera.tr),
                 onTap: () {
                   _pickImage(ImageSource.camera);
                   Navigator.of(context).pop();

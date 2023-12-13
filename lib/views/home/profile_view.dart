@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vibeconnect/lang/app_text.dart';
 import '../../model/user_model.dart';
 
 import '../../utils/styles.dart';
@@ -127,7 +129,7 @@ class ProfileViewScreen extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              'Meet',
+                              AppText.meet.tr,
                               style: GoogleFonts.varelaRound(
                                   fontSize: 16, fontWeight: FontWeight.w700),
                             ),
@@ -146,7 +148,7 @@ class ProfileViewScreen extends StatelessWidget {
                               height: 1,
                             ),
                             Text(
-                              'Connections',
+                              AppText.connections.tr,
                               style: GoogleFonts.varelaRound(
                                   fontSize: 16, fontWeight: FontWeight.w700),
                             ),
@@ -164,7 +166,7 @@ class ProfileViewScreen extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              'Vibe',
+                              AppText.vibe.tr,
                               style: GoogleFonts.varelaRound(
                                   fontSize: 16, fontWeight: FontWeight.w700),
                             ),
@@ -235,7 +237,7 @@ class ProfileViewScreen extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'Age  ',
+                  AppText.age.tr,
                   style: GoogleFonts.varelaRound(
                       fontSize: 18, fontWeight: FontWeight.w600),
                 ),
@@ -261,7 +263,7 @@ class ProfileViewScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'More Photos',
+                  AppText.morePhotos.tr,
                   style: GoogleFonts.varelaRound(
                     fontSize: 18,
                   ),

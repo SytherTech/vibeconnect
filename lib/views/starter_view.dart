@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../lang/app_text.dart';
 import '../views/auth/login_view.dart';
 import '../views/auth/register_view.dart';
 import '../widgets/button_widget.dart';
@@ -42,7 +44,7 @@ class StarterScreen extends StatelessWidget {
                                 builder: (context) => LoginScreen(),
                               ));
                         },
-                        text: "Sign In",
+                        text: AppText.signIn.tr,
                         color: const [Color(0xff8767DA), Color(0xff943CBD)],
                         borderRadius: 15),
                     const SizedBox(
@@ -53,11 +55,11 @@ class StarterScreen extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => RegisterScreen(),
+                                builder: (context) => const RegisterScreen(),
                               ));
                         },
-                        text: "Create An Account",
-                        color: [
+                        text: AppText.createAnAccount.tr,
+                        color: const [
                           Color.fromARGB(172, 14, 84, 235),
                           Color(0xff592acd),
                         ],

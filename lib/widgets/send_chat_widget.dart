@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:vibeconnect/lang/app_text.dart';
 import 'package:vibeconnect/utils/styles.dart';
 
 class SendChatWidget extends StatefulWidget {
@@ -36,7 +38,7 @@ class _SendChatWidgetState extends State<SendChatWidget> {
                 children: <Widget>[
                   ListTile(
                     leading: const Icon(Icons.camera_alt),
-                    title: const Text('Take a photo'),
+                    title: Text(AppText.takeAPhoto.tr),
                     onTap: () {
                       _pickImage(ImageSource.camera);
                       Navigator.of(context).pop();
@@ -44,7 +46,7 @@ class _SendChatWidgetState extends State<SendChatWidget> {
                   ),
                   ListTile(
                     leading: const Icon(Icons.photo_library),
-                    title: const Text('Choose from gallery'),
+                    title: Text(AppText.chooseFromGallery.tr),
                     onTap: () {
                       _pickImage(ImageSource.gallery);
                       Navigator.of(context).pop();
@@ -73,7 +75,7 @@ class _SendChatWidgetState extends State<SendChatWidget> {
         color: const Color.fromARGB(255, 233, 233, 233),
         borderRadius: BorderRadius.circular(50.0),
       ),
-      margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Row(
         children: <Widget>[
           _imageFile == null
@@ -105,16 +107,16 @@ class _SendChatWidgetState extends State<SendChatWidget> {
             child: TextField(
               controller: _messageController,
               decoration: InputDecoration(
-                hintText: 'Type your message...',
+                hintText: AppText.typeAMessage.tr,
                 hintStyle: GoogleFonts.varelaRound(),
                 border: InputBorder.none,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
               ),
             ),
           ),
-          SizedBox(width: 8.0),
+          const SizedBox(width: 8.0),
           Container(
-            padding: EdgeInsets.all(2),
+            padding: const EdgeInsets.all(2),
             height: 50,
             width: 50,
             child: FloatingActionButton(
@@ -125,7 +127,7 @@ class _SendChatWidgetState extends State<SendChatWidget> {
                   _imageFile = null;
                 });
               },
-              backgroundColor: Color(0xff8864D8),
+              backgroundColor: const Color(0xff8864D8),
               child: const Icon(
                 Icons.send,
                 color: Colors.white,

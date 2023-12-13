@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vibeconnect/lang/app_text.dart';
 import '../../../utils/styles.dart';
 import '../../../views/home/event_creation/event_details.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -93,8 +95,10 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
           data: ThemeData.light().copyWith(
             primaryColor: Colors.teal, // Set your primary color
 
-            colorScheme: ColorScheme.light(primary: Color(Style.MAIN_COLOR)),
-            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+            colorScheme:
+                const ColorScheme.light(primary: Color(Style.MAIN_COLOR)),
+            buttonTheme:
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
           ),
           child: child!,
         );
@@ -120,8 +124,10 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
           data: ThemeData.light().copyWith(
             primaryColor: Colors.teal, // Set your primary color
 
-            colorScheme: ColorScheme.light(primary: Color(Style.MAIN_COLOR)),
-            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+            colorScheme:
+                const ColorScheme.light(primary: Color(Style.MAIN_COLOR)),
+            buttonTheme:
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
           ),
           child: child!,
         );
@@ -152,7 +158,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Select A Category",
+                AppText.selectACategory.tr,
                 style: GoogleFonts.lato(
                     fontSize: 18,
                     color: Colors.grey[700],
@@ -243,7 +249,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                                 decoration: InputDecoration(
                                   hintText: startDate != null
                                       ? "${startDate!.day}/${startDate!.month}/${startDate!.year}"
-                                      : 'Select Date',
+                                      : AppText.selectDate.tr,
                                 ),
                               ),
                             ),
@@ -261,7 +267,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                                 decoration: InputDecoration(
                                   hintText: startTime != null
                                       ? "${startTime!.hour}:${startTime!.minute}"
-                                      : 'Start Time',
+                                      : AppText.startTime.tr,
                                 ),
                               ),
                             ),
@@ -275,7 +281,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                                 decoration: InputDecoration(
                                   hintText: endTime != null
                                       ? "${endTime!.hour}:${endTime!.minute}"
-                                      : 'End Time',
+                                      : AppText.endTime.tr,
                                 ),
                               ),
                             ),
@@ -290,8 +296,8 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                           children: [
                             TextFormField(
                               controller: detailsController,
-                              decoration: const InputDecoration(
-                                  labelText: 'Event Details'),
+                              decoration: InputDecoration(
+                                  labelText: AppText.eventDetails.tr),
                               maxLines: null, // Allow multiple lines
                               onChanged: (value) {
                                 setState(() {
@@ -300,14 +306,14 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                               },
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return 'Please enter event details';
+                                  return AppText.pleaseEnterEventDetails.tr;
                                 }
                                 return null;
                               },
                             ),
                             TextFormField(
-                              decoration:
-                                  InputDecoration(labelText: 'Users Limit'),
+                              decoration: InputDecoration(
+                                  labelText: AppText.usersLimit.tr),
                               keyboardType: TextInputType.number,
                               onChanged: (value) {
                                 setState(() {
@@ -316,7 +322,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                               },
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return 'Please enter user limit';
+                                  return AppText.pleaseEnteruserlimit.tr;
                                 }
                                 return null;
                               },
@@ -325,7 +331,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                         ),
                       ),
 
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       // DropdownButtonFormField<String>(
                       //   value: eventCost,
                       //   decoration: InputDecoration(labelText: 'Event Cost'),
@@ -362,11 +368,12 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                                   borderRadius: BorderRadius.circular(16),
                                   border: isFree
                                       ? null
-                                      : Border.all(color: Color(0xff8A5ED4))),
+                                      : Border.all(
+                                          color: const Color(0xff8A5ED4))),
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 15, vertical: 5),
                               child: Text(
-                                "Free",
+                                AppText.free.tr,
                                 style: GoogleFonts.varelaRound(
                                     fontSize: 16,
                                     color:
@@ -390,7 +397,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 15, vertical: 5),
                               child: Text(
-                                "Paid",
+                                AppText.paid.tr,
                                 style: GoogleFonts.varelaRound(
                                     fontSize: 16,
                                     color:
@@ -400,19 +407,19 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                           )
                         ],
                       ),
-                      SizedBox(height: 5.0),
+                      const SizedBox(height: 5.0),
                       if (!isFree)
                         TextField(
                           controller: costPerPersonController,
                           decoration: InputDecoration(
-                              labelText: 'Cost Per Person (EURO)'),
+                              labelText: AppText.costPerPersonEURO.tr),
                           onChanged: (value) {
                             setState(() {
                               costPerPerson = value;
                             });
                           },
                         ),
-                      SizedBox(height: 32.0),
+                      const SizedBox(height: 32.0),
                     ],
                   ),
                 ),
@@ -433,8 +440,8 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                   builder: (context) => LocationPicker(
                       Category: selectedCategory,
                       EventCost: isFree == true
-                          ? "Free"
-                          : "Paid ${costPerPersonController.text} Euro",
+                          ? AppText.free.tr
+                          : " ${AppText.paid.tr} ${costPerPersonController.text} ${AppText.euro.tr} ",
                       date: startDate!.toIso8601String(),
                       startTime: formatTimeOfDay(startTime!),
                       endTime: formatTimeOfDay(endTime!),
@@ -443,9 +450,9 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                 ));
           }
         },
-        label: const Text(
-          "Continue",
-          style: TextStyle(color: Colors.white, fontSize: 23),
+        label: Text(
+          AppText.continuE.tr,
+          style: const TextStyle(color: Colors.white, fontSize: 23),
         ),
       ),
     );

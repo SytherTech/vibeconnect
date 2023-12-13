@@ -23,20 +23,19 @@ class TextFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      color: Color(0xffEFEFEF),
+      color: const Color(0xffEFEFEF),
       child: TextField(
         obscureText: isPassword,
         controller: controller,
         style: TextStyle(fontSize: hintsize),
-        cursorColor: Color(Style.PRIMARY_COLOR),
+        cursorColor: const Color(Style.PRIMARY_COLOR),
         decoration: InputDecoration(
-            hintStyle: TextStyle(fontSize: 14),
+            hintStyle: const TextStyle(fontSize: 14),
             enabled: canEdit,
             prefixIconConstraints:
                 const BoxConstraints(minWidth: 60, minHeight: 20),
             contentPadding: const EdgeInsets.only(left: 10),
             hintText: hintText,
-            
             prefixIcon: SvgPicture.asset(
               svgPath,
             ),

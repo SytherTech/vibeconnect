@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tcard/tcard.dart';
+import 'package:vibeconnect/lang/app_text.dart';
 import '../utils/userdata.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../utils/styles.dart';
@@ -60,14 +62,14 @@ class _EventRequestScreenState extends State<EventRequestScreen> {
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold)),
                         Text(
-                          'Age: ${UserData().users[index].age} Years Old',
-                          style: TextStyle(
+                          ' ${AppText.age.tr} : ${UserData().users[index].age} ${AppText.yearsOld.tr} ',
+                          style: const TextStyle(
                             color: Colors.white,
                           ),
                         ),
                         Text(
-                          'Vibes: 230',
-                          style: TextStyle(
+                          AppText.vibeThreeThous.tr,
+                          style: const TextStyle(
                             color: Colors.white,
                           ),
                         ),
@@ -115,7 +117,7 @@ class _EventRequestScreenState extends State<EventRequestScreen> {
         onForward: (index, info) {
           if (info.direction == SwipDirection.Right) {
             Fluttertoast.showToast(
-              msg: "Accepted",
+              msg: AppText.accepted.tr,
               toastLength: Toast
                   .LENGTH_SHORT, // You can use Toast.LENGTH_LONG for a longer duration
               gravity:
@@ -127,7 +129,7 @@ class _EventRequestScreenState extends State<EventRequestScreen> {
             );
           } else if (info.direction == SwipDirection.Left) {
             Fluttertoast.showToast(
-              msg: "Rejected",
+              msg: AppText.rejected.tr,
               toastLength: Toast
                   .LENGTH_SHORT, // You can use Toast.LENGTH_LONG for a longer duration
               gravity:

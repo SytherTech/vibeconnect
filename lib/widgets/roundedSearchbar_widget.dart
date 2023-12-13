@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vibeconnect/lang/app_text.dart';
 
 class RoundedSearchBar extends StatelessWidget {
   @override
@@ -9,23 +11,24 @@ class RoundedSearchBar extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(
             30.0), // Adjust the border radius for roundness
-        color: Color.fromARGB(204, 255, 255, 255), // Set the background color
+        color: const Color.fromARGB(
+            204, 255, 255, 255), // Set the background color
       ),
       child: Row(
         children: <Widget>[
           Expanded(
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Search (Party , Walking , Fun)',
+                hintText: AppText.searchPartyWalkingFun.tr,
                 hintStyle: GoogleFonts.varelaRound(
-                    color: Color(0xff592acd), fontSize: 14),
+                    color: const Color(0xff592acd), fontSize: 14),
                 border: InputBorder.none, // Remove the default input border
-                contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
+          const Padding(
+            padding: EdgeInsets.only(right: 20),
             child: Icon(
               Icons.search,
               size: 25,

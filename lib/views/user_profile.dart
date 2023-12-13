@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:vibeconnect/utils/userdata.dart';
 import '../controller/user_controller.dart';
+import '../lang/app_text.dart';
 import '../model/user_model.dart';
 import '../widgets/button_widget.dart';
 
@@ -61,7 +63,7 @@ class MyProfileView extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new_rounded,
               color: Color(Style.MAIN_COLOR),
             ),
@@ -74,7 +76,7 @@ class MyProfileView extends StatelessWidget {
         },
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -146,7 +148,7 @@ class MyProfileView extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  'Meet',
+                                  AppText.meet.tr,
                                   style: GoogleFonts.varelaRound(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700),
@@ -166,7 +168,7 @@ class MyProfileView extends StatelessWidget {
                                   height: 1,
                                 ),
                                 Text(
-                                  'Connections',
+                                  AppText.connections.tr,
                                   style: GoogleFonts.varelaRound(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700),
@@ -185,7 +187,7 @@ class MyProfileView extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  'Vibe',
+                                  AppText.vibe.tr,
                                   style: GoogleFonts.varelaRound(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700),
@@ -291,7 +293,7 @@ class MyProfileView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Age  ',
+                      AppText.age.tr,
                       style: GoogleFonts.varelaRound(
                           fontSize: 18, fontWeight: FontWeight.w600),
                     ),
@@ -305,14 +307,14 @@ class MyProfileView extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Text(
                   userModel.about.toString(),
                   style: GoogleFonts.varelaRound(
                     fontSize: 12,
                   ),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 // Text(
                 //   '@${userModel.name}',
                 //   style:

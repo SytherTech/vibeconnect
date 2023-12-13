@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:vibeconnect/controller/event_controller.dart';
+import 'package:vibeconnect/lang/app_text.dart';
 import 'package:vibeconnect/model/event_model.dart';
 import 'package:vibeconnect/utils/userdata.dart';
 import 'package:vibeconnect/views/home/views/location.dart';
@@ -107,7 +109,7 @@ class _LocationPickerState extends State<LocationPicker> {
                           requestedUsers: []));
                       _showEventCreatedDialog();
                     },
-                    text: 'Pick & Create Event',
+                    text: AppText.pickAndCreateEvent.tr,
                     color: const [Color(0xff8767DA), Color(0xff943CBD)],
                     borderRadius: 15),
               )),
@@ -134,8 +136,8 @@ class _LocationPickerState extends State<LocationPicker> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Event Created'),
-          content: const Text('Your event has been successfully created!'),
+          title: Text(AppText.eventCreated.tr),
+          content: Text(AppText.yourEventHasBeenSuccessfullyCreated.tr),
           actions: <Widget>[
             TextButton(
               onPressed: () {
@@ -146,7 +148,7 @@ class _LocationPickerState extends State<LocationPicker> {
                       builder: (context) => const LocationScreen(),
                     ));
               },
-              child: const Text('OK'),
+              child: Text(AppText.ok.tr),
             ),
           ],
         );
