@@ -11,6 +11,8 @@ import '../../../widgets/button_widget.dart';
 import '../../../widgets/textfield_widget.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../services/register_services.dart';
+
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
@@ -25,7 +27,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController ageController = TextEditingController();
-
+  Gender? selectedGender;
   DateTime? selectedDate;
 
   File? _image;
@@ -58,7 +60,37 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
   }
 
-  Gender? selectedGender;
+  final RegistrationService registrationService = RegistrationService();
+
+  Future<void> _handleRegistration() async {
+    String name = nameController.text;
+    String email = emailController.text;
+    String password = passwordController.text;
+    int age = int.tryParse(ageController.text) ?? 0;
+
+    if (name.isNotEmpty &&
+        email.isNotEmpty &&
+        password.isNotEmpty &&
+        age > 0 &&
+        selectedGender != null) {
+      bool success = await registrationService.registerUser(
+        name,
+        email,
+        password,
+        age,
+        selectedGender!,
+        _image,
+      );
+      if (success) {
+        // Registration successful,
+      } else {
+        // error message
+      }
+    } else {
+      //  fill in all required fields
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

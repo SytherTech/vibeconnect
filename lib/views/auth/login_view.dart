@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vibeconnect/lang/app_text.dart';
+import 'package:vibeconnect/services/authentication_service.dart';
 import 'package:vibeconnect/views/home/views/location.dart';
 import '../../../views/home/home_view.dart';
 import '../../../widgets/button_widget.dart';
@@ -20,6 +21,24 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final AuthenticationService authservices = AuthenticationService();
+
+  Future<void> _handleSignIn() async {
+    String _email = _emailController.text;
+    String _password = _passwordController.text;
+
+    if (_email.isNotEmpty && _password.isNotEmpty) {
+      bool success = await authservices.signIn(_email, _password);
+      if (success) {
+        print("successs full login");
+      } else {
+        print("login failed");
+      }
+    } else {
+      // Show a message to enter both email and password
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -96,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               onPressed: () {},
                               child: Text(
                                 AppText.forgotPassword.tr,
-                                style: TextStyle(color: Colors.black),
+                                style: const TextStyle(color: Colors.black),
                               ),
                             ),
                           ),
@@ -108,7 +127,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => LocationScreen(),
+                                      builder: (context) =>
+                                          const LocationScreen(),
                                     ));
                               },
                               text: AppText.login.tr,

@@ -440,8 +440,8 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                   builder: (context) => LocationPicker(
                       Category: selectedCategory,
                       EventCost: isFree == true
-                          ? AppText.free.tr
-                          : " ${AppText.paid.tr} ${costPerPersonController.text} ${AppText.euro.tr} ",
+                          ? 'Free'
+                          : "Paid ${costPerPersonController.text} ${AppText.euro.tr} ",
                       date: startDate!.toIso8601String(),
                       startTime: formatTimeOfDay(startTime!),
                       endTime: formatTimeOfDay(endTime!),

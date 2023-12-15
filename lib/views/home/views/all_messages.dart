@@ -27,7 +27,7 @@ class _AllMessagesState extends State<AllMessages> {
       appBar: AppBar(
         title: Text(
           AppText.eventChats.tr,
-          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
         ),
       ),
       body: Padding(

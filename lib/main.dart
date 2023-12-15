@@ -47,11 +47,11 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-          colorScheme:
-              ColorScheme.fromSeed(seedColor: Color(Style.SECONDARY_COLOR)),
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: const Color(Style.SECONDARY_COLOR)),
           useMaterial3: true,
         ),
-        home: SplashScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

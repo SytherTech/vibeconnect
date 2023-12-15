@@ -15,4 +15,15 @@ class UserModel {
       this.about,
       this.likes,
       this.imgUrl});
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
+      id: json['id'],
+      name: json['name'],
+      age: json['age'],
+      email: json['email'],
+      about: json['about'],
+      likes: json['likes'],
+      imgUrl: List<String>.from(json['imgUrl']),
+    );
+  }
 }
