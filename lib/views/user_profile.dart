@@ -8,12 +8,28 @@ import 'package:vibeconnect/utils/userdata.dart';
 import '../controller/user_controller.dart';
 import '../lang/app_text.dart';
 import '../model/user_model.dart';
+import '../services/user_services.dart';
 import '../widgets/button_widget.dart';
 
 import '../../utils/styles.dart';
 import '../widgets/fullscreen_photo_view.dart';
 
 class MyProfileView extends StatelessWidget {
+  void fetchUserData(String userId) async {
+    UserService userService = UserService();
+
+    UserModel? user = await userService.getUser(userId);
+
+    if (user != null) {
+      // Use the retrieved user details
+      print('User details: ${user.name}, ${user.email}');
+      // Handle further actions with user data
+    } else {
+      // Handle the scenario where user details couldn't be fetched
+      print('Failed to fetch user details');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var userModel = UserData().users[0];

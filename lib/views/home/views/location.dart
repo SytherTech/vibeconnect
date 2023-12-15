@@ -114,7 +114,7 @@ class _LocationScreenState extends State<LocationScreen> {
                     onMapCreated: _onMapCreated,
                     onTap: (latlng) {
                       setState(() {
-                        showInfoContainer = true;
+                        showInfoContainer = false;
                       });
                     },
                     mapType: MapType.normal,
