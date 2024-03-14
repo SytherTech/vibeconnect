@@ -23,7 +23,10 @@ class TextFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      color: const Color(0xffEFEFEF),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(18),
+        color: const Color(0xffEFEFEF),
+      ),
       child: TextField(
         obscureText: isPassword,
         controller: controller,

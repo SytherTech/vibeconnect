@@ -14,6 +14,7 @@ import 'package:vibeconnect/utils/styles.dart';
 import 'package:vibeconnect/views/home/message_view.dart';
 import 'package:vibeconnect/views/home/views/all_messages.dart';
 import 'package:vibeconnect/views/switch_language.dart';
+import 'package:vibeconnect/widgets/location_drawer.dart';
 import '../../../widgets/show_eventcard_widget.dart';
 import '../../../controller/event_controller.dart';
 import '../../../controller/user_controller.dart';
@@ -71,12 +72,21 @@ class _LocationScreenState extends State<LocationScreen> {
 
   List<EventModel> eventProvider = [];
   EventModel? eventModel;
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void openDrawer() {
+    _scaffoldKey.currentState?.openDrawer();
+  }
+
   @override
   Widget build(BuildContext context) {
     var deviceHeight = MediaQuery.of(context).size.height;
     eventProvider = Provider.of<EventController>(context).events;
+    // drawer
 
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: LocationDrawer(),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButton: ImageButton(),
@@ -113,9 +123,21 @@ class _LocationScreenState extends State<LocationScreen> {
                 GoogleMap(
                     onMapCreated: _onMapCreated,
                     onTap: (latlng) {
-                      setState(() {
-                        showInfoContainer = true;
-                      });
+                      if (showInfoContainer == true) {
+                        setState(() {
+                          showInfoContainer = false;
+                        });
+                      }
+                      if (eventProvider
+                              .where(
+                                  (element) => element.eventLocation == latlng)
+                              .first
+                              .eventLocation !=
+                          null) {
+                        setState(() {
+                          showInfoContainer = true;
+                        });
+                      }
                     },
                     mapType: MapType.normal,
                     buildingsEnabled: true,
@@ -201,14 +223,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                     color:
                                         ui.Color.fromARGB(204, 255, 255, 255)),
                                 child: IconButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const SwitchLanguage()),
-                                    );
-                                  },
+                                  onPressed: openDrawer,
                                   icon: SvgPicture.asset(
                                     "assets/svg/drawer.svg",
                                     color: Color(Style.MAIN_COLOR),
@@ -314,13 +329,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                           204, 255, 255, 255)),
                                   padding: const EdgeInsets.all(5),
                                   child: IconButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    AllMessages()));
-                                      },
+                                      onPressed: () {},
                                       icon: SvgPicture.asset(
                                         "assets/svg/msg.svg",
                                         color: const Color(0xffd6587f),

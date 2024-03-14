@@ -155,26 +155,26 @@ class MyProfileView extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(
-                              width: deviceHeight * .02,
-                            ),
-                            Column(
-                              children: [
-                                Text(
-                                  "10k",
-                                  style: GoogleFonts.varelaRound(fontSize: 14),
-                                ),
-                                const SizedBox(
-                                  height: 1,
-                                ),
-                                Text(
-                                  AppText.connections.tr,
-                                  style: GoogleFonts.varelaRound(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                              ],
-                            ),
+                            // SizedBox(
+                            //   width: deviceHeight * .02,
+                            // ),
+                            // Column(
+                            //   children: [
+                            //     Text(
+                            //       "10k",
+                            //       style: GoogleFonts.varelaRound(fontSize: 14),
+                            //     ),
+                            //     const SizedBox(
+                            //       height: 1,
+                            //     ),
+                            //     Text(
+                            //       AppText.connections.tr,
+                            //       style: GoogleFonts.varelaRound(
+                            //           fontSize: 16,
+                            //           fontWeight: FontWeight.w700),
+                            //     ),
+                            //   ],
+                            // ),
                             SizedBox(
                               width: deviceWidth * .02,
                             ),
