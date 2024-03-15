@@ -5,12 +5,16 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:vibeconnect/lang/app_text.dart';
 import 'package:vibeconnect/utils/styles.dart';
 import 'package:vibeconnect/views/home/message_view.dart';
 import 'package:vibeconnect/views/home/views/all_messages.dart';
+import 'package:vibeconnect/views/switch_language.dart';
+import 'package:vibeconnect/widgets/location_drawer.dart';
 import '../../../widgets/show_eventcard_widget.dart';
 import '../../../controller/event_controller.dart';
 import '../../../controller/user_controller.dart';
@@ -98,12 +102,21 @@ class _LocationScreenState extends State<LocationScreen>
 
   List<EventModel> eventProvider = [];
   EventModel? eventModel;
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void openDrawer() {
+    _scaffoldKey.currentState?.openDrawer();
+  }
+
   @override
   Widget build(BuildContext context) {
     var deviceHeight = MediaQuery.of(context).size.height;
     eventProvider = Provider.of<EventController>(context).events;
+    // drawer
 
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: LocationDrawer(),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButton: Transform.translate(
@@ -142,14 +155,26 @@ class _LocationScreenState extends State<LocationScreen>
                 GoogleMap(
                     onMapCreated: _onMapCreated,
                     onTap: (latlng) {
+<<<<<<< HEAD
                       if (showInfoContainer) {
+=======
+                      if (showInfoContainer == true) {
+>>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                         setState(() {
                           showInfoContainer = false;
                         });
                       }
                       if (eventProvider
+<<<<<<< HEAD
                           .where((element) => element.eventLocation == latlng)
                           .isNotEmpty) {
+=======
+                              .where(
+                                  (element) => element.eventLocation == latlng)
+                              .first
+                              .eventLocation !=
+                          null) {
+>>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                         setState(() {
                           showInfoContainer = true;
                         });
@@ -239,7 +264,7 @@ class _LocationScreenState extends State<LocationScreen>
                                     color:
                                         ui.Color.fromARGB(204, 255, 255, 255)),
                                 child: IconButton(
-                                  onPressed: () {},
+                                  onPressed: openDrawer,
                                   icon: SvgPicture.asset(
                                     "assets/svg/drawer.svg",
                                     color: Color(Style.MAIN_COLOR),
@@ -287,9 +312,9 @@ class _LocationScreenState extends State<LocationScreen>
                                           primaryColor: Colors
                                               .teal, // Set your primary color
 
-                                          colorScheme: ColorScheme.light(
+                                          colorScheme: const ColorScheme.light(
                                               primary: Color(Style.MAIN_COLOR)),
-                                          buttonTheme: ButtonThemeData(
+                                          buttonTheme: const ButtonThemeData(
                                               textTheme:
                                                   ButtonTextTheme.primary),
                                         ),
@@ -356,6 +381,7 @@ class _LocationScreenState extends State<LocationScreen>
                                           204, 255, 255, 255)),
                                   padding: const EdgeInsets.all(5),
                                   child: IconButton(
+<<<<<<< HEAD
                                       onPressed: () async {
                                         await Navigator.push(
                                             context,
@@ -369,6 +395,9 @@ class _LocationScreenState extends State<LocationScreen>
                                           _controller.stop();
                                         });
                                       },
+=======
+                                      onPressed: () {},
+>>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                                       icon: SvgPicture.asset(
                                         "assets/svg/msg.svg",
                                         color: const Color(0xffd6587f),
@@ -415,8 +444,8 @@ class _LocationScreenState extends State<LocationScreen>
                                     },
                                     icon: SvgPicture.asset(
                                       "assets/svg/profile.svg",
-                                      color:
-                                          ui.Color.fromARGB(255, 247, 195, 40),
+                                      color: const ui.Color.fromARGB(
+                                          255, 247, 195, 40),
                                       height: 25,
                                       fit: BoxFit.cover,
                                     ),
@@ -458,7 +487,9 @@ class _LocationScreenState extends State<LocationScreen>
                           height: deviceHeight * .02,
                         ),
                         Text(
-                          isRefreshing ? "Refreshing Events" : "Loading Events",
+                          isRefreshing
+                              ? AppText.refreshingEvents.tr
+                              : AppText.loadingEvents.tr,
                           style: GoogleFonts.varelaRound(
                               fontSize: 16, fontWeight: FontWeight.w600),
                         ),
@@ -636,9 +667,15 @@ class ImageButton extends StatelessWidget {
                 width: 95, // Adjust the width as needed
                 height: 95, // Adjust the height as needed
               ),
+<<<<<<< HEAD
               SizedBox(
                 height: 25,
                 width: 25,
+=======
+              const SizedBox(
+                height: 50,
+                width: 50,
+>>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                 child: ImageIcon(
                   AssetImage(
                     "assets/png/add.png",

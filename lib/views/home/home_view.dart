@@ -49,14 +49,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: PageView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           controller: pageController,
           onPageChanged: (v) {
             print(v);
             tabIndex = v;
           },
           children: [
-            LocationScreen(),
+            const LocationScreen(),
             GroupChatScreen(),
             EventRequestScreen(),
             Container()
@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Color(0xff541D9E),
+          selectedItemColor: const Color(0xff541D9E),
           currentIndex: tabIndex,
           type: BottomNavigationBarType.fixed,
           items: [

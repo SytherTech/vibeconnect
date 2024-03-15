@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vibeconnect/lang/app_text.dart';
 import 'package:vibeconnect/views/home/views/location.dart';
 import '../../../views/home/home_view.dart';
 import '../../../widgets/button_widget.dart';
@@ -63,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
+<<<<<<< HEAD
                           // Text(
                           //   "Login To Join The Amazing Adventures !",
                           //   style: GoogleFonts.varelaRound(
@@ -78,13 +81,29 @@ class _LoginScreenState extends State<LoginScreen> {
                             hintText: "Email",
                             svgPath: "assets/svg/email.svg",
                           ),
+=======
+                          Text(
+                            AppText.loginToJoinTheAmazingAdventures.tr,
+                            style: GoogleFonts.varelaRound(
+                                fontSize: 24, fontWeight: FontWeight.w700),
+                            textAlign: TextAlign.start,
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          TextFieldWidget(
+                              isPassword: false,
+                              controller: _emailController,
+                              hintText: AppText.email.tr,
+                              svgPath: "assets/svg/email.svg"),
+>>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                           const SizedBox(
                             height: 10,
                           ),
                           TextFieldWidget(
                               isPassword: true,
                               controller: _passwordController,
-                              hintText: "Password",
+                              hintText: AppText.password.tr,
                               svgPath: "assets/svg/password.svg"),
                           const SizedBox(
                             height: 5,
@@ -93,8 +112,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             alignment: Alignment.centerRight,
                             child: TextButton(
                               onPressed: () {},
-                              child: const Text(
-                                "Forgot Password?",
+                              child: Text(
+                                AppText.forgotPassword.tr,
                                 style: TextStyle(color: Colors.black),
                               ),
                             ),
@@ -110,8 +129,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                       builder: (context) => LocationScreen(),
                                     ));
                               },
+<<<<<<< HEAD
                               text: "Login",
                               color: [Color(0xff8A5ED4), Color(0xff8A5ED4)],
+=======
+                              text: AppText.login.tr,
+                              color: const [
+                                Color(0xff8767DA),
+                                Color(0xff943CBD)
+                              ],
+>>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                               borderRadius: 15),
                           const SizedBox(
                             height: 80,
@@ -120,11 +147,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Do Have An Account?",
+                                AppText.doHaveAnAccount.tr,
                                 style: GoogleFonts.varelaRound(fontSize: 14),
                               ),
                               Text(
-                                "Register Here",
+                                AppText.registerHere.tr,
                                 style: GoogleFonts.varelaRound(
                                     fontSize: 14, fontWeight: FontWeight.w700),
                               ),

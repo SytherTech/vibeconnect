@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vibeconnect/lang/app_text.dart';
 import '../../../utils/styles.dart';
 import '../../../views/home/event_creation/event_details.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -93,8 +95,10 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
           data: ThemeData.light().copyWith(
             primaryColor: Colors.teal, // Set your primary color
 
-            colorScheme: ColorScheme.light(primary: Color(Style.MAIN_COLOR)),
-            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+            colorScheme:
+                const ColorScheme.light(primary: Color(Style.MAIN_COLOR)),
+            buttonTheme:
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
           ),
           child: child!,
         );
@@ -120,8 +124,10 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
           data: ThemeData.light().copyWith(
             primaryColor: Colors.teal, // Set your primary color
 
-            colorScheme: ColorScheme.light(primary: Color(Style.MAIN_COLOR)),
-            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+            colorScheme:
+                const ColorScheme.light(primary: Color(Style.MAIN_COLOR)),
+            buttonTheme:
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
           ),
           child: child!,
         );
@@ -153,8 +159,13 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
+<<<<<<< HEAD
                 "Select A Category",
                 style: GoogleFonts.varelaRound(
+=======
+                AppText.selectACategory.tr,
+                style: GoogleFonts.lato(
+>>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                     fontSize: 18,
                     color: Colors.grey[700],
                     fontWeight: FontWeight.w600),
@@ -249,7 +260,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                                 decoration: InputDecoration(
                                   hintText: startDate != null
                                       ? "${startDate!.day}/${startDate!.month}/${startDate!.year}"
-                                      : 'Select Date',
+                                      : AppText.selectDate.tr,
                                 ),
                               ),
                             ),
@@ -269,7 +280,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                                 decoration: InputDecoration(
                                   hintText: startTime != null
                                       ? "${startTime!.hour}:${startTime!.minute}"
-                                      : 'Start Time',
+                                      : AppText.startTime.tr,
                                 ),
                               ),
                             ),
@@ -285,7 +296,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                                 decoration: InputDecoration(
                                   hintText: endTime != null
                                       ? "${endTime!.hour}:${endTime!.minute}"
-                                      : 'End Time',
+                                      : AppText.endTime.tr,
                                 ),
                               ),
                             ),
@@ -301,6 +312,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                             TextFormField(
                               cursorColor: Color(0xff8767DA),
                               controller: detailsController,
+<<<<<<< HEAD
                               style: GoogleFonts.varelaRound(
                                   fontWeight: FontWeight.w600),
                               decoration: const InputDecoration(
@@ -308,6 +320,10 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                                       borderSide:
                                           BorderSide(color: Color(0xff8767DA))),
                                   hintText: 'Event Details'),
+=======
+                              decoration: InputDecoration(
+                                  labelText: AppText.eventDetails.tr),
+>>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                               maxLines: null, // Allow multiple lines
                               onChanged: (value) {
                                 setState(() {
@@ -316,7 +332,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                               },
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return 'Please enter event details';
+                                  return AppText.pleaseEnterEventDetails.tr;
                                 }
                                 return null;
                               },
@@ -325,6 +341,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                               height: 10,
                             ),
                             TextFormField(
+<<<<<<< HEAD
                               cursorColor: Color(0xff8767DA),
                               style: GoogleFonts.varelaRound(
                                   fontWeight: FontWeight.w600),
@@ -334,6 +351,10 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                                     borderSide:
                                         BorderSide(color: Color(0xff8767DA))),
                               ),
+=======
+                              decoration: InputDecoration(
+                                  labelText: AppText.usersLimit.tr),
+>>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                               keyboardType: TextInputType.number,
                               onChanged: (value) {
                                 setState(() {
@@ -342,7 +363,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                               },
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return 'Please enter user limit';
+                                  return AppText.pleaseEnteruserlimit.tr;
                                 }
                                 return null;
                               },
@@ -351,7 +372,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                         ),
                       ),
 
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       // DropdownButtonFormField<String>(
                       //   value: eventCost,
                       //   decoration: InputDecoration(labelText: 'Event Cost'),
@@ -388,11 +409,12 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                                   borderRadius: BorderRadius.circular(16),
                                   border: isFree
                                       ? null
-                                      : Border.all(color: Color(0xff8A5ED4))),
+                                      : Border.all(
+                                          color: const Color(0xff8A5ED4))),
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 15, vertical: 5),
                               child: Text(
-                                "Free",
+                                AppText.free.tr,
                                 style: GoogleFonts.varelaRound(
                                     fontSize: 16,
                                     color:
@@ -416,7 +438,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 15, vertical: 5),
                               child: Text(
-                                "Paid",
+                                AppText.paid.tr,
                                 style: GoogleFonts.varelaRound(
                                     fontSize: 16,
                                     color:
@@ -426,19 +448,19 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                           )
                         ],
                       ),
-                      SizedBox(height: 5.0),
+                      const SizedBox(height: 5.0),
                       if (!isFree)
                         TextField(
                           controller: costPerPersonController,
                           decoration: InputDecoration(
-                              labelText: 'Cost Per Person (EURO)'),
+                              labelText: AppText.costPerPersonEURO.tr),
                           onChanged: (value) {
                             setState(() {
                               costPerPerson = value;
                             });
                           },
                         ),
-                      SizedBox(height: 32.0),
+                      const SizedBox(height: 32.0),
                     ],
                   ),
                 ),
@@ -475,6 +497,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
           ),
         ),
       ),
+<<<<<<< HEAD
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       // floatingActionButton: FloatingActionButton.extended(
       //   extendedPadding: const EdgeInsets.symmetric(horizontal: 100),
@@ -502,6 +525,35 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
       //     style: TextStyle(color: Colors.white, fontSize: 23),
       //   ),
       // ),
+=======
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        extendedPadding: const EdgeInsets.symmetric(horizontal: 100),
+        backgroundColor: const Color(0xff8A5ED4),
+        onPressed: () {
+          if (_formKey.currentState!.validate()) {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LocationPicker(
+                      Category: selectedCategory,
+                      EventCost: isFree == true
+                          ? AppText.free.tr
+                          : " ${AppText.paid.tr} ${costPerPersonController.text} ${AppText.euro.tr} ",
+                      date: startDate!.toIso8601String(),
+                      startTime: formatTimeOfDay(startTime!),
+                      endTime: formatTimeOfDay(endTime!),
+                      eventDetails: eventDetails,
+                      userLimit: userLimit),
+                ));
+          }
+        },
+        label: Text(
+          AppText.continuE.tr,
+          style: const TextStyle(color: Colors.white, fontSize: 23),
+        ),
+      ),
+>>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
     );
   }
 }

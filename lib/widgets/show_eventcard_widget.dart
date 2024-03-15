@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vibeconnect/lang/app_text.dart';
 import '../model/event_model.dart';
 import '../utils/userdata.dart';
 import '../views/home/views/event_detail_view.dart';
@@ -106,7 +108,7 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Event-Cost:",
+                              "${AppText.eventCost.tr} : ",
                               style: GoogleFonts.varelaRound(
                                   fontSize: 14, fontWeight: FontWeight.w600),
                             ),
@@ -129,8 +131,11 @@ class _EventCardWidgetState extends State<EventCardWidget> {
                                           eventModel: widget.eventModel),
                                     ));
                               },
-                              text: "View",
-                              color: [Color(0xff8A5ED4), Color(0xff9245C4)],
+                              text: AppText.view.tr,
+                              color: const [
+                                Color(0xff8A5ED4),
+                                Color(0xff9245C4)
+                              ],
                               borderRadius: 15,
                               buttonTextSize: 14),
                         )

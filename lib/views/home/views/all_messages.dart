@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:vibeconnect/lang/app_text.dart';
 import 'package:vibeconnect/utils/styles.dart';
 
 import '../../../controller/event_controller.dart';
@@ -23,8 +25,8 @@ class _AllMessagesState extends State<AllMessages> {
         .first;
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Event Chats",
+        title: Text(
+          AppText.eventChats.tr,
           style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
         ),
       ),
@@ -47,7 +49,7 @@ class _AllMessagesState extends State<AllMessages> {
                       margin: const EdgeInsets.only(bottom: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                           colors: [
                             Color(Style.PRIMARY_COLOR),
                             Color(Style.SECONDARY_COLOR)
@@ -63,23 +65,23 @@ class _AllMessagesState extends State<AllMessages> {
                               NetworkImage(eventModel.eventImages![0]),
                         ),
                         title: Text(
-                          'Johson Math Event (22)',
+                          AppText.johsonMathEvent.tr,
                           style: GoogleFonts.varelaRound(color: Colors.white),
                         ),
                         subtitle: Text(
-                          'Sports',
+                          AppText.sports.tr,
                           style: GoogleFonts.varelaRound(color: Colors.white),
                         ),
                         trailing: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "2 Dec 2023",
-                              style:
-                                  GoogleFonts.varelaRound(color: Colors.white),
+                              eventModel.endTime!,
+                              style: const TextStyle(
+                                  fontSize: 14.0, color: Colors.grey),
                             ),
                             Text(
-                              'My Event',
+                              AppText.myEvent.tr,
                               style:
                                   GoogleFonts.varelaRound(color: Colors.white),
                             ),

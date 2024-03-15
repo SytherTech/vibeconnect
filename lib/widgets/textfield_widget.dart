@@ -22,18 +22,25 @@ class TextFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+<<<<<<< HEAD
       decoration: BoxDecoration(
           color: Color(0xffEFEFEF), borderRadius: BorderRadius.circular(18)),
       padding: const EdgeInsets.symmetric(
         horizontal: 10,
+=======
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(18),
+        color: const Color(0xffEFEFEF),
+>>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
       ),
       child: TextField(
         obscureText: isPassword,
         controller: controller,
         style: TextStyle(fontSize: hintsize),
-        cursorColor: Color(Style.PRIMARY_COLOR),
+        cursorColor: const Color(Style.PRIMARY_COLOR),
         decoration: InputDecoration(
-            hintStyle: TextStyle(fontSize: 14),
+            hintStyle: const TextStyle(fontSize: 14),
             enabled: canEdit,
             prefixIconConstraints:
                 const BoxConstraints(minWidth: 60, minHeight: 20),

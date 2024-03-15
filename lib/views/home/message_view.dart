@@ -203,11 +203,13 @@
 // }
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:vibeconnect/utils/userdata.dart';
 import 'package:vibeconnect/views/home/message_experience.dart';
 import 'package:vibeconnect/widgets/button_widget.dart';
+import '../../lang/app_text.dart';
 import '../../model/user_model.dart';
 
 import '../../controller/event_controller.dart';
@@ -303,12 +305,12 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                       top: 30,
                       left: deviceSize.width * 0.85,
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: Color.fromARGB(173, 241, 216, 214)),
                         child: IconButton(
                           onPressed: () {},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.close,
                             color: Colors.black,
                           ),
@@ -318,12 +320,12 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                       top: 30,
                       left: 20,
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: Color.fromARGB(173, 241, 216, 214)),
                         child: IconButton(
                           onPressed: () {},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.exit_to_app,
                             color: Colors.black,
                           ),
@@ -563,7 +565,7 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
   Widget _buildMessageInput(UserModel userModel) {
     return Container(
       padding: const EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color.fromARGB(0, 255, 255, 255),
         boxShadow: [
           // BoxShadow(
@@ -577,7 +579,7 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
       child: Row(
         children: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.camera_alt,
               color: Colors.white,
             ),
@@ -592,9 +594,9 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
               child: TextField(
                 style: const TextStyle(color: Colors.white),
                 controller: _messageController,
-                decoration: const InputDecoration(
-                  hintText: 'Type a message...',
-                  hintStyle: TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  hintText: AppText.typeAMessage.tr,
+                  hintStyle: const TextStyle(color: Colors.white),
                   border: InputBorder.none,
                 ),
               ),
@@ -672,7 +674,7 @@ class ChatContainer extends StatelessWidget {
           ? Alignment.centerRight
           : Alignment.centerLeft,
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: Column(
           crossAxisAlignment: chatMessage.isSender == true
               ? CrossAxisAlignment.end
@@ -685,7 +687,7 @@ class ChatContainer extends StatelessWidget {
                     backgroundImage: NetworkImage(chatMessage.senderImage),
                     radius: 16,
                   ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Text(
                   chatMessage.senderName,
                   style: TextStyle(
@@ -698,18 +700,18 @@ class ChatContainer extends StatelessWidget {
               ],
             ),
             Container(
-              padding: EdgeInsets.all(12),
+              padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: chatMessage.isSender == true
-                    ? Color.fromARGB(255, 252, 90, 252)
-                    : Color(0xff592acd),
+                    ? const Color.fromARGB(255, 252, 90, 252)
+                    : const Color(0xff592acd),
                 borderRadius: BorderRadius.only(
                   topLeft:
                       Radius.circular(chatMessage.isSender == true ? 20 : 0),
                   topRight:
                       Radius.circular(chatMessage.isSender == true ? 0 : 20),
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
+                  bottomLeft: const Radius.circular(20),
+                  bottomRight: const Radius.circular(20),
                 ),
               ),
               child: Text(
@@ -721,7 +723,7 @@ class ChatContainer extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Text(
               chatMessage.time,
               style: TextStyle(

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:vibeconnect/utils/userdata.dart';
 import '../controller/user_controller.dart';
+import '../lang/app_text.dart';
 import '../model/user_model.dart';
 import '../widgets/button_widget.dart';
 
@@ -82,10 +84,26 @@ class _MyProfileViewState extends State<MyProfileView> {
           onHorizontalDragEnd: (details) {
             if (details.primaryVelocity! > 0) {
               Navigator.pop(context);
+<<<<<<< HEAD
             }
           },
+=======
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: Color(Style.MAIN_COLOR),
+            ),
+          )),
+      body: GestureDetector(
+        onHorizontalDragEnd: (details) {
+          if (details.primaryVelocity! > 0) {
+            Navigator.pop(context);
+          }
+        },
+        child: SafeArea(
+>>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
           child: Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -130,15 +148,46 @@ class _MyProfileViewState extends State<MyProfileView> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Text(
+<<<<<<< HEAD
                                   'Meet',
                                   style: GoogleFonts.varelaRound(
                                       fontSize: 18,
+=======
+                                  AppText.meet.tr,
+                                  style: GoogleFonts.varelaRound(
+                                      fontSize: 16,
+>>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                                       fontWeight: FontWeight.w700),
                                 ),
                               ],
                             ),
+<<<<<<< HEAD
                             SizedBox(
                               width: deviceHeight * .06,
+=======
+                            // SizedBox(
+                            //   width: deviceHeight * .02,
+                            // ),
+                            // Column(
+                            //   children: [
+                            //     Text(
+                            //       "10k",
+                            //       style: GoogleFonts.varelaRound(fontSize: 14),
+                            //     ),
+                            //     const SizedBox(
+                            //       height: 1,
+                            //     ),
+                            //     Text(
+                            //       AppText.connections.tr,
+                            //       style: GoogleFonts.varelaRound(
+                            //           fontSize: 16,
+                            //           fontWeight: FontWeight.w700),
+                            //     ),
+                            //   ],
+                            // ),
+                            SizedBox(
+                              width: deviceWidth * .02,
+>>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                             ),
                             Column(
                               children: [
@@ -149,7 +198,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Text(
-                                  'Vibe',
+                                  AppText.vibe.tr,
                                   style: GoogleFonts.varelaRound(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w700),
@@ -167,7 +216,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Age  ',
+                      AppText.age.tr,
                       style: GoogleFonts.varelaRound(
                           fontSize: 18, fontWeight: FontWeight.w600),
                     ),
@@ -181,6 +230,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                     ),
                   ],
                 ),
+<<<<<<< HEAD
                 SizedBox(height: 5),
                 Column(
                   children: [
@@ -208,6 +258,24 @@ class _MyProfileViewState extends State<MyProfileView> {
                   ],
                 ),
                 // SizedBox(height: 5),
+=======
+                const SizedBox(height: 5),
+                Text(
+                  userModel.about.toString(),
+                  style: GoogleFonts.varelaRound(
+                    fontSize: 12,
+                  ),
+                ),
+                const SizedBox(height: 5),
+                // Text(
+                //   '@${userModel.name}',
+                //   style:
+                //       GoogleFonts.varelaRound(fontSize: 18, fontWeight: FontWeight.w600),
+                // ),
+                // SizedBox(
+                //   height: 20,
+                // ),
+>>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.start,
                 //   children: [

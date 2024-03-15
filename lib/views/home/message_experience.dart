@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vibeconnect/lang/app_text.dart';
 import 'package:vibeconnect/views/home/profile_view.dart';
 import '../../model/user_model.dart';
 import '../../utils/styles.dart';
@@ -42,7 +44,7 @@ class _MyWidgetState extends State<MessageExperience> {
                       color: Colors.white),
                   const Spacer(),
                   Text(
-                    "User who joined",
+                    AppText.userWhoJoined.tr,
                     style: GoogleFonts.varelaRound(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -64,7 +66,7 @@ class _MyWidgetState extends State<MessageExperience> {
                       title: Text(
                           "${widget.joinedUser![index].name.toString()} (${widget.joinedUser![index].age.toString()})",
                           style: GoogleFonts.varelaRound(color: Colors.white)),
-                      subtitle: Text('View Profile',
+                      subtitle: Text(AppText.viewProfile.tr,
                           style: GoogleFonts.varelaRound(color: Colors.white)),
                       trailing: const Icon(
                         Icons.arrow_forward,

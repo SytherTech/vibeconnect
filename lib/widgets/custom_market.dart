@@ -69,9 +69,10 @@ class CustomMarker extends StatelessWidget {
 class InvertedConeShapePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final rect = Rect.fromPoints(Offset(0, 0), Offset(size.width, size.height));
+    final rect =
+        Rect.fromPoints(const Offset(0, 0), Offset(size.width, size.height));
     Paint paint = Paint()
-      ..shader = LinearGradient(
+      ..shader = const LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [
