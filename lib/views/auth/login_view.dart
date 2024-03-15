@@ -48,8 +48,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     SizedBox(
-                      height: 200,
-                      width: 200,
+                      height: 320,
+                      width: 320,
                       child: Image.asset(
                         "assets/png/logo.png",
                         fit: BoxFit.fill,
@@ -63,20 +63,21 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(
-                            "Login To Join The Amazing Adventures !",
-                            style: GoogleFonts.varelaRound(
-                                fontSize: 24, fontWeight: FontWeight.w700),
-                            textAlign: TextAlign.start,
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
+                          // Text(
+                          //   "Login To Join The Amazing Adventures !",
+                          //   style: GoogleFonts.varelaRound(
+                          //       fontSize: 24, fontWeight: FontWeight.w700),
+                          //   textAlign: TextAlign.start,
+                          // ),
+                          // const SizedBox(
+                          //   height: 20,
+                          // ),
                           TextFieldWidget(
-                              isPassword: false,
-                              controller: _emailController,
-                              hintText: "Email",
-                              svgPath: "assets/svg/email.svg"),
+                            isPassword: false,
+                            controller: _emailController,
+                            hintText: "Email",
+                            svgPath: "assets/svg/email.svg",
+                          ),
                           const SizedBox(
                             height: 10,
                           ),
@@ -110,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ));
                               },
                               text: "Login",
-                              color: [Color(0xff8767DA), Color(0xff943CBD)],
+                              color: [Color(0xff8A5ED4), Color(0xff8A5ED4)],
                               borderRadius: 15),
                           const SizedBox(
                             height: 80,

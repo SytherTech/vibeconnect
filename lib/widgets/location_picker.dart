@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
@@ -62,7 +63,38 @@ class _LocationPickerState extends State<LocationPicker> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pick A Location'),
+        title: Container(
+          margin: const EdgeInsets.only(bottom: 5),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(
+                30.0), // Adjust the border radius for roundness
+            color:
+                Color.fromARGB(204, 255, 255, 255), // Set the background color
+          ),
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Pick A Location',
+                    hintStyle: GoogleFonts.varelaRound(
+                        color: Color(0xff592acd), fontSize: 14),
+                    border: InputBorder.none, // Remove the default input border
+                    contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: Icon(
+                  Icons.search,
+                  size: 25,
+                  color: Color(0xff592acd),
+                ),
+              ), // Add your search icon here
+            ],
+          ),
+        ),
       ),
       body: Stack(
         children: [
@@ -108,7 +140,7 @@ class _LocationPickerState extends State<LocationPicker> {
                       _showEventCreatedDialog();
                     },
                     text: 'Pick & Create Event',
-                    color: const [Color(0xff8767DA), Color(0xff943CBD)],
+                    color: const [Color(0xff8A5ED4), Color(0xff8A5ED4)],
                     borderRadius: 15),
               )),
         ],

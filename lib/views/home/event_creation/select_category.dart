@@ -146,6 +146,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
+        reverse: true,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
@@ -153,7 +154,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
             children: [
               Text(
                 "Select A Category",
-                style: GoogleFonts.lato(
+                style: GoogleFonts.varelaRound(
                     fontSize: 18,
                     color: Colors.grey[700],
                     fontWeight: FontWeight.w600),
@@ -162,7 +163,7 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                 height: 10,
               ),
               SizedBox(
-                height: 150,
+                height: 200,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   // gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -181,8 +182,10 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                       },
                       child: SizedBox(
                         child: Card(
+                          surfaceTintColor: Colors.white,
+                          elevation: 3,
                           color: eventCategories[index].name == selectedCategory
-                              ? Colors.purple
+                              ? Color(0xff8767DA)
                               : Colors.white,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -201,17 +204,18 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                                   eventCategories[index]
                                       .imageUrl, // Replace with your image path
                                   fit: BoxFit.cover,
+                                  width: 200,
                                   height:
-                                      100.0, // Adjust the height of the image as needed
+                                      140.0, // Adjust the height of the image as needed
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: Text(
                                   eventCategories[index]
                                       .name, // Replace with your text
                                   textAlign: TextAlign.center,
-                                  style: GoogleFonts.lato(
+                                  style: GoogleFonts.varelaRound(
                                       fontSize: 16,
                                       color: eventCategories[index].name ==
                                               selectedCategory
@@ -240,6 +244,8 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                               onTap: () => _selectDate(context, true),
                               child: TextFormField(
                                 enabled: false,
+                                style: GoogleFonts.varelaRound(
+                                    fontWeight: FontWeight.w600),
                                 decoration: InputDecoration(
                                   hintText: startDate != null
                                       ? "${startDate!.day}/${startDate!.month}/${startDate!.year}"
@@ -257,6 +263,8 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                             child: InkWell(
                               onTap: () => _selectTime(context, true),
                               child: TextFormField(
+                                style: GoogleFonts.varelaRound(
+                                    fontWeight: FontWeight.w600),
                                 enabled: false,
                                 decoration: InputDecoration(
                                   hintText: startTime != null
@@ -272,6 +280,8 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                               onTap: () => _selectTime(context, false),
                               child: TextFormField(
                                 enabled: false,
+                                style: GoogleFonts.varelaRound(
+                                    fontWeight: FontWeight.w600),
                                 decoration: InputDecoration(
                                   hintText: endTime != null
                                       ? "${endTime!.hour}:${endTime!.minute}"
@@ -289,9 +299,15 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                         child: Column(
                           children: [
                             TextFormField(
+                              cursorColor: Color(0xff8767DA),
                               controller: detailsController,
+                              style: GoogleFonts.varelaRound(
+                                  fontWeight: FontWeight.w600),
                               decoration: const InputDecoration(
-                                  labelText: 'Event Details'),
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Color(0xff8767DA))),
+                                  hintText: 'Event Details'),
                               maxLines: null, // Allow multiple lines
                               onChanged: (value) {
                                 setState(() {
@@ -305,9 +321,19 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                                 return null;
                               },
                             ),
+                            const SizedBox(
+                              height: 10,
+                            ),
                             TextFormField(
-                              decoration:
-                                  InputDecoration(labelText: 'Users Limit'),
+                              cursorColor: Color(0xff8767DA),
+                              style: GoogleFonts.varelaRound(
+                                  fontWeight: FontWeight.w600),
+                              decoration: InputDecoration(
+                                hintText: 'Users Limit',
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Color(0xff8767DA))),
+                              ),
                               keyboardType: TextInputType.number,
                               onChanged: (value) {
                                 setState(() {
@@ -417,37 +443,65 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                   ),
                 ),
               ),
+              Center(
+                child: FloatingActionButton.extended(
+                  extendedPadding: const EdgeInsets.symmetric(horizontal: 100),
+                  backgroundColor: const Color(0xff8A5ED4),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LocationPicker(
+                                Category: selectedCategory,
+                                EventCost: isFree == true
+                                    ? "Free"
+                                    : "Paid ${costPerPersonController.text} Euro",
+                                date: startDate!.toIso8601String(),
+                                startTime: formatTimeOfDay(startTime!),
+                                endTime: formatTimeOfDay(endTime!),
+                                eventDetails: eventDetails,
+                                userLimit: userLimit),
+                          ));
+                    }
+                  },
+                  label: const Text(
+                    "Continue",
+                    style: TextStyle(color: Colors.white, fontSize: 23),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton.extended(
-        extendedPadding: const EdgeInsets.symmetric(horizontal: 100),
-        backgroundColor: const Color(0xff8A5ED4),
-        onPressed: () {
-          if (_formKey.currentState!.validate()) {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => LocationPicker(
-                      Category: selectedCategory,
-                      EventCost: isFree == true
-                          ? "Free"
-                          : "Paid ${costPerPersonController.text} Euro",
-                      date: startDate!.toIso8601String(),
-                      startTime: formatTimeOfDay(startTime!),
-                      endTime: formatTimeOfDay(endTime!),
-                      eventDetails: eventDetails,
-                      userLimit: userLimit),
-                ));
-          }
-        },
-        label: const Text(
-          "Continue",
-          style: TextStyle(color: Colors.white, fontSize: 23),
-        ),
-      ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      // floatingActionButton: FloatingActionButton.extended(
+      //   extendedPadding: const EdgeInsets.symmetric(horizontal: 100),
+      //   backgroundColor: const Color(0xff8A5ED4),
+      //   onPressed: () {
+      //     if (_formKey.currentState!.validate()) {
+      //       Navigator.pushReplacement(
+      //           context,
+      //           MaterialPageRoute(
+      //             builder: (context) => LocationPicker(
+      //                 Category: selectedCategory,
+      //                 EventCost: isFree == true
+      //                     ? "Free"
+      //                     : "Paid ${costPerPersonController.text} Euro",
+      //                 date: startDate!.toIso8601String(),
+      //                 startTime: formatTimeOfDay(startTime!),
+      //                 endTime: formatTimeOfDay(endTime!),
+      //                 eventDetails: eventDetails,
+      //                 userLimit: userLimit),
+      //           ));
+      //     }
+      //   },
+      //   label: const Text(
+      //     "Continue",
+      //     style: TextStyle(color: Colors.white, fontSize: 23),
+      //   ),
+      // ),
     );
   }
 }

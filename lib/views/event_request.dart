@@ -71,6 +71,25 @@ class _EventRequestScreenState extends State<EventRequestScreen> {
                             color: Colors.white,
                           ),
                         ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            // Set elevation to 0 to remove the shadow
+                            backgroundColor: MaterialStateColor.resolveWith(
+                              (states) =>
+                                  const Color.fromARGB(129, 158, 158, 158),
+                            ),
+                          ),
+                          onPressed: () {
+                            // Add your button click logic here
+                          },
+                          child: Text(
+                            "View Profile",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        )
                       ],
                     ),
                   ],

@@ -43,7 +43,7 @@ class StarterScreen extends StatelessWidget {
                               ));
                         },
                         text: "Sign In",
-                        color: const [Color(0xff8767DA), Color(0xff943CBD)],
+                        color: const [Color(0xff8A5ED4), Color(0xff8A5ED4)],
                         borderRadius: 15),
                     const SizedBox(
                       height: 10,

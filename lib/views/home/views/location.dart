@@ -31,8 +31,11 @@ class LocationScreen extends StatefulWidget {
   State<LocationScreen> createState() => _LocationScreenState();
 }
 
-class _LocationScreenState extends State<LocationScreen> {
+class _LocationScreenState extends State<LocationScreen>
+    with TickerProviderStateMixin {
   final Map<String, Marker> _markers = {};
+  late AnimationController _controller;
+  late Animation<double> _animation;
 
   // List<Map<String, dynamic>> data = [
   //   {
@@ -64,6 +67,33 @@ class _LocationScreenState extends State<LocationScreen> {
 
     // TODO: implement initState
     super.initState();
+    // Set up the animation controller
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 100),
+      vsync: this,
+    );
+
+    // Set up the animation with a Tween
+    _animation = Tween<double>(begin: -10.0, end: 10.0).animate(_controller)
+      ..addListener(() {
+        setState(() {
+          // The animation has changed
+        });
+      });
+
+    // Reverse the animation when it completes to give a back-and-forth effect
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        _controller.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        _controller.forward();
+      }
+    });
+    _controller.forward();
+
+    Future.delayed(Duration(milliseconds: 1200)).then((value) {
+      _controller.stop();
+    });
   }
 
   List<EventModel> eventProvider = [];
@@ -76,7 +106,9 @@ class _LocationScreenState extends State<LocationScreen> {
     return Scaffold(
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
-      floatingActionButton: ImageButton(),
+      floatingActionButton: Transform.translate(
+          offset: Offset(_animation.value, 0.0),
+          child: ImageButton(_controller)),
       // appBar: AppBar(
       //   title: RoundedSearchBar(),
       //   // actions: [
@@ -110,9 +142,18 @@ class _LocationScreenState extends State<LocationScreen> {
                 GoogleMap(
                     onMapCreated: _onMapCreated,
                     onTap: (latlng) {
-                      setState(() {
-                        showInfoContainer = true;
-                      });
+                      if (showInfoContainer) {
+                        setState(() {
+                          showInfoContainer = false;
+                        });
+                      }
+                      if (eventProvider
+                          .where((element) => element.eventLocation == latlng)
+                          .isNotEmpty) {
+                        setState(() {
+                          showInfoContainer = true;
+                        });
+                      }
                     },
                     mapType: MapType.normal,
                     buildingsEnabled: true,
@@ -123,12 +164,12 @@ class _LocationScreenState extends State<LocationScreen> {
                     rotateGesturesEnabled: true,
                     scrollGesturesEnabled: true,
                     tiltGesturesEnabled: true,
-                    zoomControlsEnabled: true,
+                    zoomControlsEnabled: false,
                     indoorViewEnabled: false,
                     trafficEnabled: false,
                     mapToolbarEnabled: true,
                     initialCameraPosition: const CameraPosition(
-                      target: LatLng(37.7749, -122.4194),
+                      target: LatLng(45.4642, 9.1900),
                       zoom: 13.0,
                     ),
                     markers: _markers.values.toSet()),
@@ -258,12 +299,13 @@ class _LocationScreenState extends State<LocationScreen> {
                                   );
                                 },
                                 icon: Container(
-                                    padding: const EdgeInsets.all(6),
+                                    padding: const EdgeInsets.all(12),
                                     decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: ui.Color.fromARGB(
                                             204, 255, 255, 255)),
                                     child: const Icon(
+                                      size: 25,
                                       Icons.calendar_month,
                                       color: Color(Style.MAIN_COLOR),
                                     )),
@@ -275,6 +317,10 @@ class _LocationScreenState extends State<LocationScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height / 2,
+                                ),
                                 Container(
                                   decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
@@ -282,12 +328,18 @@ class _LocationScreenState extends State<LocationScreen> {
                                           204, 255, 255, 255)),
                                   padding: const EdgeInsets.all(5),
                                   child: IconButton(
-                                      onPressed: () {
-                                        Navigator.push(
+                                      onPressed: () async {
+                                        await Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     EventRequestScreen()));
+                                        _controller.forward();
+                                        Future.delayed(
+                                                Duration(milliseconds: 1200))
+                                            .then((value) {
+                                          _controller.stop();
+                                        });
                                       },
                                       icon: const Icon(
                                         Icons.checklist_sharp,
@@ -304,12 +356,18 @@ class _LocationScreenState extends State<LocationScreen> {
                                           204, 255, 255, 255)),
                                   padding: const EdgeInsets.all(5),
                                   child: IconButton(
-                                      onPressed: () {
-                                        Navigator.push(
+                                      onPressed: () async {
+                                        await Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     AllMessages()));
+                                        _controller.forward();
+                                        Future.delayed(
+                                                Duration(milliseconds: 1200))
+                                            .then((value) {
+                                          _controller.stop();
+                                        });
                                       },
                                       icon: SvgPicture.asset(
                                         "assets/svg/msg.svg",
@@ -332,9 +390,7 @@ class _LocationScreenState extends State<LocationScreen> {
                                 //         color: Color(0xfffcb75e),
                                 //       )),
                                 // ),
-                                const SizedBox(
-                                  height: 15,
-                                ),
+
                                 Container(
                                   decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
@@ -343,13 +399,19 @@ class _LocationScreenState extends State<LocationScreen> {
                                   ),
                                   padding: const EdgeInsets.all(5),
                                   child: IconButton(
-                                    onPressed: () {
-                                      Navigator.push(
+                                    onPressed: () async {
+                                      await Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) => MyProfileView(),
                                         ),
                                       );
+                                      _controller.forward();
+                                      Future.delayed(
+                                              Duration(milliseconds: 1200))
+                                          .then((value) {
+                                        _controller.stop();
+                                      });
                                     },
                                     icon: SvgPicture.asset(
                                       "assets/svg/profile.svg",
@@ -545,15 +607,22 @@ class InvertedConeShapePainter extends CustomPainter {
 }
 
 class ImageButton extends StatelessWidget {
+  final AnimationController _controller;
+
+  ImageButton(this._controller);
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.push(
+      onTap: () async {
+        await Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => SelectEventCategory(),
             ));
+        _controller.forward();
+        Future.delayed(Duration(milliseconds: 1200)).then((value) {
+          _controller.stop();
+        });
       },
       child: Padding(
           padding: const EdgeInsets.only(bottom: 20),
@@ -568,8 +637,8 @@ class ImageButton extends StatelessWidget {
                 height: 95, // Adjust the height as needed
               ),
               SizedBox(
-                height: 50,
-                width: 50,
+                height: 25,
+                width: 25,
                 child: ImageIcon(
                   AssetImage(
                     "assets/png/add.png",

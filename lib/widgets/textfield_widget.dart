@@ -22,8 +22,11 @@ class TextFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      color: Color(0xffEFEFEF),
+      decoration: BoxDecoration(
+          color: Color(0xffEFEFEF), borderRadius: BorderRadius.circular(18)),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 10,
+      ),
       child: TextField(
         obscureText: isPassword,
         controller: controller,
@@ -36,9 +39,9 @@ class TextFieldWidget extends StatelessWidget {
                 const BoxConstraints(minWidth: 60, minHeight: 20),
             contentPadding: const EdgeInsets.only(left: 10),
             hintText: hintText,
-            
             prefixIcon: SvgPicture.asset(
               svgPath,
+              color: Color(0xff8A5ED4),
             ),
             border: InputBorder.none),
       ),

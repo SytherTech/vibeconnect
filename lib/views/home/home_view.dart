@@ -33,6 +33,7 @@ class _HomePageState extends State<HomePage> {
     context.read<UserController>().getUserData();
     context.read<EventController>().getEvent();
     super.initState();
+  
 
     pageController = PageController(initialPage: _tabIndex);
     Future.delayed(Duration(seconds: 2)).then((value) {
@@ -59,6 +60,7 @@ class _HomePageState extends State<HomePage> {
             GroupChatScreen(),
             EventRequestScreen(),
             Container()
+        
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(

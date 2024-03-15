@@ -287,7 +287,7 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                 clipBehavior: Clip.none,
                 children: [
                   SizedBox(
-                    height: deviceSize.height * 0.26,
+                    height: deviceSize.height * 0.32,
                     width: deviceSize.width,
                     child: ClipRRect(
                       borderRadius: BorderRadius.only(
@@ -334,28 +334,68 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                     child: SizedBox(
                       width: deviceSize.width,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 0, vertical: 5),
-                            child: Column(
-                              children: [
-                                Text(
-                                  eventModel.startTime.toString(),
-                                  style: const TextStyle(color: Colors.white),
-                                ),
-                                const Text(
-                                  "11 Dec",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ],
-                            ),
+                            child: Container(
+                                margin: const EdgeInsets.only(top: 30),
+                                padding: const EdgeInsets.all(0),
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color.fromARGB(183, 255, 255, 255)),
+                                child: IconButton(
+                                  onPressed: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                        backgroundColor: Colors.white,
+                                        elevation: 2,
+                                        title: Text(
+                                          "Timings",
+                                          style: GoogleFonts.varelaRound(
+                                              fontWeight: FontWeight.bold,
+                                              color: Color(0xff8A5ED4)),
+                                        ),
+                                        content: Text(
+                                          "From 7 PM To 10 Pm",
+                                          style: GoogleFonts.varelaRound(
+                                              fontWeight: FontWeight.bold,
+                                              color: Color(0xff8A5ED4)),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        actions: [
+                                          TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                "Ok",
+                                                style: GoogleFonts.varelaRound(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Color(0xff8A5ED4),
+                                                    fontSize: 16),
+                                              ))
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                  icon: Icon(
+                                    Icons.timer,
+                                    color: Color(0xff8A5ED4),
+                                    size: 25,
+                                  ),
+                                )),
                           ),
+
                           Column(
                             children: [
+                              const SizedBox(
+                                height: 20,
+                              ),
                               CircleAvatar(
-                                radius: 45,
+                                radius: 55,
                                 backgroundImage: NetworkImage(UserData()
                                     .users
                                     .where((element) =>
@@ -365,7 +405,7 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                                     .toString()),
                               ),
                               const SizedBox(
-                                height: 8,
+                                height: 10,
                               ),
                               Text(
                                 "@ Marlin Arian",
