@@ -65,7 +65,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-<<<<<<< HEAD
                           // Text(
                           //   "Login To Join The Amazing Adventures !",
                           //   style: GoogleFonts.varelaRound(
@@ -81,22 +80,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             hintText: "Email",
                             svgPath: "assets/svg/email.svg",
                           ),
-=======
-                          Text(
-                            AppText.loginToJoinTheAmazingAdventures.tr,
-                            style: GoogleFonts.varelaRound(
-                                fontSize: 24, fontWeight: FontWeight.w700),
-                            textAlign: TextAlign.start,
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          TextFieldWidget(
-                              isPassword: false,
-                              controller: _emailController,
-                              hintText: AppText.email.tr,
-                              svgPath: "assets/svg/email.svg"),
->>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                           const SizedBox(
                             height: 10,
                           ),
@@ -129,16 +112,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                       builder: (context) => LocationScreen(),
                                     ));
                               },
-<<<<<<< HEAD
                               text: "Login",
                               color: [Color(0xff8A5ED4), Color(0xff8A5ED4)],
-=======
-                              text: AppText.login.tr,
-                              color: const [
-                                Color(0xff8767DA),
-                                Color(0xff943CBD)
-                              ],
->>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                               borderRadius: 15),
                           const SizedBox(
                             height: 80,

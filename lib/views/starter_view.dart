@@ -44,13 +44,8 @@ class StarterScreen extends StatelessWidget {
                                 builder: (context) => LoginScreen(),
                               ));
                         },
-<<<<<<< HEAD
                         text: "Sign In",
                         color: const [Color(0xff8A5ED4), Color(0xff8A5ED4)],
-=======
-                        text: AppText.signIn.tr,
-                        color: const [Color(0xff8767DA), Color(0xff943CBD)],
->>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                         borderRadius: 15),
                     const SizedBox(
                       height: 10,

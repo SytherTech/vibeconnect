@@ -19,10 +19,10 @@ class _LocationDrawerState extends State<LocationDrawer> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              decoration: BoxDecoration(color: Colors.white),
+              decoration: const BoxDecoration(color: Colors.white),
               child: Column(
                 children: [
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Icon(Icons.settings),
@@ -49,7 +49,7 @@ class _LocationDrawerState extends State<LocationDrawer> {
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   // BUY BUTTON
@@ -72,14 +72,14 @@ class _LocationDrawerState extends State<LocationDrawer> {
                           ),
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Container(
                         width: 50,
                         height: 30,
                         decoration: BoxDecoration(
                             color: Colors.purple,
                             borderRadius: BorderRadius.circular(18)),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             'Buy',
                             style: TextStyle(
@@ -98,7 +98,7 @@ class _LocationDrawerState extends State<LocationDrawer> {
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Notifiche',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
@@ -114,9 +114,9 @@ class _LocationDrawerState extends State<LocationDrawer> {
                 ],
               ),
             ),
-            Divider(),
+            const Divider(),
             ListTile(
-              title: Text(
+              title: const Text(
                 'Premium',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
@@ -125,9 +125,9 @@ class _LocationDrawerState extends State<LocationDrawer> {
                 Navigator.pop(context); // Close the drawer
               },
             ),
-            Divider(),
+            const Divider(),
             ListTile(
-              title: Text(
+              title: const Text(
                 'Regole',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
@@ -136,9 +136,9 @@ class _LocationDrawerState extends State<LocationDrawer> {
                 Navigator.pop(context); // Close the drawer
               },
             ),
-            Divider(),
+            const Divider(),
             ListTile(
-              title: Text(
+              title: const Text(
                 'Tutorial',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
@@ -147,9 +147,9 @@ class _LocationDrawerState extends State<LocationDrawer> {
                 Navigator.pop(context); // Close the drawer
               },
             ),
-            Divider(),
+            const Divider(),
             ListTile(
-              title: Text(
+              title: const Text(
                 'Privacy & Policy',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
@@ -158,9 +158,9 @@ class _LocationDrawerState extends State<LocationDrawer> {
                 Navigator.pop(context); // Close the drawer
               },
             ),
-            Divider(),
+            const Divider(),
             ListTile(
-              title: Text(
+              title: const Text(
                 'Chi siamo?',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),

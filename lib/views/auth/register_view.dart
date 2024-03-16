@@ -86,7 +86,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
             icon: SvgPicture.asset("assets/svg/arrow_left.svg")),
       ),
       body: Padding(
-<<<<<<< HEAD
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -115,30 +114,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: IconButton(
                       onPressed: () => _showPicker(context),
                       icon: SvgPicture.asset("assets/svg/camera.svg"),
-=======
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                children: [
-                  Container(
-                    height: 140,
-                    width: 140,
-                    decoration: BoxDecoration(
-                        image: _image == null
-                            ? null
-                            : DecorationImage(
-                                image: FileImage(File(_image!.path))),
-                        color: const Color(0xffE4E4E4),
-                        shape: BoxShape.circle),
-                    child: Center(
-                      child: IconButton(
-                        onPressed: () => _showPicker(context),
-                        icon: SvgPicture.asset("assets/svg/camera.svg"),
-                      ),
->>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                     ),
                   ),
                 ),
@@ -208,7 +183,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     activeColor: Color(
                         0xff8A5ED4), // Set the radio button color to purple
                   ),
-<<<<<<< HEAD
                 ),
                 Expanded(
                   child: RadioListTile<Gender>(
@@ -260,123 +234,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   borderRadius: 15),
             ),
           ],
-=======
-                  TextFieldWidget(
-                      controller: nameController,
-                      hintText: AppText.fullName.tr,
-                      svgPath: "assets/svg/person.svg",
-                      isPassword: false),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  TextFieldWidget(
-                      controller: emailController,
-                      hintText: AppText.email.tr,
-                      svgPath: "assets/svg/email.svg",
-                      isPassword: false),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  TextFieldWidget(
-                      controller: passwordController,
-                      hintText: AppText.password.tr,
-                      svgPath: "assets/svg/password.svg",
-                      isPassword: true),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  GestureDetector(
-                    onTap: () => _selectDate(context),
-                    child: TextFieldWidget(
-                        canEdit: false,
-                        controller: ageController,
-                        hintText: AppText.age.tr,
-                        svgPath: "assets/svg/age.svg",
-                        isPassword: false),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(AppText.gender.tr,
-                        style: GoogleFonts.varelaRound(fontSize: 16)),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Expanded(
-                        child: RadioListTile<Gender>(
-                          title: Text(
-                            AppText.male.tr,
-                            style: const TextStyle(fontSize: 14),
-                          ),
-                          value: Gender.Male,
-                          groupValue: selectedGender,
-                          onChanged: (Gender? value) {
-                            setState(() {
-                              selectedGender = value;
-                            });
-                          },
-                          contentPadding: EdgeInsets.zero,
-                          activeColor: Colors
-                              .purple, // Set the radio button color to purple
-                        ),
-                      ),
-                      Expanded(
-                        child: RadioListTile<Gender>(
-                          contentPadding: EdgeInsets.zero,
-                          title: Text(
-                            AppText.female.tr,
-                            style: const TextStyle(fontSize: 14),
-                          ),
-                          value: Gender.Female,
-                          groupValue: selectedGender,
-                          onChanged: (Gender? value) {
-                            setState(() {
-                              selectedGender = value;
-                            });
-                          },
-                          activeColor: Colors
-                              .purple, // Set the radio button color to purple
-                        ),
-                      ),
-                      Expanded(
-                        child: RadioListTile<Gender>(
-                          contentPadding: EdgeInsets.zero,
-                          title: Text(
-                            AppText.others.tr,
-                            style: const TextStyle(fontSize: 14),
-                          ),
-                          value: Gender.Others,
-                          groupValue: selectedGender,
-                          onChanged: (Gender? value) {
-                            setState(() {
-                              selectedGender = value;
-                            });
-                          },
-                          activeColor: Colors
-                              .purple, // Set the radio button color to purple
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: ButtonWidget(
-                        onpressed: () {},
-                        text: AppText.register.tr,
-                        color: const [Color(0xff8767DA), Color(0xff943CBD)],
-                        borderRadius: 15),
-                  ),
-                ],
-              ),
-            ],
-          ),
->>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
         ),
       ),
     );

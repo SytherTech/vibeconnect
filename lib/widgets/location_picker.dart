@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:google_fonts/google_fonts.dart';
-=======
 import 'package:get/get.dart';
->>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
@@ -144,13 +141,8 @@ class _LocationPickerState extends State<LocationPicker> {
                           requestedUsers: []));
                       _showEventCreatedDialog();
                     },
-<<<<<<< HEAD
                     text: 'Pick & Create Event',
                     color: const [Color(0xff8A5ED4), Color(0xff8A5ED4)],
-=======
-                    text: AppText.pickAndCreateEvent.tr,
-                    color: const [Color(0xff8767DA), Color(0xff943CBD)],
->>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                     borderRadius: 15),
               )),
         ],

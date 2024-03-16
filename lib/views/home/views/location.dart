@@ -155,26 +155,14 @@ class _LocationScreenState extends State<LocationScreen>
                 GoogleMap(
                     onMapCreated: _onMapCreated,
                     onTap: (latlng) {
-<<<<<<< HEAD
                       if (showInfoContainer) {
-=======
-                      if (showInfoContainer == true) {
->>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                         setState(() {
                           showInfoContainer = false;
                         });
                       }
                       if (eventProvider
-<<<<<<< HEAD
                           .where((element) => element.eventLocation == latlng)
                           .isNotEmpty) {
-=======
-                              .where(
-                                  (element) => element.eventLocation == latlng)
-                              .first
-                              .eventLocation !=
-                          null) {
->>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                         setState(() {
                           showInfoContainer = true;
                         });
@@ -381,7 +369,6 @@ class _LocationScreenState extends State<LocationScreen>
                                           204, 255, 255, 255)),
                                   padding: const EdgeInsets.all(5),
                                   child: IconButton(
-<<<<<<< HEAD
                                       onPressed: () async {
                                         await Navigator.push(
                                             context,
@@ -395,9 +382,6 @@ class _LocationScreenState extends State<LocationScreen>
                                           _controller.stop();
                                         });
                                       },
-=======
-                                      onPressed: () {},
->>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                                       icon: SvgPicture.asset(
                                         "assets/svg/msg.svg",
                                         color: const Color(0xffd6587f),
@@ -667,15 +651,9 @@ class ImageButton extends StatelessWidget {
                 width: 95, // Adjust the width as needed
                 height: 95, // Adjust the height as needed
               ),
-<<<<<<< HEAD
               SizedBox(
                 height: 25,
                 width: 25,
-=======
-              const SizedBox(
-                height: 50,
-                width: 50,
->>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                 child: ImageIcon(
                   AssetImage(
                     "assets/png/add.png",

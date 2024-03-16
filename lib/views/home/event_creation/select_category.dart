@@ -159,13 +159,8 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-<<<<<<< HEAD
                 "Select A Category",
                 style: GoogleFonts.varelaRound(
-=======
-                AppText.selectACategory.tr,
-                style: GoogleFonts.lato(
->>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                     fontSize: 18,
                     color: Colors.grey[700],
                     fontWeight: FontWeight.w600),
@@ -312,7 +307,6 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                             TextFormField(
                               cursorColor: Color(0xff8767DA),
                               controller: detailsController,
-<<<<<<< HEAD
                               style: GoogleFonts.varelaRound(
                                   fontWeight: FontWeight.w600),
                               decoration: const InputDecoration(
@@ -320,10 +314,6 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                                       borderSide:
                                           BorderSide(color: Color(0xff8767DA))),
                                   hintText: 'Event Details'),
-=======
-                              decoration: InputDecoration(
-                                  labelText: AppText.eventDetails.tr),
->>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                               maxLines: null, // Allow multiple lines
                               onChanged: (value) {
                                 setState(() {
@@ -341,7 +331,6 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                               height: 10,
                             ),
                             TextFormField(
-<<<<<<< HEAD
                               cursorColor: Color(0xff8767DA),
                               style: GoogleFonts.varelaRound(
                                   fontWeight: FontWeight.w600),
@@ -351,10 +340,6 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
                                     borderSide:
                                         BorderSide(color: Color(0xff8767DA))),
                               ),
-=======
-                              decoration: InputDecoration(
-                                  labelText: AppText.usersLimit.tr),
->>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
                               keyboardType: TextInputType.number,
                               onChanged: (value) {
                                 setState(() {
@@ -497,7 +482,6 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
           ),
         ),
       ),
-<<<<<<< HEAD
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       // floatingActionButton: FloatingActionButton.extended(
       //   extendedPadding: const EdgeInsets.symmetric(horizontal: 100),
@@ -525,35 +509,6 @@ class _SelectEventCategoryState extends State<SelectEventCategory> {
       //     style: TextStyle(color: Colors.white, fontSize: 23),
       //   ),
       // ),
-=======
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton.extended(
-        extendedPadding: const EdgeInsets.symmetric(horizontal: 100),
-        backgroundColor: const Color(0xff8A5ED4),
-        onPressed: () {
-          if (_formKey.currentState!.validate()) {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => LocationPicker(
-                      Category: selectedCategory,
-                      EventCost: isFree == true
-                          ? AppText.free.tr
-                          : " ${AppText.paid.tr} ${costPerPersonController.text} ${AppText.euro.tr} ",
-                      date: startDate!.toIso8601String(),
-                      startTime: formatTimeOfDay(startTime!),
-                      endTime: formatTimeOfDay(endTime!),
-                      eventDetails: eventDetails,
-                      userLimit: userLimit),
-                ));
-          }
-        },
-        label: Text(
-          AppText.continuE.tr,
-          style: const TextStyle(color: Colors.white, fontSize: 23),
-        ),
-      ),
->>>>>>> 4f893d14962d21f62a56b75e5d1ec2ed9924e446
     );
   }
 }
